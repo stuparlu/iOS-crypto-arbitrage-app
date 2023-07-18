@@ -11,28 +11,28 @@ struct MainView: View {
     var body: some View {
         VStack {
             TabView {
-                Text("Opportunities")
-                    .tabItem {
-                        Image(systemName: "image")
-                        Text("Opportunities")
-                    }
-                
                 Text("Prices")
                     .tabItem {
-                        Image(systemName: "image")
-                        Text("Prices")
+                        Image(systemName: Symbols.price_history_icon)
+                        Text(StringKeys.prices)
+                    }
+                
+                Text("Opportunities")
+                    .tabItem {
+                        Image(systemName:Symbols.opportunities_icon)
+                        Text(StringKeys.opportunities)
                     }
                 
                 Text("History")
                     .tabItem {
-                        Image(systemName: "image")
-                        Text("History")
+                        Image(systemName: Symbols.opportunity_history_icon)
+                        Text(StringKeys.history)
                     }
                 
                 Text("Account")
                     .tabItem {
-                        Image(systemName: "image")
-                        Text("Account")
+                        Image(systemName: Symbols.user_account_icon)
+                        Text(StringKeys.account)
                     }
             }
         }

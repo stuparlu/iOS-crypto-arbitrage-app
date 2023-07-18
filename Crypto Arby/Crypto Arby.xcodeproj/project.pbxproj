@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642D2A66A86C00FD06DA /* Symbols.swift */; };
+		A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642F2A66AFAC00FD06DA /* StringKeys.swift */; };
 		A1BD7B712A65505E002B3F48 /* Crypto_ArbyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7B702A65505E002B3F48 /* Crypto_ArbyApp.swift */; };
 		A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7B722A65505E002B3F48 /* MainView.swift */; };
 		A1BD7B752A655061002B3F48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7B742A655061002B3F48 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10D642D2A66A86C00FD06DA /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		A10D642F2A66AFAC00FD06DA /* StringKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKeys.swift; sourceTree = "<group>"; };
 		A1BD7B6D2A65505E002B3F48 /* Crypto Arby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Arby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BD7B702A65505E002B3F48 /* Crypto_ArbyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto_ArbyApp.swift; sourceTree = "<group>"; };
 		A1BD7B722A65505E002B3F48 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -32,6 +36,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A10D64252A66A32900FD06DA /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A10D642D2A66A86C00FD06DA /* Symbols.swift */,
+				A10D642F2A66AFAC00FD06DA /* StringKeys.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		A1BD7B642A65505E002B3F48 = {
 			isa = PBXGroup;
 			children = (
@@ -51,9 +64,10 @@
 		A1BD7B6F2A65505E002B3F48 /* Crypto Arby */ = {
 			isa = PBXGroup;
 			children = (
+				A1BD7B742A655061002B3F48 /* Assets.xcassets */,
+				A10D64252A66A32900FD06DA /* Constants */,
 				A1BD7B7F2A655858002B3F48 /* Views */,
 				A1BD7B702A65505E002B3F48 /* Crypto_ArbyApp.swift */,
-				A1BD7B742A655061002B3F48 /* Assets.xcassets */,
 				A1BD7B762A655061002B3F48 /* Preview Content */,
 			);
 			path = "Crypto Arby";
@@ -145,7 +159,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */,
 				A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */,
+				A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */,
 				A1BD7B712A65505E002B3F48 /* Crypto_ArbyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
