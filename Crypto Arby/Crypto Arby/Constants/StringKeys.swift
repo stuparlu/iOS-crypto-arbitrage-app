@@ -12,4 +12,7 @@ struct StringKeys {
     static let prices = "Prices"
     static let history = "History"
     static let account = "Account"
+    
+    static let coin_ticker = "coin_ticker"
+    static let coin_name = "coin_name"
 }

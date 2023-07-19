@@ -12,4 +12,5 @@ struct Symbols {
     static let price_history_icon = "bitcoinsign"
     static let opportunity_history_icon = "calendar"
     static let user_account_icon = "person"
+    static let symbol_chevron_down = "chevron.down"
 }

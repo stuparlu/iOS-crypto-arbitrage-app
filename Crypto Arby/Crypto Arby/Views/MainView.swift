@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         VStack {
             TabView {
-                Text("Prices")
+                PricesView()
                     .tabItem {
                         Image(systemName: Symbols.price_history_icon)
                         Text(StringKeys.prices)
