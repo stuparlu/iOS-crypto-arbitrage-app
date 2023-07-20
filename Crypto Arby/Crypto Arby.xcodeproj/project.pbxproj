@@ -17,6 +17,10 @@
 		A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7B722A65505E002B3F48 /* MainView.swift */; };
 		A1BD7B752A655061002B3F48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7B742A655061002B3F48 /* Assets.xcassets */; };
 		A1BD7B782A655061002B3F48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7B772A655061002B3F48 /* Preview Assets.xcassets */; };
+		A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D652A695D8A0002E981 /* PriceResponses.swift */; };
+		A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D672A695E350002E981 /* Exchanges.swift */; };
+		A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D692A69726D0002E981 /* ErrorStrings.swift */; };
+		A1FF5D6C2A6976370002E981 /* ExchangeUrlMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D6B2A6976370002E981 /* ExchangeUrlMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		A1BD7B722A65505E002B3F48 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A1BD7B742A655061002B3F48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1BD7B772A655061002B3F48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1FF5D652A695D8A0002E981 /* PriceResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceResponses.swift; sourceTree = "<group>"; };
+		A1FF5D672A695E350002E981 /* Exchanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanges.swift; sourceTree = "<group>"; };
+		A1FF5D692A69726D0002E981 /* ErrorStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStrings.swift; sourceTree = "<group>"; };
+		A1FF5D6B2A6976370002E981 /* ExchangeUrlMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUrlMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +58,8 @@
 				A10D642D2A66A86C00FD06DA /* Symbols.swift */,
 				A10D642F2A66AFAC00FD06DA /* StringKeys.swift */,
 				A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */,
+				A1FF5D672A695E350002E981 /* Exchanges.swift */,
+				A1FF5D692A69726D0002E981 /* ErrorStrings.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -65,7 +75,9 @@
 		A134ABAA2A68144B00196092 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A1FF5D6D2A6976650002E981 /* Mappers */,
 				A134ABAB2A68147700196092 /* PricesModel.swift */,
+				A1FF5D652A695D8A0002E981 /* PriceResponses.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -115,6 +127,14 @@
 				A134ABA32A67E15E00196092 /* PricesView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A1FF5D6D2A6976650002E981 /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				A1FF5D6B2A6976370002E981 /* ExchangeUrlMapper.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,8 +211,12 @@
 				A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */,
 				A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */,
 				A134ABAC2A68147700196092 /* PricesModel.swift in Sources */,
+				A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */,
 				A134ABA42A67E15E00196092 /* PricesView.swift in Sources */,
 				A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */,
+				A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */,
+				A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */,
+				A1FF5D6C2A6976370002E981 /* ExchangeUrlMapper.swift in Sources */,
 				A1BD7B712A65505E002B3F48 /* Crypto_ArbyApp.swift in Sources */,
 				A134ABA62A67ED4000196092 /* Cryptocurrencies.swift in Sources */,
 			);
