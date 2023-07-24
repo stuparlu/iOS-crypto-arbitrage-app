@@ -9,5 +9,6 @@ import Foundation
 
 struct ExchangeNames {
     static let binance = "binance"
+    static let bybit = "bybit"
     static let bitfinex = "bitfinex"
 }

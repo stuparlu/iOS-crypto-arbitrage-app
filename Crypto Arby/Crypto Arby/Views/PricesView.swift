@@ -9,8 +9,7 @@ import SwiftUI
 
 struct PricesView: View {
     @State private var selectedOption: String?
-    private let listItems = ["Item 1", "Item 2", "Item 3", "Item 4"]
-    @ObservedObject var viewModel = PricesViewViewModel()
+    @StateObject var viewModel = PricesViewViewModel()
     var body: some View {
         
         VStack {
@@ -24,9 +23,16 @@ struct PricesView: View {
             }
             .menuStyle(BorderlessButtonMenuStyle())
             
-            List(listItems, id: \.self) { item in
-                Text(item)
-                    .listRowBackground(Color.white)
+            HStack() {
+                Text(StringKeys.exchange)
+                Spacer()
+                Text(StringKeys.highest_bid)
+                Text(StringKeys.lowest_ask)
+            }
+            
+            List(viewModel.exchangePrices) { item in
+                PricesCellView(exchangeName: item.exchange, bidPrice: item.bidPrice, askPrice: item.askPrice)
+                
             }
             .scrollContentBackground(.hidden)
             .listStyle(GroupedListStyle())

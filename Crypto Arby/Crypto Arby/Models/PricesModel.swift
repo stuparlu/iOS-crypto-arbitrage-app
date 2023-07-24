@@ -8,11 +8,17 @@
 import Foundation
 
 class PricesModel {
-    
-    func getPricesForTicker(ticker: String) {
-        getPricesForTickerAtExchange(exchange: ExchangeNames.binance, ticker: ticker, completion: parseResult)
-        getPricesForTickerAtExchange(exchange: ExchangeNames.bitfinex, ticker: ticker, completion: parseResult)
-    }
+    func getPricesForTicker(ticker: String, delegate: PricesViewViewModel) {
+        getPricesForTickerAtExchange(exchange: ExchangeNames.binance, ticker: ticker) { result in
+            self.parseResult(result: result, delegate:delegate)
+        }
+        getPricesForTickerAtExchange(exchange: ExchangeNames.bybit, ticker: ticker) { result in
+            self.parseResult(result: result, delegate:delegate)
+        }
+        getPricesForTickerAtExchange(exchange: ExchangeNames.bitfinex, ticker: ticker) { result in
+            self.parseResult(result: result, delegate:delegate)
+        }
+}
         
     func getPricesForTickerAtExchange(exchange: String, ticker: String, completion: @escaping (Result<BidAskData, Error>) -> Void) {
         let url = URL(string: ExchangeUrlMapper.getExchangeURL(exchange: exchange, ticker: ticker))!
@@ -44,9 +50,12 @@ class PricesModel {
         task.resume()
     }
     
-    let parseResult: (Result<BidAskData, Error>) -> Void = { result in
+    func parseResult(result: Result<BidAskData, Error>, delegate:PricesViewViewModel) {
         switch result {
         case .success(let bidAskData):
+            DispatchQueue.main.async {
+                delegate.exchangePrices.append(bidAskData)
+            }
             print(bidAskData)
         case .failure(let error):
             print("\(ErrorStrings.errorFetchingPrice)\(error)")

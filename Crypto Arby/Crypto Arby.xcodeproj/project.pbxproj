@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642D2A66A86C00FD06DA /* Symbols.swift */; };
 		A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642F2A66AFAC00FD06DA /* StringKeys.swift */; };
+		A12127372A6E78CC008918A2 /* PricesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12127362A6E78CC008918A2 /* PricesCellView.swift */; };
+		A121273C2A6E9CCC008918A2 /* BinancePriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121273B2A6E9CCC008918A2 /* BinancePriceResponse.swift */; };
+		A121273E2A6E9CEC008918A2 /* BitfinexPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121273D2A6E9CEC008918A2 /* BitfinexPriceResponse.swift */; };
+		A12127402A6E9D13008918A2 /* BybitPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121273F2A6E9D13008918A2 /* BybitPriceResponse.swift */; };
 		A134ABA42A67E15E00196092 /* PricesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA32A67E15E00196092 /* PricesView.swift */; };
 		A134ABA62A67ED4000196092 /* Cryptocurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */; };
 		A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA82A67FA6D00196092 /* PricesViewViewModel.swift */; };
@@ -26,6 +30,10 @@
 /* Begin PBXFileReference section */
 		A10D642D2A66A86C00FD06DA /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		A10D642F2A66AFAC00FD06DA /* StringKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKeys.swift; sourceTree = "<group>"; };
+		A12127362A6E78CC008918A2 /* PricesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesCellView.swift; sourceTree = "<group>"; };
+		A121273B2A6E9CCC008918A2 /* BinancePriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinancePriceResponse.swift; sourceTree = "<group>"; };
+		A121273D2A6E9CEC008918A2 /* BitfinexPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitfinexPriceResponse.swift; sourceTree = "<group>"; };
+		A121273F2A6E9D13008918A2 /* BybitPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BybitPriceResponse.swift; sourceTree = "<group>"; };
 		A134ABA32A67E15E00196092 /* PricesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesView.swift; sourceTree = "<group>"; };
 		A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocurrencies.swift; sourceTree = "<group>"; };
 		A134ABA82A67FA6D00196092 /* PricesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesViewViewModel.swift; sourceTree = "<group>"; };
@@ -64,6 +72,17 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		A12127382A6E9C8A008918A2 /* PriceResponses */ = {
+			isa = PBXGroup;
+			children = (
+				A1FF5D652A695D8A0002E981 /* PriceResponses.swift */,
+				A121273B2A6E9CCC008918A2 /* BinancePriceResponse.swift */,
+				A121273D2A6E9CEC008918A2 /* BitfinexPriceResponse.swift */,
+				A121273F2A6E9D13008918A2 /* BybitPriceResponse.swift */,
+			);
+			path = PriceResponses;
+			sourceTree = "<group>";
+		};
 		A134ABA72A67FA2000196092 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,9 +94,9 @@
 		A134ABAA2A68144B00196092 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A12127382A6E9C8A008918A2 /* PriceResponses */,
 				A1FF5D6D2A6976650002E981 /* Mappers */,
 				A134ABAB2A68147700196092 /* PricesModel.swift */,
-				A1FF5D652A695D8A0002E981 /* PriceResponses.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +144,7 @@
 			children = (
 				A1BD7B722A65505E002B3F48 /* MainView.swift */,
 				A134ABA32A67E15E00196092 /* PricesView.swift */,
+				A12127362A6E78CC008918A2 /* PricesCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,16 +229,20 @@
 			files = (
 				A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */,
 				A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */,
+				A12127372A6E78CC008918A2 /* PricesCellView.swift in Sources */,
 				A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */,
+				A121273E2A6E9CEC008918A2 /* BitfinexPriceResponse.swift in Sources */,
 				A134ABAC2A68147700196092 /* PricesModel.swift in Sources */,
 				A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */,
 				A134ABA42A67E15E00196092 /* PricesView.swift in Sources */,
+				A121273C2A6E9CCC008918A2 /* BinancePriceResponse.swift in Sources */,
 				A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */,
 				A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */,
 				A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */,
 				A1FF5D6C2A6976370002E981 /* ExchangeUrlMapper.swift in Sources */,
 				A1BD7B712A65505E002B3F48 /* Crypto_ArbyApp.swift in Sources */,
 				A134ABA62A67ED4000196092 /* Cryptocurrencies.swift in Sources */,
+				A12127402A6E9D13008918A2 /* BybitPriceResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
