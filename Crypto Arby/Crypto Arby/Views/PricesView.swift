@@ -29,6 +29,8 @@ struct PricesView: View {
                 Text(StringKeys.highest_bid)
                 Text(StringKeys.lowest_ask)
             }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 0)
             
             List(viewModel.exchangePrices) { item in
                 PricesCellView(exchangeName: item.exchange, bidPrice: item.bidPrice, askPrice: item.askPrice)

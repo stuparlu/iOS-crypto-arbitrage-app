@@ -15,6 +15,8 @@ struct StringKeys {
     static let exchange = "Exchange"
     static let highest_bid = "Highest Bid"
     static let lowest_ask = "Lowest Ask"
+    static let cross_arbitrage = "Cross Exchange Arbitrage"
+    static let circular_arbitrage = "Circular Arbitrage"
     
     static let coin_ticker = "coin_ticker"
     static let coin_name = "coin_name"

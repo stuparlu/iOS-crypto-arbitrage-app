@@ -16,8 +16,7 @@ struct MainView: View {
                         Image(systemName: Symbols.price_history_icon)
                         Text(StringKeys.prices)
                     }
-                
-                Text("Opportunities")
+                OpportunitiesView()
                     .tabItem {
                         Image(systemName:Symbols.opportunities_icon)
                         Text(StringKeys.opportunities)
