@@ -17,6 +17,9 @@
 		A134ABA62A67ED4000196092 /* Cryptocurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */; };
 		A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA82A67FA6D00196092 /* PricesViewViewModel.swift */; };
 		A134ABAC2A68147700196092 /* PricesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABAB2A68147700196092 /* PricesModel.swift */; };
+		A13DAE402A711B40002FD780 /* OpportunityTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DAE3F2A711B40002FD780 /* OpportunityTypePickerView.swift */; };
+		A13DAE422A711BE5002FD780 /* NewCrossArbitrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DAE412A711BE5002FD780 /* NewCrossArbitrageView.swift */; };
+		A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DAE432A711C16002FD780 /* NewCircularArbitrageView.swift */; };
 		A14654222A6FBDDE007003F2 /* OpportunitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */; };
 		A14654242A6FD273007003F2 /* OpportinitiesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14654232A6FD273007003F2 /* OpportinitiesViewViewModel.swift */; };
 		A1BD7B712A65505E002B3F48 /* Crypto_ArbyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7B702A65505E002B3F48 /* Crypto_ArbyApp.swift */; };
@@ -40,6 +43,9 @@
 		A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocurrencies.swift; sourceTree = "<group>"; };
 		A134ABA82A67FA6D00196092 /* PricesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesViewViewModel.swift; sourceTree = "<group>"; };
 		A134ABAB2A68147700196092 /* PricesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesModel.swift; sourceTree = "<group>"; };
+		A13DAE3F2A711B40002FD780 /* OpportunityTypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityTypePickerView.swift; sourceTree = "<group>"; };
+		A13DAE412A711BE5002FD780 /* NewCrossArbitrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCrossArbitrageView.swift; sourceTree = "<group>"; };
+		A13DAE432A711C16002FD780 /* NewCircularArbitrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCircularArbitrageView.swift; sourceTree = "<group>"; };
 		A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesView.swift; sourceTree = "<group>"; };
 		A14654232A6FD273007003F2 /* OpportinitiesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportinitiesViewViewModel.swift; sourceTree = "<group>"; };
 		A1BD7B6D2A65505E002B3F48 /* Crypto Arby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Arby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +112,26 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		A13DAE3D2A7119F7002FD780 /* Opportunities */ = {
+			isa = PBXGroup;
+			children = (
+				A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */,
+				A13DAE3F2A711B40002FD780 /* OpportunityTypePickerView.swift */,
+				A13DAE412A711BE5002FD780 /* NewCrossArbitrageView.swift */,
+				A13DAE432A711C16002FD780 /* NewCircularArbitrageView.swift */,
+			);
+			path = Opportunities;
+			sourceTree = "<group>";
+		};
+		A13DAE3E2A711A14002FD780 /* Prices */ = {
+			isa = PBXGroup;
+			children = (
+				A134ABA32A67E15E00196092 /* PricesView.swift */,
+				A12127362A6E78CC008918A2 /* PricesCellView.swift */,
+			);
+			path = Prices;
+			sourceTree = "<group>";
+		};
 		A1BD7B642A65505E002B3F48 = {
 			isa = PBXGroup;
 			children = (
@@ -147,10 +173,9 @@
 		A1BD7B7F2A655858002B3F48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A13DAE3E2A711A14002FD780 /* Prices */,
+				A13DAE3D2A7119F7002FD780 /* Opportunities */,
 				A1BD7B722A65505E002B3F48 /* MainView.swift */,
-				A134ABA32A67E15E00196092 /* PricesView.swift */,
-				A12127362A6E78CC008918A2 /* PricesCellView.swift */,
-				A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,8 +263,11 @@
 				A14654242A6FD273007003F2 /* OpportinitiesViewViewModel.swift in Sources */,
 				A12127372A6E78CC008918A2 /* PricesCellView.swift in Sources */,
 				A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */,
+				A13DAE402A711B40002FD780 /* OpportunityTypePickerView.swift in Sources */,
+				A13DAE422A711BE5002FD780 /* NewCrossArbitrageView.swift in Sources */,
 				A14654222A6FBDDE007003F2 /* OpportunitiesView.swift in Sources */,
 				A121273E2A6E9CEC008918A2 /* BitfinexPriceResponse.swift in Sources */,
+				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,
 				A134ABAC2A68147700196092 /* PricesModel.swift in Sources */,
 				A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */,
 				A134ABA42A67E15E00196092 /* PricesView.swift in Sources */,
