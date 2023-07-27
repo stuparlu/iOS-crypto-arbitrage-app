@@ -21,7 +21,7 @@ class PricesModel {
 }
         
     func getPricesForTickerAtExchange(exchange: String, ticker: String, completion: @escaping (Result<BidAskData, Error>) -> Void) {
-        let url = URL(string: ExchangeUrlMapper.getExchangeURL(exchange: exchange, ticker: ticker))!
+        let url = URL(string: ExchangeNames.urlMapper.getExchangeURL(exchange: exchange, ticker: ticker))!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))

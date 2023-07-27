@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct OpportunitiesView: View {
+    @State private var path: [Int] = []
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $path) {
             VStack {
                 HStack {
                     Spacer()
