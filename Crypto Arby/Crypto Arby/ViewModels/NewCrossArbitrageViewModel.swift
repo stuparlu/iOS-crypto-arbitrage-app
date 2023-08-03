@@ -8,6 +8,7 @@
 import Foundation
 
 class NewCrossArbitrageViewModel: ObservableObject {
+    let viewContext = PersistenceController.shared.container.viewContext
     let tickerList = cryptocurrencies
     
     @Published var searchText = StringKeys.empty_string
@@ -38,8 +39,16 @@ class NewCrossArbitrageViewModel: ObservableObject {
         if selectedPair == StringKeys.empty_string || selectedExchanges.count <= 1 {
             showAlert.toggle()
         } else {
+            saveNewOpportunity()
             shouldDismissView.toggle()
         }
+    }
+    
+    func saveNewOpportunity() {
+        let newOpportunity = CrossArbitrageOpportunity(context: viewContext)
+        newOpportunity.pairName = selectedPair
+        newOpportunity.selectedExchanges = selectedExchanges
+        newOpportunity.history = [false, false]
     }
 
 }
