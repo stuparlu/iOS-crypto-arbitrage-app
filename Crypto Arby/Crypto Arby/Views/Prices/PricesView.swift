@@ -12,10 +12,10 @@ struct PricesView: View {
 
     var filteredItems: [String] {
         if viewModel.searchText.isEmpty {
-            return viewModel.fetchMenuItems()
+            return Array(viewModel.fetchMenuItems().sorted())
         } else {
-            return viewModel.fetchMenuItems().filter { $0.localizedCaseInsensitiveContains(viewModel.searchText)
-            }
+            return Array(viewModel.fetchMenuItems().filter { $0.localizedCaseInsensitiveContains(viewModel.searchText)
+            }.sorted())
         }
     }
         
@@ -33,16 +33,13 @@ struct PricesView: View {
                 }
             } else {
                 NavigationView {
-                        List {
-                            ForEach(filteredItems, id: \.self) { item in
+                        List(filteredItems, id: \.self) { item in
                                 Button(action: {
                                     viewModel.closeSearchMenu(item: item)
                                 }) {
                                     Text(item)
                                 }
                             }
-                            .scrollContentBackground(.hidden)
-                        }
                         .scrollContentBackground(.hidden)
                         .searchable(text: $viewModel.searchText, prompt: StringKeys.search)
                         .navigationTitle(StringKeys.search_pairs)

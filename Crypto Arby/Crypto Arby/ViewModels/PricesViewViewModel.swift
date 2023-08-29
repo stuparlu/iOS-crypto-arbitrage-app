@@ -13,7 +13,7 @@ class PricesViewViewModel: ObservableObject {
     let pricesModel = PricesModel()
     
     @Published var selectedMenuOption: Int = 0
-    @Published var selectedMenuOptionText = cryptocurrencies[0]
+    @Published var selectedMenuOptionText = "BTCUSDT"
     @Published var selectedOption: String?
     @Published var exchangePrices: [BidAskData] = []
     @Published var isNavigationViewHidden = true
@@ -21,7 +21,7 @@ class PricesViewViewModel: ObservableObject {
     
     
     init() {
-        pricesModel.getPricesForTicker(ticker: cryptocurrencies[selectedMenuOption], delegate: self)
+        pricesModel.getPricesForTicker(ticker: selectedMenuOptionText, delegate: self)
     }
     
     func closeSearchMenu(item: String?) {
@@ -38,7 +38,7 @@ class PricesViewViewModel: ObservableObject {
         pricesModel.getPricesForTicker(ticker: item, delegate: self)
     }
     
-    func fetchMenuItems() -> [String] {
+    func fetchMenuItems() -> Set<String> {
         return cryptocurrencies
     }
     

@@ -13,9 +13,10 @@ struct NewCrossArbitrageView: View {
     
     var searchResults: [String] {
         if viewModel.searchText.isEmpty {
-            return viewModel.tickerList
+            return Array(viewModel.tickerList).sorted()
         } else {
-            return viewModel.tickerList.filter { $0.contains(viewModel.searchText) }
+            return Array(viewModel.tickerList.filter { $0.contains(viewModel.searchText)
+            }.sorted())
         }
     }
     
@@ -23,13 +24,11 @@ struct NewCrossArbitrageView: View {
         NavigationStack {
             VStack {
                 if !viewModel.pairSelected {
-                    List {
-                        ForEach(searchResults, id: \.self) { item in
-                            Button(action: {
-                                viewModel.selectPair(pairName: item)
-                            }) {
-                                Text(item)
-                            }
+                    List(searchResults, id: \.self) { item in
+                        Button(action: {
+                            viewModel.selectPair(pairName: item)
+                        }) {
+                            Text(item)
                         }
                     }
                     .searchable(text: $viewModel.searchText, prompt: StringKeys.search_pairs)
