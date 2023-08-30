@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class PricesViewViewModel: ObservableObject {
     let menuOptions = cryptocurrencies
@@ -18,10 +19,15 @@ class PricesViewViewModel: ObservableObject {
     @Published var exchangePrices: [BidAskData] = []
     @Published var isNavigationViewHidden = true
     @Published var searchText = StringKeys.empty_string
-    
+    private var timer: AnyCancellable?
     
     init() {
-        pricesModel.getPricesForTicker(ticker: selectedMenuOptionText, delegate: self)
+        startTimer()
+
+    }
+    
+    deinit {
+        stopTimer()
     }
     
     func closeSearchMenu(item: String?) {
@@ -33,9 +39,10 @@ class PricesViewViewModel: ObservableObject {
     }
     
     func menuItemChanged(item:String) {
+        stopTimer()
         exchangePrices = []
         selectedMenuOptionText = item
-        pricesModel.getPricesForTicker(ticker: item, delegate: self)
+        startTimer()
     }
     
     func fetchMenuItems() -> Set<String> {
@@ -44,6 +51,17 @@ class PricesViewViewModel: ObservableObject {
     
     func fetchExchangePrices() -> [BidAskData] {
         return exchangePrices
+    }
+    
+    func startTimer() {
+        timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect().sink { _ in
+            self.pricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
+            self.exchangePrices = []
+        }
+    }
+    
+    func stopTimer() {
+        timer?.cancel()
     }
     
 }

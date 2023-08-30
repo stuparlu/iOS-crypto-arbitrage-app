@@ -56,7 +56,6 @@ class PricesModel {
             DispatchQueue.main.async {
                 delegate.exchangePrices.append(bidAskData)
             }
-            print(bidAskData)
         case .failure(let error):
             print("\(ErrorStrings.errorFetchingPrice)\(error)")
         }
