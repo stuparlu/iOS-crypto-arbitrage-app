@@ -54,7 +54,7 @@ class PricesViewViewModel: ObservableObject {
     }
     
     func startTimer() {
-        timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect().sink { _ in
+        timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect().sink { _ in
             self.pricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
             self.exchangePrices = []
         }
