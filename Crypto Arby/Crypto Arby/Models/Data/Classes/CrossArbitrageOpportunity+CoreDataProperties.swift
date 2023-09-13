@@ -2,7 +2,7 @@
 //  CrossArbitrageOpportunity+CoreDataProperties.swift
 //  Crypto Arby
 //
-//  Created by Luka Stupar on 3.8.23..
+//  Created by Luka Stupar on 13.9.23..
 //
 //
 
@@ -16,9 +16,10 @@ extension CrossArbitrageOpportunity {
         return NSFetchRequest<CrossArbitrageOpportunity>(entityName: "CrossArbitrageOpportunity")
     }
 
+    @NSManaged public var history: [Bool]?
     @NSManaged public var pairName: String?
     @NSManaged public var selectedExchanges: [String]?
-    @NSManaged public var history: [Bool]?
+    @NSManaged public var isActive: Bool
 
 }
 

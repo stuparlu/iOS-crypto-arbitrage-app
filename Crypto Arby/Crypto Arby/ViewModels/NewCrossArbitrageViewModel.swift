@@ -46,9 +46,12 @@ class NewCrossArbitrageViewModel: ObservableObject {
     
     func saveNewOpportunity() {
         let newOpportunity = CrossArbitrageOpportunity(context: viewContext)
+        newOpportunity.isActive = true
         newOpportunity.pairName = selectedPair
         newOpportunity.selectedExchanges = selectedExchanges
         newOpportunity.history = [false, false]
+        do {
+            try viewContext.save()
+        } catch {}
     }
-
 }

@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct OpportunitiesView: View {
+    @StateObject var viewModel = OpportinitiesViewViewModel()
     @State private var path: [Int] = []
     var body: some View {
         NavigationStack(path: $path) {
             VStack {
                 HStack {
+                    List(viewModel.opportunities) { item in
+                        if let name = item.pairName, let exchanges = item.selectedExchanges {
+                            OpportunitiesCellView(pairName: name, isActive: item.isActive, exchanges: exchanges)
+                        }
+                    }
+                    .scrollContentBackground(.hidden)
+                    .listStyle(GroupedListStyle())
                     Spacer()
                 }
                 Spacer()

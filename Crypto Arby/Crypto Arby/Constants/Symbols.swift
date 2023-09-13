@@ -15,6 +15,9 @@ struct Symbols {
     static let symbol_chevron_down = "chevron.down"
     static let symbol_plus = "plus"
     static let x_mark = "xmark"
+    static let x_mark_bin = "xmark.bin"
+    static let pause = "pause"
+    static let play = "play.fill"
     static let symbol_circlepath = "dollarsign.arrow.circlepath"
     static let symbol_trianglepath = "point.3.connected.trianglepath.dotted"
 }

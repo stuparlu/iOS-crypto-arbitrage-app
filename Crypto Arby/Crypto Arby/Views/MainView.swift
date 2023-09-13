@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BackgroundTasks
 
 struct MainView: View {
     var body: some View {
@@ -35,6 +36,32 @@ struct MainView: View {
                     }
             }
         }
+        .onAppear() {
+//            This should be tested on a device when available
+//            self.registerBGTaskScheduler()
+//            self.scheduleAppRefresh()
+        }
+    }
+    
+    func registerBGTaskScheduler() {
+        BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.lukastupar.Crypto-Arby.Refresh", using: nil) { task in
+             self.handleAppRefresh(task: task as! BGAppRefreshTask)
+        }
+    }
+    
+    func scheduleAppRefresh() {
+        let request = BGAppRefreshTaskRequest(identifier: "com.lukastupar.Crypto-Arby.Refresh")
+        request.earliestBeginDate = Calendar.current.date(byAdding: .second, value: 30, to: Date())
+        do {
+           try BGTaskScheduler.shared.submit(request)
+        } catch {
+           print("Could not schedule app refresh: \(error)")
+        }
+    }
+    
+    func handleAppRefresh(task: BGAppRefreshTask) {
+       scheduleAppRefresh()
+        
     }
 }
 
