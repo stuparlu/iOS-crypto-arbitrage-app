@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 import Combine
 
-class PricesViewViewModel: ObservableObject {
+class PricesViewViewModel: ObservableObject, Tradable {
+    
     let menuOptions = cryptocurrencies
-    let pricesModel = PricesModel()
     
     @Published var selectedMenuOption: Int = 0
     @Published var selectedMenuOptionText = "BTCUSDT"
@@ -55,7 +55,7 @@ class PricesViewViewModel: ObservableObject {
     
     func startTimer() {
         timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect().sink { _ in
-            self.pricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
+            PricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
             self.exchangePrices = []
         }
     }
@@ -64,4 +64,7 @@ class PricesViewViewModel: ObservableObject {
         timer?.cancel()
     }
     
+    func addPrices(price: BidAskData) {
+        self.exchangePrices.append(price)
+    }
 }

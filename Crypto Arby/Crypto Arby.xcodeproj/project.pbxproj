@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A107A1702AB9D26600640F5B /* Tradable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107A16F2AB9D26600640F5B /* Tradable.swift */; };
 		A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642D2A66A86C00FD06DA /* Symbols.swift */; };
 		A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642F2A66AFAC00FD06DA /* StringKeys.swift */; };
 		A12127372A6E78CC008918A2 /* PricesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12127362A6E78CC008918A2 /* PricesCellView.swift */; };
@@ -39,6 +40,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A107A16D2AB9CD2E00640F5B /* Crypto Arby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Crypto Arby.entitlements"; sourceTree = "<group>"; };
+		A107A16F2AB9D26600640F5B /* Tradable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tradable.swift; sourceTree = "<group>"; };
 		A10D642D2A66A86C00FD06DA /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		A10D642F2A66AFAC00FD06DA /* StringKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKeys.swift; sourceTree = "<group>"; };
 		A12127362A6E78CC008918A2 /* PricesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesCellView.swift; sourceTree = "<group>"; };
@@ -83,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A107A16E2AB9D25300640F5B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A107A16F2AB9D26600640F5B /* Tradable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		A10D64252A66A32900FD06DA /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +130,7 @@
 		A134ABAA2A68144B00196092 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A107A16E2AB9D25300640F5B /* Protocols */,
 				A189380A2AB1EFF400DD321F /* Operations */,
 				A1E8EDAD2A7BFF4400996910 /* Data */,
 				A12127382A6E9C8A008918A2 /* PriceResponses */,
@@ -176,6 +188,7 @@
 		A1BD7B6F2A65505E002B3F48 /* Crypto Arby */ = {
 			isa = PBXGroup;
 			children = (
+				A107A16D2AB9CD2E00640F5B /* Crypto Arby.entitlements */,
 				A18938092AB1D9A000DD321F /* Crypto-Arby-Info.plist */,
 				A10D64252A66A32900FD06DA /* Constants */,
 				A134ABAA2A68144B00196092 /* Models */,
@@ -330,6 +343,7 @@
 				A134ABA42A67E15E00196092 /* PricesView.swift in Sources */,
 				A121273C2A6E9CCC008918A2 /* BinancePriceResponse.swift in Sources */,
 				A1AC95722A726C070099FFA6 /* NewCrossArbitrageViewModel.swift in Sources */,
+				A107A1702AB9D26600640F5B /* Tradable.swift in Sources */,
 				A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */,
 				A1E8EDDF2A7C05F300996910 /* Persistence.swift in Sources */,
 				A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */,
@@ -462,6 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Crypto Arby/Crypto Arby.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Crypto Arby/Preview Content\"";
@@ -481,6 +496,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lukastupar.Crypto-Arby";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -492,6 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Crypto Arby/Crypto Arby.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Crypto Arby/Preview Content\"";
@@ -511,6 +530,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lukastupar.Crypto-Arby";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

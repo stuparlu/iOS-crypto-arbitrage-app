@@ -40,6 +40,9 @@ struct MainView: View {
 //            This should be tested on a device when available
 //            self.registerBGTaskScheduler()
 //            self.scheduleAppRefresh()
+            let operation = ArbitrqageOperation()
+            let operationQueue = OperationQueue()
+            operationQueue.addOperation(operation)
         }
     }
     

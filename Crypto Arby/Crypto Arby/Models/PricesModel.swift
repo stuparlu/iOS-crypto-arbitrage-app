@@ -7,28 +7,22 @@
 
 import Foundation
 
-class PricesModel {
-    func getPricesForTicker(ticker: String, delegate: PricesViewViewModel) {
-        getPricesForTickerAtExchange(exchange: ExchangeNames.binance, ticker: ticker) { result in
-            self.parseResult(result: result, delegate:delegate)
-        }
-        getPricesForTickerAtExchange(exchange: ExchangeNames.bybit, ticker: ticker) { result in
-            self.parseResult(result: result, delegate:delegate)
-        }
-        getPricesForTickerAtExchange(exchange: ExchangeNames.bitfinex, ticker: ticker) { result in
-            self.parseResult(result: result, delegate:delegate)
-        }
+struct PricesModel {
+    static func getPricesForTicker(ticker: String, delegate: Tradable) {
+        getPricesForTickerAtExchange(exchange: ExchangeNames.binance, ticker: ticker, delegate: delegate)
+        getPricesForTickerAtExchange(exchange: ExchangeNames.bybit, ticker: ticker, delegate: delegate)
+        getPricesForTickerAtExchange(exchange: ExchangeNames.bitfinex, ticker: ticker, delegate: delegate)
 }
         
-    func getPricesForTickerAtExchange(exchange: String, ticker: String, completion: @escaping (Result<BidAskData, Error>) -> Void) {
+    static func getPricesForTickerAtExchange(exchange: String, ticker: String, delegate: Tradable) {
         let url = URL(string: ExchangeNames.urlMapper.getExchangeURL(exchange: exchange, ticker: ticker))!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                self.parseResult(result: .failure(error), delegate: delegate)
                 return
             }
             guard let data = data else {
-                completion(.failure(NSError(domain: StringKeys.empty_string, code: 0, userInfo: nil)))
+                self.parseResult(result: .failure(NSError(domain: StringKeys.empty_string, code: 0, userInfo: nil)), delegate: delegate)
                 return
             }
             
@@ -36,25 +30,25 @@ class PricesModel {
                 let decoder = JSONDecoder()
                 if let responseType = priceResponseMapper[exchange] {
                     if let priceResponse = try decoder.decode(responseType, from: data) as? PriceResponse {
-                        completion(.success(priceResponse.fetchBidAskData(exchange: exchange, ticker: ticker)))
+                        self.parseResult(result: .success(priceResponse.fetchBidAskData(exchange: exchange, ticker: ticker)), delegate: delegate)
                     } else {
-                        completion(.failure(NSError(domain: StringKeys.empty_string, code: 0, userInfo: nil)))
+                        self.parseResult(result: .failure(NSError(domain: StringKeys.empty_string, code: 0, userInfo: nil)), delegate: delegate)
                     }
                 } else {
-                    completion(.failure(NSError(domain: StringKeys.empty_string, code: 0, userInfo: nil)))
+                    self.parseResult(result: .failure(NSError(domain: StringKeys.empty_string, code: 0, userInfo: nil)), delegate: delegate)
                 }
             } catch {
-                completion(.failure(error))
+                self.parseResult(result: .failure(error), delegate: delegate)
             }
         }
         task.resume()
     }
     
-    func parseResult(result: Result<BidAskData, Error>, delegate:PricesViewViewModel) {
+    static func parseResult(result: Result<BidAskData, Error>, delegate:Tradable) {
         switch result {
         case .success(let bidAskData):
             DispatchQueue.main.async {
-                delegate.exchangePrices.append(bidAskData)
+                delegate.addPrices(price: bidAskData)
             }
         case .failure(let error):
             print("\(ErrorStrings.errorFetchingPrice)\(error)")

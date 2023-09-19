@@ -20,9 +20,15 @@ extension CrossArbitrageOpportunity {
     @NSManaged public var pairName: String?
     @NSManaged public var selectedExchanges: [String]?
     @NSManaged public var isActive: Bool
-
+    
 }
 
 extension CrossArbitrageOpportunity : Identifiable {
 
+}
+
+extension CrossArbitrageOpportunity : Tradable {
+    func addPrices(price: BidAskData) {
+        exchangePrices.append(price)
+    }
 }
