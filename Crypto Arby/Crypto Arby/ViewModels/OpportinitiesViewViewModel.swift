@@ -12,7 +12,7 @@ import CoreData
 class OpportinitiesViewViewModel: ObservableObject {
     let viewContext = PersistenceController.shared.container.viewContext
     @Published var opportunities : [CrossArbitrageOpportunity] = []
-
+    
     init() {
         opportunities = getAllOpportunities()
     }

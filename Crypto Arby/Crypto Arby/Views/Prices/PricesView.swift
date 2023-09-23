@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PricesView: View {
     @StateObject var viewModel = PricesViewViewModel()
-
+    
     var filteredItems: [String] {
         if viewModel.searchText.isEmpty {
             return Array(viewModel.fetchMenuItems().sorted())
@@ -18,7 +18,7 @@ struct PricesView: View {
             }.sorted())
         }
     }
-        
+    
     var body: some View {
         VStack {
             if viewModel.isNavigationViewHidden {
@@ -33,26 +33,27 @@ struct PricesView: View {
                 }
             } else {
                 NavigationView {
-                        List(filteredItems, id: \.self) { item in
-                                Button(action: {
-                                    viewModel.closeSearchMenu(item: item)
-                                }) {
-                                    Text(item)
-                                }
-                            }
-                        .scrollContentBackground(.hidden)
-                        .searchable(text: $viewModel.searchText, prompt: StringKeys.search)
-                        .navigationTitle(StringKeys.search_pairs)
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar() {
-                            Button(action: {
-                                viewModel.closeSearchMenu(item: nil)
-                            }) {
-                                Image(systemName: Symbols.x_mark)
-                                    .resizable()
-                                    .frame(width: 20, height:20)
-                            }
+                    List(filteredItems, id: \.self) { item in
+                        Button(action: {
+                            viewModel.closeSearchMenu(item: item)
+                        }) {
+                            Text(item)
                         }
+                    }
+                    .listStyle(PlainListStyle())
+                    .scrollContentBackground(.hidden)
+                    .searchable(text: $viewModel.searchText, prompt: StringKeys.search)
+                    .navigationTitle(StringKeys.search_pairs)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar() {
+                        Button(action: {
+                            viewModel.closeSearchMenu(item: nil)
+                        }) {
+                            Image(systemName: Symbols.x_mark)
+                                .resizable()
+                                .frame(width: 20, height:20)
+                        }
+                    }
                     Spacer()
                 }
                 .scrollContentBackground(.hidden)

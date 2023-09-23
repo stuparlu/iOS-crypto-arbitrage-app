@@ -20,7 +20,7 @@ struct OpportunitiesView: View {
                         }
                     }
                     .scrollContentBackground(.hidden)
-                    .listStyle(GroupedListStyle())
+                    .listStyle(PlainListStyle())
                     Spacer()
                 }
                 Spacer()
@@ -35,7 +35,7 @@ struct OpportunitiesView: View {
                 }
             }
         }
-        .padding()
+        .padding(.vertical)
         .edgesIgnoringSafeArea(.all)
     }
 }

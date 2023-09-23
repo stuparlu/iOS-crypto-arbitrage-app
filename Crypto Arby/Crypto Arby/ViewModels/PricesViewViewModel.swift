@@ -23,7 +23,7 @@ class PricesViewViewModel: ObservableObject, Tradable {
     
     init() {
         startTimer()
-
+        
     }
     
     deinit {

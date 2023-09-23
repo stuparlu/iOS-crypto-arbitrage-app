@@ -7,16 +7,22 @@
 
 import SwiftUI
 
-struct OpportunityTypePickerView: View {
+struct OpportunityTypePickerView: View {    
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @StateObject var navModel = OpportunitiesNavigationModel()
+    
     var body: some View {
         Spacer()
-        NavigationLink(destination: NewCrossArbitrageView()) {
+        NavigationLink(destination: NewCrossArbitrageView(navModel: navModel)) {
             VStack {
                 Image(systemName: Symbols.symbol_circlepath)
                     .resizable()
                     .frame(width: 60, height: 60)
                 Text(StringKeys.cross_arbitrage)
             }
+        }
+        .onChange(of: navModel.shouldDismissToRoot) { value in
+            presentationMode.wrappedValue.dismiss()
         }
         Spacer()
         NavigationLink(destination: NewCircularArbitrageView()) {

@@ -31,6 +31,7 @@
 		A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7B722A65505E002B3F48 /* MainView.swift */; };
 		A1BD7B752A655061002B3F48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7B742A655061002B3F48 /* Assets.xcassets */; };
 		A1BD7B782A655061002B3F48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7B772A655061002B3F48 /* Preview Assets.xcassets */; };
+		A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */; };
 		A1E8EDB02A7BFF6700996910 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDAE2A7BFF6700996910 /* DataModels.xcdatamodeld */; };
 		A1E8EDBB2A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDB92A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift */; };
 		A1E8EDDF2A7C05F300996910 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDDE2A7C05F300996910 /* Persistence.swift */; };
@@ -67,6 +68,7 @@
 		A1BD7B722A65505E002B3F48 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A1BD7B742A655061002B3F48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1BD7B772A655061002B3F48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesNavigationModel.swift; sourceTree = "<group>"; };
 		A1E8EDAF2A7BFF6700996910 /* DataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModels.xcdatamodel; sourceTree = "<group>"; };
 		A1E8EDB92A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossArbitrageOpportunity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1E8EDDE2A7C05F300996910 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		A134ABAA2A68144B00196092 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A1D532122ABF17F9005D9AE4 /* Navigation */,
 				A107A16E2AB9D25300640F5B /* Protocols */,
 				A189380A2AB1EFF400DD321F /* Operations */,
 				A1E8EDAD2A7BFF4400996910 /* Data */,
@@ -217,6 +220,14 @@
 				A1BD7B722A65505E002B3F48 /* MainView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A1D532122ABF17F9005D9AE4 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		A1E8EDAD2A7BFF4400996910 /* Data */ = {
@@ -339,6 +350,7 @@
 				A18938082AB1BBA300DD321F /* OpportunitiesCellView.swift in Sources */,
 				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,
 				A134ABAC2A68147700196092 /* PricesModel.swift in Sources */,
+				A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */,
 				A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */,
 				A134ABA42A67E15E00196092 /* PricesView.swift in Sources */,
 				A121273C2A6E9CCC008918A2 /* BinancePriceResponse.swift in Sources */,

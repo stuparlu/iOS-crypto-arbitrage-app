@@ -37,9 +37,9 @@ struct MainView: View {
             }
         }
         .onAppear() {
-//            This should be tested on a device when available
-//            self.registerBGTaskScheduler()
-//            self.scheduleAppRefresh()
+            //            This should be tested on a device when available
+            //            self.registerBGTaskScheduler()
+            //            self.scheduleAppRefresh()
             let operation = ArbitrqageOperation()
             let operationQueue = OperationQueue()
             operationQueue.addOperation(operation)
@@ -48,7 +48,7 @@ struct MainView: View {
     
     func registerBGTaskScheduler() {
         BGTaskScheduler.shared.register(forTaskWithIdentifier: "com.lukastupar.Crypto-Arby.Refresh", using: nil) { task in
-             self.handleAppRefresh(task: task as! BGAppRefreshTask)
+            self.handleAppRefresh(task: task as! BGAppRefreshTask)
         }
     }
     
@@ -56,14 +56,14 @@ struct MainView: View {
         let request = BGAppRefreshTaskRequest(identifier: "com.lukastupar.Crypto-Arby.Refresh")
         request.earliestBeginDate = Calendar.current.date(byAdding: .second, value: 30, to: Date())
         do {
-           try BGTaskScheduler.shared.submit(request)
+            try BGTaskScheduler.shared.submit(request)
         } catch {
-           print("Could not schedule app refresh: \(error)")
+            print("Could not schedule app refresh: \(error)")
         }
     }
     
     func handleAppRefresh(task: BGAppRefreshTask) {
-       scheduleAppRefresh()
+        scheduleAppRefresh()
         
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct NewCrossArbitrageView: View {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel = NewCrossArbitrageViewModel()
+    @StateObject var navModel: OpportunitiesNavigationModel
     
     var searchResults: [String] {
         if viewModel.searchText.isEmpty {
@@ -21,7 +22,7 @@ struct NewCrossArbitrageView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 if !viewModel.pairSelected {
                     List(searchResults, id: \.self) { item in
@@ -31,9 +32,13 @@ struct NewCrossArbitrageView: View {
                             Text(item)
                         }
                     }
+                    .listStyle(PlainListStyle())
+                    .scrollContentBackground(.hidden)
+                    .background(Color.white)
                     .searchable(text: $viewModel.searchText, prompt: StringKeys.search_pairs)
                     .textInputAutocapitalization(.characters)
                 } else {
+                    Spacer()
                     Text("\(StringKeys.pair_selected)\(viewModel.selectedPair)")
                     List {
                         Text(StringKeys.select_exchanges)
@@ -47,9 +52,13 @@ struct NewCrossArbitrageView: View {
                             .background(viewModel.isExchangeEnabled(exchangeName:item) ? Color.accentColor : .white)
                         }
                     }
+                    .padding(.horizontal, 0)
+                    .scrollContentBackground(.hidden)
+                    .background(Color.white)
                     Spacer()
                     Button(action: {
                         viewModel.saveButtonPressed()
+                        navModel.shouldDismissToRoot.toggle()
                     }) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -76,7 +85,7 @@ struct NewCrossArbitrageView: View {
                 }
             }
         }
-        .onChange(of: viewModel.shouldDismissView) { value in
+        .onChange(of: navModel.shouldDismissToRoot) { value in
             presentationMode.wrappedValue.dismiss()
         }
         .alert(isPresented: $viewModel.showAlert) {
@@ -91,6 +100,6 @@ struct NewCrossArbitrageView: View {
 
 struct NewCrossArbitrageView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCrossArbitrageView()
+        NewCrossArbitrageView(navModel: OpportunitiesNavigationModel())
     }
 }

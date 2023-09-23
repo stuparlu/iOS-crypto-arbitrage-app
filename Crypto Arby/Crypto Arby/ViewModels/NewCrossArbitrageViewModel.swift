@@ -17,7 +17,7 @@ class NewCrossArbitrageViewModel: ObservableObject {
     @Published var selectedExchanges: [String] = []
     @Published var showAlert = false
     @Published var shouldDismissView: Bool = false
-
+    
     func selectPair(pairName: String) {
         selectedPair = pairName
         pairSelected.toggle()
@@ -40,7 +40,6 @@ class NewCrossArbitrageViewModel: ObservableObject {
             showAlert.toggle()
         } else {
             saveNewOpportunity()
-            shouldDismissView.toggle()
         }
     }
     
