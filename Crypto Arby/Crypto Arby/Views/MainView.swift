@@ -23,7 +23,7 @@ struct MainView: View {
                         Text(StringKeys.opportunities)
                     }
                 
-                Text("History")
+                HistoryView()
                     .tabItem {
                         Image(systemName: Symbols.opportunity_history_icon)
                         Text(StringKeys.history)
