@@ -39,6 +39,7 @@ struct PricesView: View {
                         }) {
                             Text(item)
                         }
+                        .listRowSeparator(.hidden)
                     }
                     .listStyle(PlainListStyle())
                     .scrollContentBackground(.hidden)
@@ -67,14 +68,15 @@ struct PricesView: View {
                     Text(StringKeys.lowest_ask)
                 }
                 .padding(.horizontal, 20)
-                .padding(.top, 20)
+                .padding(.top, 10)
                 
                 List(viewModel.exchangePrices) { item in
                     PricesCellView(exchangeName: item.exchange, bidPrice: item.bidPrice, askPrice: item.askPrice)
-                    
+                        .listRowSeparator(.hidden)
                 }
+                .environment(\.defaultMinListRowHeight, 10)
                 .scrollContentBackground(.hidden)
-                .listStyle(GroupedListStyle())
+                .listStyle(PlainListStyle())
                 Spacer()
             }
         }

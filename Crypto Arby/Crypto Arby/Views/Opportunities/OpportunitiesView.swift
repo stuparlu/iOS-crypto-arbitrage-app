@@ -17,6 +17,7 @@ struct OpportunitiesView: View {
                     List(viewModel.opportunities) { item in
                         if let name = item.pairName, let exchanges = item.selectedExchanges {
                             OpportunitiesCellView(pairName: name, isActive: item.isActive, exchanges: exchanges)
+                                .listRowSeparator(.hidden)
                         }
                     }
                     .scrollContentBackground(.hidden)

@@ -23,6 +23,9 @@ struct OpportunitiesCellView: View {
                 ForEach(exchanges, id: \.self) {
                     Text($0.capitalized)
                         .frame(maxWidth: .infinity, alignment:.leading)
+                        .font(.subheadline)
+                        .foregroundStyle(Color.gray)
+
                 }
             }
             Spacer(minLength: 30)

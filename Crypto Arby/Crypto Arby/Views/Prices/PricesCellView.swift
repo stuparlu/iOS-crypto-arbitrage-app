@@ -24,6 +24,7 @@ struct PricesCellView: View {
                 .font(.subheadline)
                 .foregroundColor(.gray)
         }
+        .frame(height: 10)
     }
 }
 

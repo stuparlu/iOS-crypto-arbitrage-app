@@ -33,18 +33,25 @@ public class CrossArbitrageOpportunity: NSManagedObject {
             }
             
             if let highestBid = highestBid, let lowestAsk = lowestAsk {
-                if highestBid.exchange != lowestAsk.exchange && (Double(highestBid.bidPrice) ?? kCFNumberPositiveInfinity as! Double) < Double(lowestAsk.askPrice) ?? 0 {
-                    let history = CrossArbitrageHistory(context: viewContext)
-                    history.askPrice = Double(lowestAsk.askPrice) ?? 0
-                    history.bidPrice = Double(highestBid.bidPrice) ?? 0
-                    history.maxExchange = highestBid.exchange
-                    history.minExchange = lowestAsk.exchange
-                    history.pairName = lowestAsk.symbol
-                    history.timestamp = Date.now
-                    do {
-                        try viewContext.save()
-                    } catch {}
+                history?[1] = ((history?[0]) != nil)
+                if highestBid.exchange != lowestAsk.exchange && (Double(highestBid.bidPrice) ?? kCFNumberPositiveInfinity as! Double) > Double(lowestAsk.askPrice) ?? 0 {
+                    history?[0] = true
+                    
+                    if history?[0] == true && history?[1] == false {
+                        let history = CrossArbitrageHistory(context: viewContext)
+                        history.askPrice = Double(lowestAsk.askPrice) ?? 0
+                        history.bidPrice = Double(highestBid.bidPrice) ?? 0
+                        history.maxExchange = highestBid.exchange
+                        history.minExchange = lowestAsk.exchange
+                        history.pairName = lowestAsk.symbol
+                        history.timestamp = Date.now
+                    }
+                } else {
+                    history?[0] = false
                 }
+                do {
+                    try viewContext.save()
+                } catch {}
             }
         }
     }
