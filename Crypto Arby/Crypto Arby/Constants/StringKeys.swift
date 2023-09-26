@@ -30,6 +30,8 @@ struct StringKeys {
     static let empty_string = ""
     static let ok = "OK"
     
+    static let arbitrageFound = "Arbitrage opportunity found"
+    
     struct errors {
         static let generic_error = "Error"
     }

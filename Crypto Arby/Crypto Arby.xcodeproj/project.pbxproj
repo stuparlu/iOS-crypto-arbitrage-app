@@ -14,6 +14,7 @@
 		A121273C2A6E9CCC008918A2 /* BinancePriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121273B2A6E9CCC008918A2 /* BinancePriceResponse.swift */; };
 		A121273E2A6E9CEC008918A2 /* BitfinexPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121273D2A6E9CEC008918A2 /* BitfinexPriceResponse.swift */; };
 		A12127402A6E9D13008918A2 /* BybitPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121273F2A6E9D13008918A2 /* BybitPriceResponse.swift */; };
+		A128CC492AC2F46F008D9470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128CC482AC2F46F008D9470 /* AppDelegate.swift */; };
 		A134ABA42A67E15E00196092 /* PricesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA32A67E15E00196092 /* PricesView.swift */; };
 		A134ABA62A67ED4000196092 /* Cryptocurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */; };
 		A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA82A67FA6D00196092 /* PricesViewViewModel.swift */; };
@@ -54,6 +55,7 @@
 		A121273B2A6E9CCC008918A2 /* BinancePriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinancePriceResponse.swift; sourceTree = "<group>"; };
 		A121273D2A6E9CEC008918A2 /* BitfinexPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitfinexPriceResponse.swift; sourceTree = "<group>"; };
 		A121273F2A6E9D13008918A2 /* BybitPriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BybitPriceResponse.swift; sourceTree = "<group>"; };
+		A128CC482AC2F46F008D9470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A134ABA32A67E15E00196092 /* PricesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesView.swift; sourceTree = "<group>"; };
 		A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocurrencies.swift; sourceTree = "<group>"; };
 		A134ABA82A67FA6D00196092 /* PricesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesViewViewModel.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				A1BD7B7F2A655858002B3F48 /* Views */,
 				A134ABA72A67FA2000196092 /* ViewModels */,
 				A1BD7B742A655061002B3F48 /* Assets.xcassets */,
+				A128CC482AC2F46F008D9470 /* AppDelegate.swift */,
 				A1BD7B702A65505E002B3F48 /* Crypto_ArbyApp.swift */,
 				A1BD7B762A655061002B3F48 /* Preview Content */,
 			);
@@ -367,6 +370,7 @@
 				A18938082AB1BBA300DD321F /* OpportunitiesCellView.swift in Sources */,
 				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,
 				A134ABAC2A68147700196092 /* PricesModel.swift in Sources */,
+				A128CC492AC2F46F008D9470 /* AppDelegate.swift in Sources */,
 				A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */,
 				A16667412AC1BD9C0024E760 /* CrossArbitrageHistory+CoreDataProperties.swift in Sources */,
 				A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */,
