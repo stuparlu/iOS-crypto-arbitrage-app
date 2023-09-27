@@ -50,6 +50,7 @@
 		A1FFF2AB2AC444F3007CAF91 /* CrossArbitrageSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FFF2AA2AC444F3007CAF91 /* CrossArbitrageSearchList.swift */; };
 		A1FFF2AD2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FFF2AC2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift */; };
 		A1FFF2AF2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FFF2AE2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift */; };
+		A1FFF2B12AC44926007CAF91 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FFF2B02AC44926007CAF91 /* DatabaseManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		A1FFF2AA2AC444F3007CAF91 /* CrossArbitrageSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageSearchList.swift; sourceTree = "<group>"; };
 		A1FFF2AC2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageExchangeSelectionView.swift; sourceTree = "<group>"; };
 		A1FFF2AE2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageSaveButtonView.swift; sourceTree = "<group>"; };
+		A1FFF2B02AC44926007CAF91 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +269,7 @@
 				A1E8EDB82A7C01BA00996910 /* Classes */,
 				A1E8EDB62A7C017900996910 /* Entities */,
 				A1E8EDDE2A7C05F300996910 /* Persistence.swift */,
+				A1FFF2B02AC44926007CAF91 /* DatabaseManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */,
 				A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */,
 				A18938082AB1BBA300DD321F /* OpportunitiesCellView.swift in Sources */,
+				A1FFF2B12AC44926007CAF91 /* DatabaseManager.swift in Sources */,
 				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,
 				A134ABAC2A68147700196092 /* PricesModel.swift in Sources */,
 				A1CC44512AC441C80067046D /* CurrencyTogglerView.swift in Sources */,

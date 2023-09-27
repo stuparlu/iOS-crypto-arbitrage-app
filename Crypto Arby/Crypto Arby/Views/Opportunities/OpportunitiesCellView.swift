@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OpportunitiesCellView: View {
+    let dataBaseItem: CrossArbitrageOpportunity
     let pairName: String
     @State var isActive: Bool
     let exchanges: [String]
@@ -30,7 +31,9 @@ struct OpportunitiesCellView: View {
             }
             Spacer(minLength: 30)
             VStack {
-                Button(action: {}) {
+                Button(action: {
+                    DatabaseManager.shared.deleteCrossOpportunity(item: dataBaseItem)
+                }) {
                     Image(systemName: Symbols.x_mark_bin)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -49,11 +52,5 @@ struct OpportunitiesCellView: View {
             }
             Spacer()
         }
-    }
-}
-
-struct OpportunitiesCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        OpportunitiesCellView(pairName: "BTCUSDT", isActive: true, exchanges: ["Binance", "Bitfinex"])
     }
 }

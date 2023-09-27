@@ -29,19 +29,6 @@ public class CrossArbitrageOpportunity: NSManagedObject {
         UNUserNotificationCenter.current().add(request)
     }
     
-    func makeHistoryData(lowestAsk: BidAskData, highestBid: BidAskData) {
-        let historyData = CrossArbitrageHistory(context: viewContext)
-        historyData.askPrice = Double(lowestAsk.askPrice) ?? 0
-        historyData.bidPrice = Double(highestBid.bidPrice) ?? 0
-        historyData.maxExchange = highestBid.exchange
-        historyData.minExchange = lowestAsk.exchange
-        historyData.pairName = lowestAsk.symbol
-        historyData.timestamp = Date.now
-        do {
-            try viewContext.save()
-        } catch {}
-    }
-    
     func comparePrices() {
         if exchangePrices.count > 1 {
             var lowestAsk = exchangePrices.first
@@ -62,7 +49,7 @@ public class CrossArbitrageOpportunity: NSManagedObject {
                     safeHistory[0] = true
                     if safeHistory[0] == true && safeHistory[1] == false {
                         sendCrossOpportunityNotificaiton(pair: lowestAsk.symbol, buyExchange: lowestAsk.exchange.capitalized, sellExchange: highestBid.exchange.capitalized)
-                        makeHistoryData(lowestAsk: lowestAsk, highestBid: highestBid)
+                        DatabaseManager.shared.saveHistoryData(lowestAsk: lowestAsk, highestBid: highestBid)
                     }
                 } else {
                     safeHistory[0] = false

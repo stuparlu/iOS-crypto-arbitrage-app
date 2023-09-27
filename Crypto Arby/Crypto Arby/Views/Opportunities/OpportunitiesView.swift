@@ -16,7 +16,7 @@ struct OpportunitiesView: View {
                 HStack {
                     List(viewModel.opportunities) { item in
                         if let name = item.pairName, let exchanges = item.selectedExchanges {
-                            OpportunitiesCellView(pairName: name, isActive: item.isActive, exchanges: exchanges)
+                            OpportunitiesCellView(dataBaseItem: item, pairName: name, isActive: item.isActive, exchanges: exchanges)
                                 .listRowSeparator(.hidden)
                         }
                     }

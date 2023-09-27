@@ -7,30 +7,23 @@
 
 import Foundation
 import CoreData
+import Combine
 
 class HistoryViewModel: ObservableObject {
-    let viewContext = PersistenceController.shared.container.viewContext
     @Published var history : [CrossArbitrageHistory] = []
-
+    private var cancellable: AnyCancellable?
+    
     init() {
-        history = getAllHistory()
+        self.history = DatabaseManager.shared.getAllHistory()
+        self.cancellable = DatabaseManager.shared.$changes
+            .sink { [weak self] _ in
+                self?.history = DatabaseManager.shared.getAllHistory()
+            }
     }
-    
-    func getAllHistory() -> [CrossArbitrageHistory] {
-        do {
-            let historyRequest : NSFetchRequest<CrossArbitrageHistory> = NSFetchRequest(entityName: "CrossArbitrageHistory")
-            var historyElements : [CrossArbitrageHistory] = []
-            historyElements = try viewContext.fetch(historyRequest)
-            return historyElements
-        } catch {
-            fatalError("Failed to fetch opportunities: \(error)")
-        }
-    }
-    
+
     func getTimestampString(timestamp: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         return formatter.string(from: timestamp)
     }
-    
 }
