@@ -9,9 +9,9 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <entity name="CrossArbitrageOpportunity" representedClassName="CrossArbitrageOpportunity" syncable="YES">
-        <attribute name="history" optional="YES" attributeType="Transformable" customClassName="[Bool]"/>
+        <attribute name="history" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Bool]"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="pairName" optional="YES" attributeType="String"/>
-        <attribute name="selectedExchanges" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="selectedExchanges" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
     </entity>
 </model>
