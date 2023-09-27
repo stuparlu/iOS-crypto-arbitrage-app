@@ -37,6 +37,9 @@
 		A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7B722A65505E002B3F48 /* MainView.swift */; };
 		A1BD7B752A655061002B3F48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7B742A655061002B3F48 /* Assets.xcassets */; };
 		A1BD7B782A655061002B3F48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1BD7B772A655061002B3F48 /* Preview Assets.xcassets */; };
+		A1CC44512AC441C80067046D /* CurrencyTogglerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC44502AC441C80067046D /* CurrencyTogglerView.swift */; };
+		A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC44522AC4421F0067046D /* CurrencySearchView.swift */; };
+		A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC44542AC442470067046D /* ExchangeListView.swift */; };
 		A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */; };
 		A1E8EDB02A7BFF6700996910 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDAE2A7BFF6700996910 /* DataModels.xcdatamodeld */; };
 		A1E8EDBB2A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDB92A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift */; };
@@ -44,6 +47,9 @@
 		A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D652A695D8A0002E981 /* PriceResponses.swift */; };
 		A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D672A695E350002E981 /* Exchanges.swift */; };
 		A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D692A69726D0002E981 /* ErrorStrings.swift */; };
+		A1FFF2AB2AC444F3007CAF91 /* CrossArbitrageSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FFF2AA2AC444F3007CAF91 /* CrossArbitrageSearchList.swift */; };
+		A1FFF2AD2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FFF2AC2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift */; };
+		A1FFF2AF2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FFF2AE2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +86,9 @@
 		A1BD7B722A65505E002B3F48 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A1BD7B742A655061002B3F48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1BD7B772A655061002B3F48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1CC44502AC441C80067046D /* CurrencyTogglerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTogglerView.swift; sourceTree = "<group>"; };
+		A1CC44522AC4421F0067046D /* CurrencySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchView.swift; sourceTree = "<group>"; };
+		A1CC44542AC442470067046D /* ExchangeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListView.swift; sourceTree = "<group>"; };
 		A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesNavigationModel.swift; sourceTree = "<group>"; };
 		A1E8EDAF2A7BFF6700996910 /* DataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModels.xcdatamodel; sourceTree = "<group>"; };
 		A1E8EDB92A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossArbitrageOpportunity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -87,6 +96,9 @@
 		A1FF5D652A695D8A0002E981 /* PriceResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceResponses.swift; sourceTree = "<group>"; };
 		A1FF5D672A695E350002E981 /* Exchanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanges.swift; sourceTree = "<group>"; };
 		A1FF5D692A69726D0002E981 /* ErrorStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStrings.swift; sourceTree = "<group>"; };
+		A1FFF2AA2AC444F3007CAF91 /* CrossArbitrageSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageSearchList.swift; sourceTree = "<group>"; };
+		A1FFF2AC2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageExchangeSelectionView.swift; sourceTree = "<group>"; };
+		A1FFF2AE2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageSaveButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,9 +171,9 @@
 		A13DAE3D2A7119F7002FD780 /* Opportunities */ = {
 			isa = PBXGroup;
 			children = (
+				A1FFF2A92AC444A2007CAF91 /* CrossArbitrage */,
 				A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */,
 				A13DAE3F2A711B40002FD780 /* OpportunityTypePickerView.swift */,
-				A13DAE412A711BE5002FD780 /* NewCrossArbitrageView.swift */,
 				A13DAE432A711C16002FD780 /* NewCircularArbitrageView.swift */,
 				A18938072AB1BBA300DD321F /* OpportunitiesCellView.swift */,
 			);
@@ -173,6 +185,9 @@
 			children = (
 				A134ABA32A67E15E00196092 /* PricesView.swift */,
 				A12127362A6E78CC008918A2 /* PricesCellView.swift */,
+				A1CC44502AC441C80067046D /* CurrencyTogglerView.swift */,
+				A1CC44522AC4421F0067046D /* CurrencySearchView.swift */,
+				A1CC44542AC442470067046D /* ExchangeListView.swift */,
 			);
 			path = Prices;
 			sourceTree = "<group>";
@@ -282,6 +297,17 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
+		A1FFF2A92AC444A2007CAF91 /* CrossArbitrage */ = {
+			isa = PBXGroup;
+			children = (
+				A13DAE412A711BE5002FD780 /* NewCrossArbitrageView.swift */,
+				A1FFF2AA2AC444F3007CAF91 /* CrossArbitrageSearchList.swift */,
+				A1FFF2AC2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift */,
+				A1FFF2AE2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift */,
+			);
+			path = CrossArbitrage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -355,6 +381,7 @@
 				A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */,
 				A1E8EDB02A7BFF6700996910 /* DataModels.xcdatamodeld in Sources */,
 				A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */,
+				A1FFF2AD2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift in Sources */,
 				A14654242A6FD273007003F2 /* OpportinitiesViewViewModel.swift in Sources */,
 				A12127372A6E78CC008918A2 /* PricesCellView.swift in Sources */,
 				A1E8EDBB2A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift in Sources */,
@@ -364,15 +391,20 @@
 				A13DAE402A711B40002FD780 /* OpportunityTypePickerView.swift in Sources */,
 				A13DAE422A711BE5002FD780 /* NewCrossArbitrageView.swift in Sources */,
 				A14654222A6FBDDE007003F2 /* OpportunitiesView.swift in Sources */,
+				A1FFF2AB2AC444F3007CAF91 /* CrossArbitrageSearchList.swift in Sources */,
 				A18938062AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift in Sources */,
 				A16667452AC1C2010024E760 /* HistoryViewModel.swift in Sources */,
 				A121273E2A6E9CEC008918A2 /* BitfinexPriceResponse.swift in Sources */,
+				A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */,
+				A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */,
 				A18938082AB1BBA300DD321F /* OpportunitiesCellView.swift in Sources */,
 				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,
 				A134ABAC2A68147700196092 /* PricesModel.swift in Sources */,
+				A1CC44512AC441C80067046D /* CurrencyTogglerView.swift in Sources */,
 				A128CC492AC2F46F008D9470 /* AppDelegate.swift in Sources */,
 				A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */,
 				A16667412AC1BD9C0024E760 /* CrossArbitrageHistory+CoreDataProperties.swift in Sources */,
+				A1FFF2AF2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift in Sources */,
 				A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */,
 				A134ABA42A67E15E00196092 /* PricesView.swift in Sources */,
 				A121273C2A6E9CCC008918A2 /* BinancePriceResponse.swift in Sources */,

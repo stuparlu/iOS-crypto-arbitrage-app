@@ -14,7 +14,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { allowed, error in
             if allowed {
-                print("SUCCESS REQUEST")
+                
             } else {
                 print("Error while requesting push notification permission. Error \(String(describing: error))")
             }
