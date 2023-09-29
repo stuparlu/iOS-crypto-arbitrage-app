@@ -29,7 +29,7 @@ struct MainView: View {
                         Text(StringKeys.history)
                     }
                 
-                Text("Account")
+                AccountView()
                     .tabItem {
                         Image(systemName: Symbols.user_account_icon)
                         Text(StringKeys.account)

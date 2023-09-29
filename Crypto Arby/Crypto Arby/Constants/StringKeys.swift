@@ -23,13 +23,15 @@ struct StringKeys {
     static let pair_selected = "Pair: "
     static let save_opportunity = "Save Opportunity"
     static let select_exchanges = "Select exchanges to monitor:"
-    
     static let coin_ticker = "coin_ticker"
     static let coin_name = "coin_name"
     static let ticker_placeholder = "[TICKER]"
     static let empty_string = ""
     static let ok = "OK"
-    
+    static let login = "Log in"
+    static let register = "Register"
+    static let email = "E-mail"
+    static let password = "Password"
     static let arbitrageFound = "Arbitrage opportunity found"
     
     struct errors {

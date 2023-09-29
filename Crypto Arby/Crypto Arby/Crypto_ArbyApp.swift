@@ -14,7 +14,6 @@ struct Crypto_ArbyApp: App {
     let persistenceController = PersistenceController.shared
     
     init() {
-        
         let navigationViewAppearance = UINavigationBarAppearance()
         navigationViewAppearance.backgroundColor = .white
         UINavigationBar.appearance().standardAppearance = navigationViewAppearance
