@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginFormView: View {
+    @StateObject private var viewModel = LoginFormViewViewModel()
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isLogin: Bool = true
@@ -28,13 +29,23 @@ struct LoginFormView: View {
                     password = ""
                 }
             Button {
-                print(email)
-                print(password)
+                viewModel.authenticate(email: email, password: password, isLogin: isLogin)
             } label: {
                 Text(isLogin ? StringKeys.login : StringKeys.register)
             }
-            
         }
+        .alert("Invalid e-mail", isPresented: $viewModel.emailAlertIsShown) {
+            Button(StringKeys.ok, role: .cancel) {}
+        } message: {
+            Text("E-mail address is invalid.")
+        }
+        .alert("Invalid Password", isPresented: $viewModel.passwordAlertIsShown) {
+            Button(StringKeys.ok, role: .cancel) {}
+        } message: {
+            Text("You have to type a password that is at least 6 characters long, contains at least one uppercase, lowercase and numerical and special character with no whitespaces.")
+        }
+
+        
     }
 }
 
