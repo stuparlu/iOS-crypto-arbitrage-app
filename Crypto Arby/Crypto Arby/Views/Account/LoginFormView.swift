@@ -9,43 +9,67 @@ import SwiftUI
 
 struct LoginFormView: View {
     @StateObject private var viewModel = LoginFormViewViewModel()
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var isLogin: Bool = true
-    
+    @StateObject private var loginManager = LoginManager.shared
     var body: some View {
-        Form {
-            Picker("", selection: $isLogin) {
-                Text(StringKeys.login).tag(true)
-                Text(StringKeys.register).tag(false)
+        VStack {
+            Spacer()
+            Form {
+                Picker("", selection: $viewModel.isLogin) {
+                    Text(StringKeys.login).tag(true)
+                    Text(StringKeys.register).tag(false)
+                }
+                .frame(height: 10)
+                .padding()
+                .pickerStyle(.segmented)
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: 10.0)
+                    .fill(Color.accentColor))
+                TextField(StringKeys.email, text: $viewModel.email)
+                    .frame(height: 30)
+                    .textInputAutocapitalization(.never)
+                    .onTapGesture {
+                        viewModel.email = ""
+                    }
+                SecureField(StringKeys.password, text: $viewModel.password)
+                    .frame(height: 30)
+                    .textInputAutocapitalization(.never)
+                    .onTapGesture {
+                        viewModel.password = ""
+                    }
             }
-            .pickerStyle(.segmented)
-            TextField(StringKeys.email, text: $email)
-                .onTapGesture {
-                    email = ""
-                }
-            SecureField(StringKeys.password, text: $password)
-                .onTapGesture {
-                    password = ""
-                }
+            .formStyle(ColumnsFormStyle())
+            .scrollContentBackground(.hidden)
+            .alert(StringKeys.invalidEmailTitle, isPresented: $viewModel.emailAlertIsShown) {
+                Button(StringKeys.ok, role: .cancel) {}
+            } message: {
+                Text(StringKeys.invalidEmailMessage)
+            }
+            .alert(StringKeys.invalidPasswordTitle, isPresented: $viewModel.passwordAlertIsShown) {
+                Button(StringKeys.ok, role: .cancel) {}
+            } message: {
+                Text(StringKeys.invalidPasswordMessage)
+            }
+            .alert(StringKeys.registrationFailedTitle, isPresented: $loginManager.registerErrorHappened) {
+                Button(StringKeys.ok, role: .cancel) {}
+            } message: {
+                Text(StringKeys.registrationFailedMessage)
+            }
+            .alert(StringKeys.loginFailedTitle, isPresented: $loginManager.loginErrorHappened) {
+                Button(StringKeys.ok, role: .cancel) {}
+            } message: {
+                Text(StringKeys.loginFailedMessage)
+            }
             Button {
-                viewModel.authenticate(email: email, password: password, isLogin: isLogin)
+                viewModel.authenticate()
             } label: {
-                Text(isLogin ? StringKeys.login : StringKeys.register)
+                Text(viewModel.isLogin ? StringKeys.login : StringKeys.register)
+                    .frame(width: 150, height: 40)
             }
+            .buttonStyle(.borderedProminent)
+            Spacer()
         }
-        .alert("Invalid e-mail", isPresented: $viewModel.emailAlertIsShown) {
-            Button(StringKeys.ok, role: .cancel) {}
-        } message: {
-            Text("E-mail address is invalid.")
-        }
-        .alert("Invalid Password", isPresented: $viewModel.passwordAlertIsShown) {
-            Button(StringKeys.ok, role: .cancel) {}
-        } message: {
-            Text("You have to type a password that is at least 6 characters long, contains at least one uppercase, lowercase and numerical and special character with no whitespaces.")
-        }
-
-        
+        .padding(.horizontal, 30)
     }
 }
 

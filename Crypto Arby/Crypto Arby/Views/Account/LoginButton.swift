@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginButton: View {
+    @StateObject private var loginManager = LoginManager.shared
     @State private var showingSheet = false
     
     var body: some View {
@@ -22,6 +23,11 @@ struct LoginButton: View {
         .sheet(isPresented: $showingSheet) {
             LoginFormView()
         }
+        .onReceive(loginManager.$isLoggedIn, perform: { value in
+            if value {
+                showingSheet = false
+            }
+        })
     }
 }
 

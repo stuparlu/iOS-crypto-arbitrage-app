@@ -10,7 +10,10 @@ import Foundation
 class LoginFormViewViewModel: ObservableObject {
     @Published var emailAlertIsShown = false
     @Published var passwordAlertIsShown = false
-
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var isLogin: Bool = true
+    
     func isValidEmail(email: String) -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
@@ -26,7 +29,7 @@ class LoginFormViewViewModel: ObservableObject {
         return passwordPredicate.evaluate(with: password)
     }
     
-    func authenticate(email: String, password: String, isLogin: Bool) {
+    func authenticate() {
         if !isValidEmail(email: email) {
             emailAlertIsShown = true
             return
@@ -41,8 +44,6 @@ class LoginFormViewViewModel: ObservableObject {
             LoginManager.shared.login(email, password)
         } else {
             LoginManager.shared.register(email, password)
-
         }
     }
-    
 }

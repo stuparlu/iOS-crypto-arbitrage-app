@@ -33,6 +33,15 @@ struct StringKeys {
     static let email = "E-mail"
     static let password = "Password"
     static let arbitrageFound = "Arbitrage opportunity found"
+    static let invalidEmailTitle = "Invalid e-mail"
+    static let invalidEmailMessage = "E-mail address is invalid."
+    static let invalidPasswordTitle = "Invalid Password"
+    static let invalidPasswordMessage = "You have to type a password that is at least 6 characters long, contains at least one uppercase, lowercase and numerical and special character with no whitespaces."
+    static let registrationFailedTitle = "Registration failed"
+    static let registrationFailedMessage = "Please check your credential and try again. If you have already registered, please select log in."
+    static let loginFailedTitle = "Log in failed"
+    static let loginFailedMessage = "Please check your credential and try again."
+    static let logout = "Log out"
     
     struct errors {
         static let generic_error = "Error"
