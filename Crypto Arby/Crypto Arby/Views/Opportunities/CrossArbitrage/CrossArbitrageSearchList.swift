@@ -11,10 +11,10 @@ struct CrossArbitrageSearchList: View {
     @StateObject var viewModel: NewCrossArbitrageViewModel
     var searchResults: [String] {
         if viewModel.searchText.isEmpty {
-            return Array(viewModel.tickerList).sorted()
+            return Array(viewModel.getTickers())
         } else {
-            return Array(viewModel.tickerList.filter { $0.contains(viewModel.searchText)
-            }.sorted())
+            return Array(viewModel.getTickers().filter { $0.contains(viewModel.searchText)
+            })
         }
     }
     
@@ -35,5 +35,5 @@ struct CrossArbitrageSearchList: View {
 }
 
 #Preview {
-    CrossArbitrageSearchList(viewModel: NewCrossArbitrageViewModel())
+    NewCrossArbitrageView(navModel: OpportunitiesNavigationModel())
 }

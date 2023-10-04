@@ -15,7 +15,8 @@ struct PricesModel {
 }
         
     static func getPricesForTickerAtExchange(exchange: String, ticker: String, delegate: Tradable) {
-        let url = URL(string: ExchangeNames.urlMapper.getExchangeURL(exchange: exchange, ticker: ticker))!
+        let exchangePairName = Cryptocurrencies.findPair(by: ticker).searchableName
+        let url = URL(string: ExchangeNames.urlMapper.getExchangeURL(exchange: exchange, ticker: exchangePairName))!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 self.parseResult(result: .failure(error), delegate: delegate)

@@ -25,7 +25,7 @@ struct OpportunityTypePickerView: View {
             presentationMode.wrappedValue.dismiss()
         }
         Spacer()
-        NavigationLink(destination: NewCircularArbitrageView()) {
+        NavigationLink(destination: NewCircularArbitrageView(navModel: navModel)) {
             VStack {
                 Image(systemName: Symbols.symbol_trianglepath)
                     .resizable()

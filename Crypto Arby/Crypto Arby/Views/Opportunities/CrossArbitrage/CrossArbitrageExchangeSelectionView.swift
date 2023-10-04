@@ -20,7 +20,7 @@ struct CrossArbitrageExchangeSelectionView: View {
                 Button(action: {
                     viewModel.toggleExchange(exchangeName: item)
                 }) {
-                    Text(item)
+                    Text(item.capitalized)
                 }
                 .foregroundColor(viewModel.isExchangeEnabled(exchangeName:item) ? .white : .black)
                 .background(viewModel.isExchangeEnabled(exchangeName:item) ? Color.accentColor : .white)
@@ -47,5 +47,5 @@ struct CrossArbitrageExchangeSelectionView: View {
 }
 
 #Preview {
-    CrossArbitrageExchangeSelectionView(viewModel: NewCrossArbitrageViewModel(), navModel: OpportunitiesNavigationModel())
+    NewCrossArbitrageView(navModel: OpportunitiesNavigationModel())
 }

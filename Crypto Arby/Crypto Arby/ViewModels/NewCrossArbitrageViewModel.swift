@@ -9,7 +9,6 @@ import Foundation
 
 class NewCrossArbitrageViewModel: ObservableObject {
     let viewContext = PersistenceController.shared.container.viewContext
-    let tickerList = cryptocurrencies
     
     @Published var searchText = StringKeys.empty_string
     @Published var selectedPair = StringKeys.empty_string
@@ -19,8 +18,12 @@ class NewCrossArbitrageViewModel: ObservableObject {
     @Published var shouldDismissView: Bool = false
     
     func selectPair(pairName: String) {
-        selectedPair = pairName
+        selectedPair = Cryptocurrencies.findPair(by: pairName).searchableName
         pairSelected.toggle()
+    }
+    
+    func getTickers() -> [String] {
+        return Cryptocurrencies.cryptocurrencyPairs.map({$0.searchableName})
     }
     
     func toggleExchange(exchangeName: String) {

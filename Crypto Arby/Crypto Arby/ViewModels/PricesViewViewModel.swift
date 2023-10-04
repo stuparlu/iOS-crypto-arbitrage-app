@@ -10,9 +10,6 @@ import SwiftUI
 import Combine
 
 class PricesViewViewModel: ObservableObject, Tradable {
-    
-    let menuOptions = cryptocurrencies
-    
     @Published var selectedMenuOption: Int = 0
     @Published var selectedMenuOptionText = "BTCUSDT"
     @Published var selectedOption: String?
@@ -23,7 +20,6 @@ class PricesViewViewModel: ObservableObject, Tradable {
     
     init() {
         startTimer()
-        
     }
     
     deinit {
@@ -46,7 +42,7 @@ class PricesViewViewModel: ObservableObject, Tradable {
     }
     
     func fetchMenuItems() -> Set<String> {
-        return cryptocurrencies
+        return Set(Cryptocurrencies.cryptocurrencyPairs.map({$0.searchableName}))
     }
     
     func fetchExchangePrices() -> [BidAskData] {

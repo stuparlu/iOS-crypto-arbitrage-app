@@ -31,5 +31,11 @@ struct ExchangeListView: View {
 }
 
 #Preview {
-    ExchangeListView(viewModel: PricesViewViewModel())
+    TabView {
+        PricesView()
+            .tabItem {
+                Image(systemName: Symbols.price_history_icon)
+                Text(StringKeys.prices)
+            }
+    }
 }

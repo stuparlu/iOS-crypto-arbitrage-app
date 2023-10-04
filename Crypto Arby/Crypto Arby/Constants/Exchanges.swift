@@ -29,4 +29,17 @@ struct ExchangeNames {
             return exchangeUrls[exchange]!.replacingOccurrences(of: StringKeys.ticker_placeholder, with: ticker)
         }
     }
+    
+    static func getSearchableName(for pair: CurrencyPair, at exchange: String) -> String {
+        getSearchableName(pair.mainSymbol, pair.quoteSymbol, at: exchange)
+    }
+    
+    static func getSearchableName(_ mainSymbol: String, _ quoteSymbol: String, at exchange: String) -> String {
+        switch exchange {
+        case binance, bybit, bitfinex:
+            return "\(mainSymbol)\(quoteSymbol)"
+        default:
+            return "\(mainSymbol)\(quoteSymbol)"
+        }
+    }
 }

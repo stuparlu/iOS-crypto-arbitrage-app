@@ -22,6 +22,10 @@
 		A1261A382AC7291300B36750 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1261A372AC7291300B36750 /* LoginButton.swift */; };
 		A1261A3A2AC72A0D00B36750 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1261A392AC72A0D00B36750 /* LoginFormView.swift */; };
 		A128CC492AC2F46F008D9470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128CC482AC2F46F008D9470 /* AppDelegate.swift */; };
+		A128F2E52ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128F2E42ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift */; };
+		A128F2E72ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128F2E62ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift */; };
+		A128F2E92ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128F2E82ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift */; };
+		A128F2EB2ACD7CE90000DCE0 /* CircularArbitragePairSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128F2EA2ACD7CE90000DCE0 /* CircularArbitragePairSelectionView.swift */; };
 		A134ABA42A67E15E00196092 /* PricesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA32A67E15E00196092 /* PricesView.swift */; };
 		A134ABA62A67ED4000196092 /* Cryptocurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */; };
 		A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A134ABA82A67FA6D00196092 /* PricesViewViewModel.swift */; };
@@ -80,6 +84,10 @@
 		A1261A372AC7291300B36750 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		A1261A392AC72A0D00B36750 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
 		A128CC482AC2F46F008D9470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A128F2E42ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCircularArbitrageViewModel.swift; sourceTree = "<group>"; };
+		A128F2E62ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitrageExchangeSearchForm.swift; sourceTree = "<group>"; };
+		A128F2E82ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitrageCancelButtonView.swift; sourceTree = "<group>"; };
+		A128F2EA2ACD7CE90000DCE0 /* CircularArbitragePairSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitragePairSelectionView.swift; sourceTree = "<group>"; };
 		A134ABA32A67E15E00196092 /* PricesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesView.swift; sourceTree = "<group>"; };
 		A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cryptocurrencies.swift; sourceTree = "<group>"; };
 		A134ABA82A67FA6D00196092 /* PricesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricesViewViewModel.swift; sourceTree = "<group>"; };
@@ -196,6 +204,26 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		A128F2E02ACD70DB0000DCE0 /* CircularArbitrage */ = {
+			isa = PBXGroup;
+			children = (
+				A13DAE432A711C16002FD780 /* NewCircularArbitrageView.swift */,
+				A128F2E62ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift */,
+				A128F2E82ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift */,
+				A128F2EA2ACD7CE90000DCE0 /* CircularArbitragePairSelectionView.swift */,
+			);
+			path = CircularArbitrage;
+			sourceTree = "<group>";
+		};
+		A128F2E12ACD70F30000DCE0 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				A16667422AC1C1510024E760 /* HistoryView.swift */,
+				A16667462AC1C62C0024E760 /* HistoryCellView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		A134ABA72A67FA2000196092 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +233,7 @@
 				A16667442AC1C2010024E760 /* HistoryViewModel.swift */,
 				A1261A352AC721FE00B36750 /* AccountViewViewModel.swift */,
 				A1E2D6D62AC82B66001DA32C /* LoginFormViewViewModel.swift */,
+				A128F2E42ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -226,10 +255,10 @@
 		A13DAE3D2A7119F7002FD780 /* Opportunities */ = {
 			isa = PBXGroup;
 			children = (
+				A128F2E02ACD70DB0000DCE0 /* CircularArbitrage */,
 				A1FFF2A92AC444A2007CAF91 /* CrossArbitrage */,
 				A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */,
 				A13DAE3F2A711B40002FD780 /* OpportunityTypePickerView.swift */,
-				A13DAE432A711C16002FD780 /* NewCircularArbitrageView.swift */,
 				A18938072AB1BBA300DD321F /* OpportunitiesCellView.swift */,
 			);
 			path = Opportunities;
@@ -302,12 +331,11 @@
 		A1BD7B7F2A655858002B3F48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A128F2E12ACD70F30000DCE0 /* History */,
 				A1261A312AC7215800B36750 /* Account */,
 				A13DAE3E2A711A14002FD780 /* Prices */,
 				A13DAE3D2A7119F7002FD780 /* Opportunities */,
 				A1BD7B722A65505E002B3F48 /* MainView.swift */,
-				A16667422AC1C1510024E760 /* HistoryView.swift */,
-				A16667462AC1C62C0024E760 /* HistoryCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -503,11 +531,14 @@
 				A1FFF2AB2AC444F3007CAF91 /* CrossArbitrageSearchList.swift in Sources */,
 				A18938062AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift in Sources */,
 				A16667452AC1C2010024E760 /* HistoryViewModel.swift in Sources */,
+				A128F2EB2ACD7CE90000DCE0 /* CircularArbitragePairSelectionView.swift in Sources */,
+				A128F2E52ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift in Sources */,
 				A121273E2A6E9CEC008918A2 /* BitfinexPriceResponse.swift in Sources */,
 				A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */,
 				A1C8B4532ACC483F00D6A6E5 /* AccountCardView.swift in Sources */,
 				A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */,
 				A18938082AB1BBA300DD321F /* OpportunitiesCellView.swift in Sources */,
+				A128F2E92ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift in Sources */,
 				A1FFF2B12AC44926007CAF91 /* DatabaseManager.swift in Sources */,
 				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,
 				A134ABAC2A68147700196092 /* PricesModel.swift in Sources */,
@@ -519,6 +550,7 @@
 				A1FFF2AF2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift in Sources */,
 				A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */,
 				A134ABA42A67E15E00196092 /* PricesView.swift in Sources */,
+				A128F2E72ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift in Sources */,
 				A121273C2A6E9CCC008918A2 /* BinancePriceResponse.swift in Sources */,
 				A1261A2E2AC6F79100B36750 /* LoginManager.swift in Sources */,
 				A16667472AC1C62C0024E760 /* HistoryCellView.swift in Sources */,
