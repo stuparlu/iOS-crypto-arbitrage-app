@@ -37,7 +37,7 @@ struct CrossArbitrageExchangeSelectionView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 200, height: 60)
-                Text(StringKeys.save_opportunity)
+                Text(StringKeys.saveOpportunity)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white)
             }

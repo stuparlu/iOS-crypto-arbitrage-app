@@ -12,7 +12,7 @@ struct CircularArbitrageCancelButtonView: View {
     
     var body: some View {
         Button(action: {
-            viewModel.exchangeSelected.toggle()
+            viewModel.clearData()
         }) {
             Image(systemName: Symbols.x_mark)
                 .resizable()
@@ -22,5 +22,5 @@ struct CircularArbitrageCancelButtonView: View {
 }
 
 #Preview {
-    CircularArbitrageCancelButtonView(viewModel: NewCircularArbitrageViewModel())
+    NewCircularArbitrageView(navModel: OpportunitiesNavigationModel())
 }

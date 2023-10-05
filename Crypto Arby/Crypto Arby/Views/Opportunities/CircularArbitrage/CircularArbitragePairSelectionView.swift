@@ -12,18 +12,17 @@ struct CircularArbitragePairSelectionView: View {
     @StateObject var navModel: OpportunitiesNavigationModel
     var body: some View {
         VStack {
-            List(viewModel.nextPairs, id: \.searchableName) { item in
+            viewModel.nextPairs.count != 0 ? AnyView(PairSelectionList(viewModel: viewModel)) : AnyView(EmptyView())
+            HStack {
+                Text(StringKeys.selectedPairs)
+                Spacer()
                 Button {
-                    viewModel.addPair(item)
+                    viewModel.clearLast()
                 } label: {
-                    Text(item.searchableName)
+                    Text(StringKeys.clearLast)
                 }
+                .buttonStyle(.borderedProminent)
             }
-            .frame(minHeight:0, maxHeight: 220)
-            .scrollContentBackground(.hidden)
-            .listStyle(PlainListStyle())
-            .searchable(text: $viewModel.searchText, prompt: StringKeys.searchPairsToAdd)
-            
             List(viewModel.selectedPairs, id: \.searchableName) { item in
                 Button {
                     viewModel.removePair(item)
@@ -34,7 +33,15 @@ struct CircularArbitragePairSelectionView: View {
             .scrollContentBackground(.hidden)
             .listStyle(PlainListStyle())
             Spacer()
+            Button {
+                viewModel.saveOpportunity()
+            } label: {
+                Text(StringKeys.saveOpportunity)
+                    .frame(width: 150, height: 40)
+            }
+            .buttonStyle(.borderedProminent)
         }
+        .padding()
     }
 }
 

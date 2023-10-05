@@ -10,7 +10,7 @@ import SwiftUI
 struct NewCircularArbitrageView: View {
     @StateObject private var viewModel = NewCircularArbitrageViewModel()
     @StateObject var navModel: OpportunitiesNavigationModel
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -27,8 +27,6 @@ struct NewCircularArbitrageView: View {
     }
 }
 
-struct NewCircularArbitrageView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewCircularArbitrageView(navModel: OpportunitiesNavigationModel())
-    }
+#Preview {
+    NewCircularArbitrageView(navModel: OpportunitiesNavigationModel())
 }

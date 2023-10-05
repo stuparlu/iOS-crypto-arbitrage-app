@@ -14,7 +14,7 @@ struct ExchangeListView: View {
             Text(StringKeys.exchange)
             Spacer()
             Text(StringKeys.highest_bid)
-            Text(StringKeys.lowest_ask)
+            Text(StringKeys.lowestAsk)
         }
         .padding(.horizontal, 20)
         .padding(.top, 10)

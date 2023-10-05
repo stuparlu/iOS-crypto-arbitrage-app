@@ -40,6 +40,7 @@
 		A16667432AC1C1510024E760 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667422AC1C1510024E760 /* HistoryView.swift */; };
 		A16667452AC1C2010024E760 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667442AC1C2010024E760 /* HistoryViewModel.swift */; };
 		A16667472AC1C62C0024E760 /* HistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667462AC1C62C0024E760 /* HistoryCellView.swift */; };
+		A16D47B82ACEF9FB00F955ED /* PairSelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */; };
 		A18938062AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18938042AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift */; };
 		A18938082AB1BBA300DD321F /* OpportunitiesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18938072AB1BBA300DD321F /* OpportunitiesCellView.swift */; };
 		A189380C2AB1F00900DD321F /* ArbitrageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189380B2AB1F00900DD321F /* ArbitrageOperation.swift */; };
@@ -102,6 +103,7 @@
 		A16667422AC1C1510024E760 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		A16667442AC1C2010024E760 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A16667462AC1C62C0024E760 /* HistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellView.swift; sourceTree = "<group>"; };
+		A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairSelectionList.swift; sourceTree = "<group>"; };
 		A18938042AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossArbitrageOpportunity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A18938072AB1BBA300DD321F /* OpportunitiesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesCellView.swift; sourceTree = "<group>"; };
 		A18938092AB1D9A000DD321F /* Crypto-Arby-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Crypto-Arby-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -211,6 +213,7 @@
 				A128F2E62ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift */,
 				A128F2E82ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift */,
 				A128F2EA2ACD7CE90000DCE0 /* CircularArbitragePairSelectionView.swift */,
+				A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */,
 			);
 			path = CircularArbitrage;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				A1261A2E2AC6F79100B36750 /* LoginManager.swift in Sources */,
 				A16667472AC1C62C0024E760 /* HistoryCellView.swift in Sources */,
 				A1AC95722A726C070099FFA6 /* NewCrossArbitrageViewModel.swift in Sources */,
+				A16D47B82ACEF9FB00F955ED /* PairSelectionList.swift in Sources */,
 				A107A1702AB9D26600640F5B /* Tradable.swift in Sources */,
 				A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */,
 				A1261A3A2AC72A0D00B36750 /* LoginFormView.swift in Sources */,

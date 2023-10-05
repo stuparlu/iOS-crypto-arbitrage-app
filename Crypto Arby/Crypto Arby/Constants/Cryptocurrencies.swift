@@ -30,7 +30,10 @@ struct Cryptocurrencies {
         CurrencyPair(mainSymbol: "ADA", quoteSymbol: "USDT"),
         CurrencyPair(mainSymbol: "DOGE", quoteSymbol: "USDT"),
         CurrencyPair(mainSymbol: "TRX", quoteSymbol: "USDT"),
-        CurrencyPair(mainSymbol: "MATIC", quoteSymbol: "USDT")
+        CurrencyPair(mainSymbol: "MATIC", quoteSymbol: "USDT"),
+        
+        CurrencyPair(mainSymbol: "ETH", quoteSymbol: "BTC"),
+
     ]
 
     static func findPair(by name: String) -> CurrencyPair {

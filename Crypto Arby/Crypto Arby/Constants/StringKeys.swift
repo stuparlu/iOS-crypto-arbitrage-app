@@ -14,7 +14,7 @@ struct StringKeys {
     static let account = "Account"
     static let exchange = "Exchange"
     static let highest_bid = "Highest Bid"
-    static let lowest_ask = "Lowest Ask"
+    static let lowestAsk = "Lowest Ask"
     static let cross_arbitrage = "Cross Exchange Arbitrage"
     static let new_cross_arbitrage = "New Cross Arbitrage Opportunity"
     static let new_circular_arbitrage = "New Circular Arbitrage Opportunity"
@@ -24,7 +24,7 @@ struct StringKeys {
     static let searchPairsToAdd = "Search pairs to add"
     static let search_exchanges = "Search exchanges"
     static let pair_selected = "Pair: "
-    static let save_opportunity = "Save Opportunity"
+    static let saveOpportunity = "Save Opportunity"
     static let select_exchanges = "Select exchanges to monitor:"
     static let coin_ticker = "coin_ticker"
     static let coin_name = "coin_name"
@@ -45,6 +45,9 @@ struct StringKeys {
     static let loginFailedTitle = "Log in failed"
     static let loginFailedMessage = "Please check your credential and try again."
     static let logout = "Log out"
+    static let selectedPairs = "Selected pairs"
+    static let selectPairsToAdd = "Select pairs to add"
+    static let clearLast = "Clear last"
     
     struct errors {
         static let generic_error = "Error"
