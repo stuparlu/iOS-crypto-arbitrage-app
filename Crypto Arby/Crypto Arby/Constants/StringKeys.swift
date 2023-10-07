@@ -48,7 +48,9 @@ struct StringKeys {
     static let selectedPairs = "Selected pairs"
     static let selectPairsToAdd = "Select pairs to add"
     static let clearLast = "Clear last"
-    
+    static let circularSaveFailedTitle = "Cannot Save opportunity"
+    static let circularSaveFailedMessage = "The opportunity configuration is invalid. It has to contain at least 3 pairs. First and last pair have to have same quote symbol. Each non-last pair has to end with the beginning of the previous one."
+
     struct errors {
         static let generic_error = "Error"
     }

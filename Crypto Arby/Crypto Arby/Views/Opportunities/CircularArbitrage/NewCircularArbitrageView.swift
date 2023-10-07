@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewCircularArbitrageView: View {
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @StateObject private var viewModel = NewCircularArbitrageViewModel()
     @StateObject var navModel: OpportunitiesNavigationModel
     
@@ -23,6 +24,14 @@ struct NewCircularArbitrageView: View {
                 viewModel.exchangeSelected ? AnyView(CircularArbitrageCancelButtonView(viewModel: viewModel)) : AnyView(EmptyView())
             }
             CircularArbitragePairSelectionView(viewModel: viewModel, navModel: navModel)
+        }
+        .onChange(of: navModel.shouldDismissToRoot) { value in
+            presentationMode.wrappedValue.dismiss()
+        }
+        .alert(StringKeys.circularSaveFailedTitle, isPresented: $viewModel.saveAlertShown) {
+            Button(StringKeys.ok, role: .cancel) {}
+        } message: {
+            Text(StringKeys.circularSaveFailedMessage)
         }
     }
 }

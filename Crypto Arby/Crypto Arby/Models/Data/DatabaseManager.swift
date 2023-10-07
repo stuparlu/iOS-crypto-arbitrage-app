@@ -29,6 +29,19 @@ class DatabaseManager: ObservableObject {
         toggleChanges()
     }
     
+    func saveNewCircularOpportunity(exchangeName: String, pairs: [String]) {
+        let newOpportunity = CircularArbitrageOpportunity(context: viewContext)
+        newOpportunity.isActive = true
+        newOpportunity.exchangeName = exchangeName
+        newOpportunity.selectedPairs = pairs
+        newOpportunity.history = [false, false]
+        do {
+            try viewContext.save()
+        } catch {}
+        toggleChanges()
+    }
+
+    
     func deleteCrossOpportunity(item: CrossArbitrageOpportunity) {
         do {
             viewContext.delete(item)
