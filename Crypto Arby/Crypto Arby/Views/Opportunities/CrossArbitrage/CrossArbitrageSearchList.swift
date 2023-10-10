@@ -28,7 +28,7 @@ struct CrossArbitrageSearchList: View {
         }
         .listStyle(PlainListStyle())
         .scrollContentBackground(.hidden)
-        .background(Color.white)
+        .background(Color(ThemeManager.backgroundColor))
         .searchable(text: $viewModel.searchText, prompt: StringKeys.search_pairs)
         .textInputAutocapitalization(.characters)
     }

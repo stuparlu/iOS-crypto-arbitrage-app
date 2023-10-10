@@ -15,18 +15,18 @@ struct Crypto_ArbyApp: App {
     
     init() {
         let navigationViewAppearance = UINavigationBarAppearance()
-        navigationViewAppearance.backgroundColor = .white
+        navigationViewAppearance.backgroundColor = UIColor(named: ThemeManager.backgroundColor)
         UINavigationBar.appearance().standardAppearance = navigationViewAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navigationViewAppearance
         
         let tabBarAppearance = UITabBarAppearance()
-        tabBarAppearance.backgroundColor = .white
+        tabBarAppearance.backgroundColor = UIColor(named: ThemeManager.backgroundColor)
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         
-        UISegmentedControl.appearance().selectedSegmentTintColor = .white
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(named: ThemeManager.backgroundColor)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.accentColor)], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.white)], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color(ThemeManager.backgroundColor))], for: .normal)
     }
     
     var body: some Scene {

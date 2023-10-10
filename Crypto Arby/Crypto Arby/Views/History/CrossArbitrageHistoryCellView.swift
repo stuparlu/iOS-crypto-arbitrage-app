@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HistoryCellView: View {
+struct CrossArbitrageHistoryCellView: View {
     let pairName: String
     let minExchange: String
     let maxExchange: String
@@ -16,6 +16,17 @@ struct HistoryCellView: View {
     let timestamp: String
     
     let dateFormatter = DateFormatter()
+    
+    init(dataModel: CrossArbitrageHistory) {
+        self.pairName = dataModel.pairName ?? ""
+        self.minExchange = dataModel.minExchange ?? ""
+        self.maxExchange = dataModel.maxExchange ?? ""
+        self.askPrice = dataModel.askPrice 
+        self.bidPrice = dataModel.bidPrice
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        self.timestamp = formatter.string(from: dataModel.timestamp ?? Date.distantPast)
+    }
     
     var body: some View {
         VStack {
@@ -62,8 +73,4 @@ struct HistoryCellView: View {
             }
         }
     }
-}
-
-#Preview {
-    HistoryCellView(pairName: "BTCUSDT", minExchange: "Binance", maxExchange: "Bybit", askPrice: 0,bidPrice: 0, timestamp: "now")
 }

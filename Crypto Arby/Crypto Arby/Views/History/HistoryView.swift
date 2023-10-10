@@ -14,8 +14,7 @@ struct HistoryView: View {
         NavigationView {
             VStack {
                 List(viewModel.history) { item in
-                        HistoryCellView(pairName: item.pairName ?? "NONE", minExchange: item.minExchange ?? "NONE", maxExchange: item.maxExchange ?? "NONE", askPrice: item.askPrice, bidPrice: item.bidPrice, timestamp: viewModel.getTimestampString(timestamp: item.timestamp ?? Date.distantPast))
-                        .listRowSeparator(.hidden)
+                    String(describing: item.self) == String(describing: CrossArbitrageHistory.self) ? AnyView(CrossArbitrageHistoryCellView(dataModel: item)):AnyView(CircularArbitrageHistoryCellView(exchangeName: item.maxExchange ?? ""))
                 }
                 .scrollContentBackground(.hidden)
                 .listStyle(PlainListStyle())
