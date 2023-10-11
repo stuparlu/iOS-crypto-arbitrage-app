@@ -33,6 +33,7 @@
 		A13DAE402A711B40002FD780 /* OpportunityTypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DAE3F2A711B40002FD780 /* OpportunityTypePickerView.swift */; };
 		A13DAE422A711BE5002FD780 /* NewCrossArbitrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DAE412A711BE5002FD780 /* NewCrossArbitrageView.swift */; };
 		A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13DAE432A711C16002FD780 /* NewCircularArbitrageView.swift */; };
+		A14351092AD6DB44005EC101 /* CircularOpportunityCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14351082AD6DB44005EC101 /* CircularOpportunityCellView.swift */; };
 		A14654222A6FBDDE007003F2 /* OpportunitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */; };
 		A14654242A6FD273007003F2 /* OpportinitiesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14654232A6FD273007003F2 /* OpportinitiesViewViewModel.swift */; };
 		A16667402AC1BD9C0024E760 /* CrossArbitrageHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A166673E2AC1BD9C0024E760 /* CrossArbitrageHistory+CoreDataClass.swift */; };
@@ -42,7 +43,7 @@
 		A16667472AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667462AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift */; };
 		A16D47B82ACEF9FB00F955ED /* PairSelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */; };
 		A18938062AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18938042AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift */; };
-		A18938082AB1BBA300DD321F /* OpportunitiesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18938072AB1BBA300DD321F /* OpportunitiesCellView.swift */; };
+		A18938082AB1BBA300DD321F /* CrossOpportunitiesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18938072AB1BBA300DD321F /* CrossOpportunitiesCellView.swift */; };
 		A189380C2AB1F00900DD321F /* ArbitrageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189380B2AB1F00900DD321F /* ArbitrageOperation.swift */; };
 		A19CDBDA2AD58D7B00C5FCE5 /* CircularArbitrageHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19CDBD92AD58D7B00C5FCE5 /* CircularArbitrageHistoryCellView.swift */; };
 		A19CDBDE2AD5931D00C5FCE5 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19CDBDD2AD5931D00C5FCE5 /* ThemeManager.swift */; };
@@ -100,6 +101,7 @@
 		A13DAE3F2A711B40002FD780 /* OpportunityTypePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityTypePickerView.swift; sourceTree = "<group>"; };
 		A13DAE412A711BE5002FD780 /* NewCrossArbitrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCrossArbitrageView.swift; sourceTree = "<group>"; };
 		A13DAE432A711C16002FD780 /* NewCircularArbitrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCircularArbitrageView.swift; sourceTree = "<group>"; };
+		A14351082AD6DB44005EC101 /* CircularOpportunityCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularOpportunityCellView.swift; sourceTree = "<group>"; };
 		A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesView.swift; sourceTree = "<group>"; };
 		A14654232A6FD273007003F2 /* OpportinitiesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportinitiesViewViewModel.swift; sourceTree = "<group>"; };
 		A166673E2AC1BD9C0024E760 /* CrossArbitrageHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossArbitrageHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 		A16667462AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageHistoryCellView.swift; sourceTree = "<group>"; };
 		A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairSelectionList.swift; sourceTree = "<group>"; };
 		A18938042AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossArbitrageOpportunity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		A18938072AB1BBA300DD321F /* OpportunitiesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesCellView.swift; sourceTree = "<group>"; };
+		A18938072AB1BBA300DD321F /* CrossOpportunitiesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossOpportunitiesCellView.swift; sourceTree = "<group>"; };
 		A18938092AB1D9A000DD321F /* Crypto-Arby-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Crypto-Arby-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A189380B2AB1F00900DD321F /* ArbitrageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitrageOperation.swift; sourceTree = "<group>"; };
 		A19CDBD92AD58D7B00C5FCE5 /* CircularArbitrageHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitrageHistoryCellView.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				A128F2E82ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift */,
 				A128F2EA2ACD7CE90000DCE0 /* CircularArbitragePairSelectionView.swift */,
 				A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */,
+				A14351082AD6DB44005EC101 /* CircularOpportunityCellView.swift */,
 			);
 			path = CircularArbitrage;
 			sourceTree = "<group>";
@@ -271,7 +274,6 @@
 				A1FFF2A92AC444A2007CAF91 /* CrossArbitrage */,
 				A14654212A6FBDDE007003F2 /* OpportunitiesView.swift */,
 				A13DAE3F2A711B40002FD780 /* OpportunityTypePickerView.swift */,
-				A18938072AB1BBA300DD321F /* OpportunitiesCellView.swift */,
 			);
 			path = Opportunities;
 			sourceTree = "<group>";
@@ -405,6 +407,7 @@
 		A1FFF2A92AC444A2007CAF91 /* CrossArbitrage */ = {
 			isa = PBXGroup;
 			children = (
+				A18938072AB1BBA300DD321F /* CrossOpportunitiesCellView.swift */,
 				A13DAE412A711BE5002FD780 /* NewCrossArbitrageView.swift */,
 				A1FFF2AA2AC444F3007CAF91 /* CrossArbitrageSearchList.swift */,
 				A1FFF2AC2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift */,
@@ -543,6 +546,7 @@
 				A13DAE402A711B40002FD780 /* OpportunityTypePickerView.swift in Sources */,
 				A1261A362AC721FE00B36750 /* AccountViewViewModel.swift in Sources */,
 				A13DAE422A711BE5002FD780 /* NewCrossArbitrageView.swift in Sources */,
+				A14351092AD6DB44005EC101 /* CircularOpportunityCellView.swift in Sources */,
 				A14654222A6FBDDE007003F2 /* OpportunitiesView.swift in Sources */,
 				A1D20A3E2AD167FE0073DDC9 /* CircularArbitrageOpportunity+CoreDataProperties.swift in Sources */,
 				A1FFF2AB2AC444F3007CAF91 /* CrossArbitrageSearchList.swift in Sources */,
@@ -555,7 +559,7 @@
 				A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */,
 				A1C8B4532ACC483F00D6A6E5 /* AccountCardView.swift in Sources */,
 				A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */,
-				A18938082AB1BBA300DD321F /* OpportunitiesCellView.swift in Sources */,
+				A18938082AB1BBA300DD321F /* CrossOpportunitiesCellView.swift in Sources */,
 				A128F2E92ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift in Sources */,
 				A1FFF2B12AC44926007CAF91 /* DatabaseManager.swift in Sources */,
 				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,

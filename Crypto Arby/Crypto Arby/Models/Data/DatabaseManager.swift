@@ -41,7 +41,6 @@ class DatabaseManager: ObservableObject {
         toggleChanges()
     }
 
-    
     func deleteCrossOpportunity(item: CrossArbitrageOpportunity) {
         do {
             viewContext.delete(item)
@@ -52,10 +51,31 @@ class DatabaseManager: ObservableObject {
         }
     }
     
-    func getAllOpportunities() -> [CrossArbitrageOpportunity] {
+    func deleteCircularOpportunity(item: CircularArbitrageOpportunity) {
+        do {
+            viewContext.delete(item)
+            try viewContext.save()
+            toggleChanges()
+        } catch {
+            print("Error deleting item: \(error.localizedDescription)")
+        }
+    }
+    
+    func getAllCrossOpportunities() -> [CrossArbitrageOpportunity] {
         do {
             let opportunitiesRequest : NSFetchRequest<CrossArbitrageOpportunity> = NSFetchRequest(entityName: "CrossArbitrageOpportunity")
             var opportunities : [CrossArbitrageOpportunity] = []
+            opportunities = try viewContext.fetch(opportunitiesRequest)
+            return opportunities
+        } catch {
+            fatalError("Failed to fetch opportunities: \(error)")
+        }
+    }
+    
+    func getAllCircularOpportunities() -> [CircularArbitrageOpportunity] {
+        do {
+            let opportunitiesRequest : NSFetchRequest<CircularArbitrageOpportunity> = NSFetchRequest(entityName: "CircularArbitrageOpportunity")
+            var opportunities : [CircularArbitrageOpportunity] = []
             opportunities = try viewContext.fetch(opportunitiesRequest)
             return opportunities
         } catch {

@@ -23,12 +23,12 @@ struct CrossArbitrageExchangeSelectionView: View {
                     Text(item.capitalized)
                 }
                 .foregroundColor(viewModel.isExchangeEnabled(exchangeName:item) ? .white : .gray)
-                .background(viewModel.isExchangeEnabled(exchangeName:item) ? Color.accentColor : .clear)
+                .background(viewModel.isExchangeEnabled(exchangeName:item) ? ThemeManager.accentColor : .clear)
             }
         }
         .padding(.horizontal, 0)
         .scrollContentBackground(.hidden)
-        .background(Color(ThemeManager.backgroundColor))
+        .background(ThemeManager.backgroundColor)
         Spacer()
         Button(action: {
             viewModel.saveButtonPressed()
@@ -39,7 +39,7 @@ struct CrossArbitrageExchangeSelectionView: View {
                     .frame(width: 200, height: 60)
                 Text(StringKeys.saveOpportunity)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(Color(ThemeManager.backgroundColor))
+                    .foregroundColor(ThemeManager.backgroundColor)
             }
             .padding(.bottom, 20)
         }

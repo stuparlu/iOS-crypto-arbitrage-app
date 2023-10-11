@@ -24,7 +24,7 @@ struct LoginFormView: View {
                 .background(
                     RoundedRectangle(
                         cornerRadius: 10.0)
-                    .fill(Color.accentColor))
+                    .fill(ThemeManager.accentColor))
                 TextField(StringKeys.email, text: $viewModel.email)
                     .frame(height: 30)
                     .textInputAutocapitalization(.never)

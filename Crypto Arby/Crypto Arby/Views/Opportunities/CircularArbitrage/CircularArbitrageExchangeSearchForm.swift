@@ -29,7 +29,7 @@ struct CircularArbitrageExchangeSearchForm: View {
         }
         .listStyle(PlainListStyle())
         .scrollContentBackground(.hidden)
-        .background(Color(ThemeManager.backgroundColor))
+        .background(ThemeManager.backgroundColor)
         .searchable(text: $viewModel.searchText, prompt: StringKeys.search_exchanges)
         .textInputAutocapitalization(.characters)
     }

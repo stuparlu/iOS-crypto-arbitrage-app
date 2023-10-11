@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct OpportunitiesCellView: View {
-    let dataBaseItem: CrossArbitrageOpportunity
-    let pairName: String
+struct CircularOpportunitiesCellView: View {
+    let dataBaseItem: CircularArbitrageOpportunity
+    let exchangeName: String
     @State var isActive: Bool
-    let exchanges: [String]
+    let pairs: [String]
     
     var body: some View {
         HStack {
             Spacer()
             VStack {
-                Text(pairName)
+                Text(exchangeName.capitalized)
                     .frame(maxWidth: .infinity, alignment:.leading)
-                    .font(.system(size: 25))
+                    .font(.system(size: 14))
                     .fontWeight(.bold)
-                ForEach(exchanges, id: \.self) {
-                    Text($0.capitalized)
+                ForEach(pairs, id: \.self) {
+                    Text($0.uppercased())
                         .frame(maxWidth: .infinity, alignment:.leading)
                         .font(.subheadline)
                         .foregroundStyle(Color.gray)
@@ -32,7 +32,7 @@ struct OpportunitiesCellView: View {
             Spacer(minLength: 30)
             VStack {
                 Button(action: {
-                    DatabaseManager.shared.deleteCrossOpportunity(item: dataBaseItem)
+                    DatabaseManager.shared.deleteCircularOpportunity(item: dataBaseItem)
                 }) {
                     Image(systemName: Symbols.x_mark_bin)
                         .resizable()

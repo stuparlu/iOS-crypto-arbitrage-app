@@ -10,14 +10,17 @@ import CoreData
 import Combine
 
 class OpportinitiesViewViewModel: ObservableObject {
-    @Published var opportunities : [CrossArbitrageOpportunity] = []
+    @Published var crossOpportunities : [CrossArbitrageOpportunity] = []
+    @Published var circularOpportunities : [CircularArbitrageOpportunity] = []
     private var cancellable: AnyCancellable?
     
     init() {
-        self.opportunities = DatabaseManager.shared.getAllOpportunities()
+        self.crossOpportunities = DatabaseManager.shared.getAllCrossOpportunities()
+        self.circularOpportunities = DatabaseManager.shared.getAllCircularOpportunities()
         self.cancellable = DatabaseManager.shared.$changes
             .sink { [weak self] _ in
-                self?.opportunities = DatabaseManager.shared.getAllOpportunities()
+                self?.crossOpportunities = DatabaseManager.shared.getAllCrossOpportunities()
+                self?.circularOpportunities = DatabaseManager.shared.getAllCircularOpportunities()
             }
     }
 }

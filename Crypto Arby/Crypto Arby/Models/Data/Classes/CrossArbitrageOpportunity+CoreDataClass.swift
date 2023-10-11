@@ -14,9 +14,10 @@ import UserNotifications
 public class CrossArbitrageOpportunity: NSManagedObject {
     
     let viewContext = PersistenceController.shared.container.viewContext
-    @Published var exchangePrices : [BidAskData] = [] { didSet {
-        comparePrices()
-    }
+    @Published var exchangePrices : [BidAskData] = [] {
+        didSet {
+            comparePrices()
+        }
     }
     
     func sendCrossOpportunityNotificaiton(pair: String, buyExchange: String, sellExchange: String) {

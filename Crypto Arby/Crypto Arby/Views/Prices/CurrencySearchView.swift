@@ -46,7 +46,7 @@ struct CurrencySearchView: View {
             Spacer()
         }
         .scrollContentBackground(.hidden)
-        .background(Color(ThemeManager.backgroundColor))
+        .background(ThemeManager.backgroundColor)
     }
 }
 

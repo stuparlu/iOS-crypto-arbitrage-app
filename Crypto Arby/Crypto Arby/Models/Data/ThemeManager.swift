@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SwiftUI
 
 class ThemeManager {
-    static let backgroundColor = "BackgroundColor"
+    static let backgroundColor = Color("BackgroundColor")
+    static let accentColor = Color("AccentColor")
     
     
 }

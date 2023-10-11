@@ -14,18 +14,35 @@ struct OpportunitiesView: View {
         NavigationStack(path: $path) {
             VStack {
                 HStack {
-                    List(viewModel.opportunities) { item in
-                        if let name = item.pairName, let exchanges = item.selectedExchanges {
-                            OpportunitiesCellView(dataBaseItem: item, pairName: name, isActive: item.isActive, exchanges: exchanges)
-                                .listRowSeparator(.hidden)
+                    VStack {
+                        Text(StringKeys.crossOpportunity)
+                            .fontWeight(.bold)
+                        List(viewModel.crossOpportunities) { item in
+                            if let name = item.pairName, let exchanges = item.selectedExchanges {
+                                CrossOpportunitiesCellView(dataBaseItem: item, pairName: name, isActive: item.isActive, exchanges: exchanges)
+                                    .listRowSeparator(.hidden)
+                            }
                         }
+                        .scrollContentBackground(.hidden)
+                        .listStyle(PlainListStyle())
                     }
-                    .scrollContentBackground(.hidden)
-                    .listStyle(PlainListStyle())
-                    Spacer()
+                    Spacer(minLength: 10)
+                    VStack {
+                        Text(StringKeys.circularOpportunity)
+                            .fontWeight(.bold)
+                        List(viewModel.circularOpportunities) { item in
+                            if let name = item.exchangeName, let pairs = item.selectedPairs {
+                                CircularOpportunitiesCellView(dataBaseItem: item, exchangeName: name, isActive: item.isActive, pairs: pairs)
+                                    .listRowSeparator(.hidden)
+                            }
+                        }
+                        .scrollContentBackground(.hidden)
+                        .listStyle(PlainListStyle())
+                    }
                 }
                 Spacer()
             }
+            .padding(.top)
             .navigationTitle(StringKeys.opportunities)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar() {
