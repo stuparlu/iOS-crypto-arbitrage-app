@@ -21,12 +21,20 @@ struct CrossArbitrageExchangeSelectionView: View {
                     viewModel.toggleExchange(exchangeName: item)
                 }) {
                     Text(item.capitalized)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                        .padding(.horizontal)
                 }
                 .foregroundColor(viewModel.isExchangeEnabled(exchangeName:item) ? .white : .gray)
-                .background(viewModel.isExchangeEnabled(exchangeName:item) ? ThemeManager.accentColor : .clear)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(
+                            viewModel.isExchangeEnabled(exchangeName:item) ? ThemeManager.accentColor : .clear
+                        )
+                    )
+                .listRowSeparator(.hidden)
             }
         }
-        .padding(.horizontal, 0)
+        .padding(.vertical)
         .scrollContentBackground(.hidden)
         .background(ThemeManager.backgroundColor)
         Spacer()
@@ -40,6 +48,7 @@ struct CrossArbitrageExchangeSelectionView: View {
                 Text(StringKeys.saveOpportunity)
                     .multilineTextAlignment(.center)
                     .foregroundColor(ThemeManager.backgroundColor)
+
             }
             .padding(.bottom, 20)
         }

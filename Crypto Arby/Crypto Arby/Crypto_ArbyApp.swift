@@ -27,6 +27,11 @@ struct Crypto_ArbyApp: App {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(ThemeManager.backgroundColor)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(ThemeManager.accentColor)], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(ThemeManager.backgroundColor)], for: .normal)
+        
+        UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().tableFooterView = UIView()
+        
+        UIView.appearance().tintColor = UIColor(ThemeManager.accentColor)
     }
     
     var body: some Scene {
