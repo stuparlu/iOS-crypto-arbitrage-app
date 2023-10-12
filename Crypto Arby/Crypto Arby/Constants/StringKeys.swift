@@ -18,7 +18,7 @@ struct StringKeys {
     static let cross_arbitrage = "Cross Exchange Arbitrage"
     static let new_cross_arbitrage = "New Cross Arbitrage Opportunity"
     static let crossOpportunity = "Cross Arbitrage:"
-    static let circularOpportunity = "Circular Arbitrage"
+    static let circularOpportunity = "Circular Arbitrage:"
     static let new_circular_arbitrage = "New Circular Arbitrage Opportunity"
     static let circular_arbitrage = "Circular Arbitrage"
     static let search = "Search"

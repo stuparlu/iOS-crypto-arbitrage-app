@@ -25,7 +25,7 @@ public class CrossArbitrageOpportunity: NSManagedObject {
         content.title = StringKeys.arbitrageFound
         content.body = "Pair \(pair)\nBuy at: \(buyExchange), sell at: \(sellExchange)"
         content.sound = UNNotificationSound.default
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request)
     }
@@ -48,9 +48,9 @@ public class CrossArbitrageOpportunity: NSManagedObject {
                 safeHistory[1] = safeHistory[0]
                 if highestBid.exchange != lowestAsk.exchange && (Double(highestBid.bidPrice) ?? kCFNumberPositiveInfinity as! Double) < Double(lowestAsk.askPrice) ?? 0 {
                     safeHistory[0] = true
-                    if safeHistory[0] == true && safeHistory[1] == false {
+                    if safeHistory[0] && !safeHistory[1] {
                         sendCrossOpportunityNotificaiton(pair: lowestAsk.symbol, buyExchange: lowestAsk.exchange.capitalized, sellExchange: highestBid.exchange.capitalized)
-                        DatabaseManager.shared.saveHistoryData(lowestAsk: lowestAsk, highestBid: highestBid)
+                        DatabaseManager.shared.saveCrossHistoryData(lowestAsk: lowestAsk, highestBid: highestBid)
                     }
                 } else {
                     safeHistory[0] = false

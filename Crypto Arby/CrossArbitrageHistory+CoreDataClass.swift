@@ -1,6 +1,6 @@
 //
 //  CrossArbitrageHistory+CoreDataClass.swift
-//
+//  
 //
 //  Created by Luka Stupar on 12.10.23..
 //

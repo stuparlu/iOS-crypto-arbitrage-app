@@ -14,7 +14,14 @@ struct HistoryView: View {
         NavigationView {
             VStack {
                 List(viewModel.history) { item in
-                    String(describing: item.self) == String(describing: CrossArbitrageHistory.self) ? AnyView(CrossArbitrageHistoryCellView(dataModel: item)):AnyView(CircularArbitrageHistoryCellView(exchangeName: item.maxExchange ?? ""))
+                    if String(describing: type(of: item.self)) == String(describing: CrossArbitrageHistory.self) {
+                        AnyView(CrossArbitrageHistoryCellView(dataModel: item as! CrossArbitrageHistory))
+                    } else if String(describing: type(of: item.self)) == String(describing: CircularArbitrageHistory.self) {
+                        AnyView(CircularArbitrageHistoryCellView(dataModel: item as! CircularArbitrageHistory))
+                    }
+                    
+                    
+//                    String(describing: item.self) == String(describing: CrossArbitrageHistory.self) ? AnyView(CrossArbitrageHistoryCellView(dataModel: item as! CrossArbitrageHistory)):AnyView(CircularArbitrageHistoryCellView(dataModel: item as! CircularArbitrageHistory))
                 }
                 .scrollContentBackground(.hidden)
                 .listStyle(PlainListStyle())

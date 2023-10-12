@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct CircularArbitrageHistoryCellView: View {
-    let exchangeName: String
+    let dataModel: CircularArbitrageHistory
     
     var body: some View {
-        Text(exchangeName.capitalized)
+        Text(dataModel.exchange?.capitalized ?? "")
     }
-}
-
-#Preview {
-    CircularArbitrageHistoryCellView(exchangeName: ExchangeNames.binance)
 }

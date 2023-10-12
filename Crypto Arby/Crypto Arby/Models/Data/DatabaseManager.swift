@@ -83,7 +83,19 @@ class DatabaseManager: ObservableObject {
         }
     }
     
-    func saveHistoryData(lowestAsk: BidAskData, highestBid: BidAskData) {
+    func saveCircularHistoryData(exchange: String, pairs: [String], profitPercentage: Double) {
+        let historyData = CircularArbitrageHistory(context: viewContext)
+        historyData.exchange = exchange
+        historyData.pairs = pairs
+        historyData.profitPercentage = profitPercentage
+        historyData.timestamp = Date.now
+        do {
+            try viewContext.save()
+        } catch {}
+        toggleChanges()
+    }
+    
+    func saveCrossHistoryData(lowestAsk: BidAskData, highestBid: BidAskData) {
         let historyData = CrossArbitrageHistory(context: viewContext)
         historyData.askPrice = Double(lowestAsk.askPrice) ?? 0
         historyData.bidPrice = Double(highestBid.bidPrice) ?? 0
@@ -97,14 +109,25 @@ class DatabaseManager: ObservableObject {
         toggleChanges()
     }
     
-    func getAllHistory() -> [CrossArbitrageHistory] {
+    func getAllCrossHistory() -> [CrossArbitrageHistory] {
         do {
             let historyRequest : NSFetchRequest<CrossArbitrageHistory> = NSFetchRequest(entityName: "CrossArbitrageHistory")
             var historyElements : [CrossArbitrageHistory] = []
             historyElements = try viewContext.fetch(historyRequest)
             return historyElements
         } catch {
-            fatalError("Failed to fetch opportunities: \(error)")
+            fatalError("Failed to fetch cross opportunities: \(error)")
+        }
+    }
+    
+    func getAllCircularHistory() -> [CircularArbitrageHistory] {
+        do {
+            let historyRequest : NSFetchRequest<CircularArbitrageHistory> = NSFetchRequest(entityName: "CircularArbitrageHistory")
+            var historyElements : [CircularArbitrageHistory] = []
+            historyElements = try viewContext.fetch(historyRequest)
+            return historyElements
+        } catch {
+            fatalError("Failed to fetch circular opportunities: \(error)")
         }
     }
 }

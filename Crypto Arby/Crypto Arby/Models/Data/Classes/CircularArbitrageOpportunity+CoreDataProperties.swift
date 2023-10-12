@@ -29,6 +29,6 @@ extension CircularArbitrageOpportunity : Identifiable {
 
 extension CircularArbitrageOpportunity : Tradable {
     func addPrices(price: BidAskData) {
-        exchangePrices.append(price)
+        pairPrices.append(price)
     }
 }
