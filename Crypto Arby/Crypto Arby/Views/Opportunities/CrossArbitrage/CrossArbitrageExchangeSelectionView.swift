@@ -39,8 +39,9 @@ struct CrossArbitrageExchangeSelectionView: View {
         .background(ThemeManager.backgroundColor)
         Spacer()
         Button(action: {
-            viewModel.saveButtonPressed()
-            navModel.shouldDismissToRoot.toggle()
+            if viewModel.saveButtonPressed() {
+                navModel.shouldDismissToRoot.toggle()
+            }
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 20)

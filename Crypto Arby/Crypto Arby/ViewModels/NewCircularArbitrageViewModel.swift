@@ -85,11 +85,13 @@ class NewCircularArbitrageViewModel: ObservableObject {
             return true
     }
     
-    func saveOpportunity() {
+    func saveOpportunity() -> Bool {
         if validateOpportunity() {
             DatabaseManager.shared.saveNewCircularOpportunity(exchangeName: selectedExchange, pairs: selectedPairs.map({$0.searchableName}))
+            return true
         } else {
             saveAlertShown.toggle()
+            return false
         }
     }
 }

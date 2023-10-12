@@ -34,8 +34,9 @@ struct CircularArbitragePairSelectionView: View {
             .listStyle(PlainListStyle())
             Spacer()
             Button {
-                viewModel.saveOpportunity()
-                navModel.shouldDismissToRoot.toggle()
+                if viewModel.saveOpportunity() {
+                    navModel.shouldDismissToRoot.toggle()
+                }
             } label: {
                 Text(StringKeys.saveOpportunity)
                     .frame(width: 150, height: 40)

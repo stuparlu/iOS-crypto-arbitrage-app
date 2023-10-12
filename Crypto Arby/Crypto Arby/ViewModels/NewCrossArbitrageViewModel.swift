@@ -38,11 +38,13 @@ class NewCrossArbitrageViewModel: ObservableObject {
         return selectedExchanges.contains(exchangeName)
     }
     
-    func saveButtonPressed() {
+    func saveButtonPressed() -> Bool{
         if selectedPair == StringKeys.empty_string || selectedExchanges.count <= 1 {
             showAlert.toggle()
+            return false
         } else {
             saveNewOpportunity()
+            return true
         }
     }
     
