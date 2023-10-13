@@ -66,6 +66,7 @@
 		A1D20A3E2AD167FE0073DDC9 /* CircularArbitrageOpportunity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D20A3B2AD167FE0073DDC9 /* CircularArbitrageOpportunity+CoreDataProperties.swift */; };
 		A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */; };
 		A1E2D6D72AC82B66001DA32C /* LoginFormViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2D6D62AC82B66001DA32C /* LoginFormViewViewModel.swift */; };
+		A1E329962AD97512009E218C /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E329952AD97512009E218C /* DefaultConfiguration.swift */; };
 		A1E8EDB02A7BFF6700996910 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDAE2A7BFF6700996910 /* DataModels.xcdatamodeld */; };
 		A1E8EDBB2A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDB92A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift */; };
 		A1E8EDDF2A7C05F300996910 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDDE2A7C05F300996910 /* Persistence.swift */; };
@@ -142,6 +143,7 @@
 		A1D20A3C2AD167FE0073DDC9 /* CircularArbitrageOpportunity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CircularArbitrageOpportunity+CoreDataClass.swift"; path = "/Users/luka/Documents/Development/iOS/Projects/iOS-crypto-arbitrage-app/Crypto Arby/Crypto Arby/Models/Data/Classes/CircularArbitrageOpportunity+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesNavigationModel.swift; sourceTree = "<group>"; };
 		A1E2D6D62AC82B66001DA32C /* LoginFormViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormViewViewModel.swift; sourceTree = "<group>"; };
+		A1E329952AD97512009E218C /* DefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
 		A1E8EDAF2A7BFF6700996910 /* DataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModels.xcdatamodel; sourceTree = "<group>"; };
 		A1E8EDB92A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossArbitrageOpportunity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1E8EDDE2A7C05F300996910 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				A134ABA52A67ED4000196092 /* Cryptocurrencies.swift */,
 				A1FF5D672A695E350002E981 /* Exchanges.swift */,
 				A1FF5D692A69726D0002E981 /* ErrorStrings.swift */,
+				A1E329952AD97512009E218C /* DefaultConfiguration.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				A1C8B4532ACC483F00D6A6E5 /* AccountCardView.swift in Sources */,
 				A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */,
 				A18938082AB1BBA300DD321F /* CrossOpportunitiesCellView.swift in Sources */,
+				A1E329962AD97512009E218C /* DefaultConfiguration.swift in Sources */,
 				A128F2E92ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift in Sources */,
 				A1FFF2B12AC44926007CAF91 /* DatabaseManager.swift in Sources */,
 				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,

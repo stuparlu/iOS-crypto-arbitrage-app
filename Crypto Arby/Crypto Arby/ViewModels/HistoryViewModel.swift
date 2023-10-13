@@ -29,12 +29,9 @@ class HistoryViewModel: ObservableObject {
             }
             return false
         })
-        print(history)
     }
     
     func getTimestampString(timestamp: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        return formatter.string(from: timestamp)
+        return DateHandler.dateToString(timestamp)
     }
 }

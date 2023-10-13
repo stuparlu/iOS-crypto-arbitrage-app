@@ -7,9 +7,10 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 final class ArbitrqageOperation: Operation {
-    
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     private let viewContext = PersistenceController.shared.container.viewContext
     
     func getCrossOpportunities() -> [CrossArbitrageOpportunity] {
