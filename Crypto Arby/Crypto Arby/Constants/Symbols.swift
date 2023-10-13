@@ -20,4 +20,5 @@ struct Symbols {
     static let play = "play.fill"
     static let symbol_circlepath = "dollarsign.arrow.circlepath"
     static let symbol_trianglepath = "point.3.connected.trianglepath.dotted"
+    static let arrowRight = "arrow.right"
 }

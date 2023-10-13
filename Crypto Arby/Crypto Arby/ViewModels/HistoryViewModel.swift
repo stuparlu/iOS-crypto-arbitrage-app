@@ -25,7 +25,7 @@ class HistoryViewModel: ObservableObject {
         let circularHistory = DatabaseManager.shared.getAllCircularHistory()
         history = (crossHistory + circularHistory).sorted(by: {
             if let time0 = $0.timestamp, let time1 = $1.timestamp {
-                return time0 < time1
+                return time0 > time1
             }
             return false
         })

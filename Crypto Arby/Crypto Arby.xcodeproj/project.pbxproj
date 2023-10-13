@@ -52,6 +52,7 @@
 		A189380C2AB1F00900DD321F /* ArbitrageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189380B2AB1F00900DD321F /* ArbitrageOperation.swift */; };
 		A19CDBDA2AD58D7B00C5FCE5 /* CircularArbitrageHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19CDBD92AD58D7B00C5FCE5 /* CircularArbitrageHistoryCellView.swift */; };
 		A19CDBDE2AD5931D00C5FCE5 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19CDBDD2AD5931D00C5FCE5 /* ThemeManager.swift */; };
+		A1A7EBC22AD965DC00B0B7B1 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A7EBC12AD965DC00B0B7B1 /* DateHandler.swift */; };
 		A1AC95722A726C070099FFA6 /* NewCrossArbitrageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AC95712A726C070099FFA6 /* NewCrossArbitrageViewModel.swift */; };
 		A1BD7B712A65505E002B3F48 /* Crypto_ArbyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7B702A65505E002B3F48 /* Crypto_ArbyApp.swift */; };
 		A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BD7B722A65505E002B3F48 /* MainView.swift */; };
@@ -126,6 +127,7 @@
 		A189380B2AB1F00900DD321F /* ArbitrageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArbitrageOperation.swift; sourceTree = "<group>"; };
 		A19CDBD92AD58D7B00C5FCE5 /* CircularArbitrageHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitrageHistoryCellView.swift; sourceTree = "<group>"; };
 		A19CDBDD2AD5931D00C5FCE5 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		A1A7EBC12AD965DC00B0B7B1 /* DateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
 		A1AC95712A726C070099FFA6 /* NewCrossArbitrageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCrossArbitrageViewModel.swift; sourceTree = "<group>"; };
 		A1BD7B6D2A65505E002B3F48 /* Crypto Arby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Arby.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BD7B702A65505E002B3F48 /* Crypto_ArbyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto_ArbyApp.swift; sourceTree = "<group>"; };
@@ -340,6 +342,22 @@
 			path = Operations;
 			sourceTree = "<group>";
 		};
+		A1A7EBBF2AD965C700B0B7B1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A1A7EBC02AD965CE00B0B7B1 /* Utils */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A1A7EBC02AD965CE00B0B7B1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A1A7EBC12AD965DC00B0B7B1 /* DateHandler.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		A1BD7B642A65505E002B3F48 = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +379,7 @@
 		A1BD7B6F2A65505E002B3F48 /* Crypto Arby */ = {
 			isa = PBXGroup;
 			children = (
+				A1A7EBBF2AD965C700B0B7B1 /* Common */,
 				A1FFF2B22AC57D68007CAF91 /* GoogleService-Info.plist */,
 				A107A16D2AB9CD2E00640F5B /* Crypto Arby.entitlements */,
 				A18938092AB1D9A000DD321F /* Crypto-Arby-Info.plist */,
@@ -630,6 +649,7 @@
 				A16667432AC1C1510024E760 /* HistoryView.swift in Sources */,
 				A1E8EDDF2A7C05F300996910 /* Persistence.swift in Sources */,
 				A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */,
+				A1A7EBC22AD965DC00B0B7B1 /* DateHandler.swift in Sources */,
 				A1261A302AC6F86600B36750 /* KeychainManager.swift in Sources */,
 				A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */,
 				A1BD7B712A65505E002B3F48 /* Crypto_ArbyApp.swift in Sources */,

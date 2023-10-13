@@ -26,7 +26,6 @@ struct CircularOpportunitiesCellView: View {
                         .frame(maxWidth: .infinity, alignment:.leading)
                         .font(.subheadline)
                         .foregroundStyle(Color.gray)
-
                 }
             }
             Spacer(minLength: 30)

@@ -52,7 +52,13 @@ struct StringKeys {
     static let clearLast = "Clear last"
     static let circularSaveFailedTitle = "Cannot Save opportunity"
     static let circularSaveFailedMessage = "The opportunity configuration is invalid. It has to contain at least 3 pairs. First and last pair have to have same quote symbol. Each non-last pair has to end with the beginning of the previous one."
-
+    static let exchanges = "Exchanges:"
+    static let price = "Price:"
+    static let path = "Path:"
+    static let profit = "Profit:"
+    static let time = "Time:"
+    static let signPercent = "%"
+    
     struct errors {
         static let generic_error = "Error"
     }
