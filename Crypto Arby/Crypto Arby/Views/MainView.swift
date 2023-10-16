@@ -9,38 +9,51 @@ import SwiftUI
 import BackgroundTasks
 
 struct MainView: View {
+    @StateObject var viewModel = MainViewModel()
+    
     var body: some View {
         VStack {
-            TabView {
+            TabView(selection: viewModel.handler){
                 PricesView()
                     .tabItem {
                         Image(systemName: Symbols.price_history_icon)
                         Text(StringKeys.prices)
                     }
+                    .tag(0)
                 OpportunitiesView()
                     .tabItem {
                         Image(systemName:Symbols.opportunities_icon)
                         Text(StringKeys.opportunities)
                     }
+                    .tag(1)
                 
                 HistoryView()
                     .tabItem {
                         Image(systemName: Symbols.opportunity_history_icon)
                         Text(StringKeys.history)
+
                     }
+                    .badge(viewModel.unreadNotifications)
+                    .tag(2)
                 
                 AccountView()
                     .tabItem {
                         Image(systemName: Symbols.user_account_icon)
                         Text(StringKeys.account)
                     }
+                    .tag(3)
+            }
+        }
+        .onChange(of: viewModel.selection) { newTab in
+            if newTab == 2 {
+                viewModel.historyViewed()
             }
         }
         .onAppear() {
             //            This should be tested on a device when available
             //            self.registerBGTaskScheduler()
             //            self.scheduleAppRefresh()
-//            appDelegate.operationQueue.addOperation(ArbitrqageOperation())
+            //            appDelegate.operationQueue.addOperation(ArbitrqageOperation())
         }
     }
     

@@ -9,4 +9,6 @@ import Foundation
 
 struct DefaultConfiguration {
     static let scanInterval = 30.0
+    static let monitoredCurrency = "BTCUSDT"
+    static let unreadNotifications = 0
 }

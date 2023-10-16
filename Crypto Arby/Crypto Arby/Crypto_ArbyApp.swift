@@ -21,6 +21,8 @@ struct Crypto_ArbyApp: App {
         
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.backgroundColor = UIColor(ThemeManager.backgroundColor)
+        tabBarAppearance.stackedLayoutAppearance.normal.badgeBackgroundColor = UIColor(ThemeManager.accentColor)
+
         UITabBar.appearance().standardAppearance = tabBarAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         

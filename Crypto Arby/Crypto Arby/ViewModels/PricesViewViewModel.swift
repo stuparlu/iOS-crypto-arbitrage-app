@@ -10,9 +10,7 @@ import SwiftUI
 import Combine
 
 class PricesViewViewModel: ObservableObject, Tradable {
-    @Published var selectedMenuOption: Int = 0
-    @Published var selectedMenuOptionText = "BTCUSDT"
-    @Published var selectedOption: String?
+    @Published var selectedMenuOptionText = SettingsManager.shared.getMonitoredCurrency()
     @Published var exchangePrices: [BidAskData] = []
     @Published var isNavigationViewHidden = true
     @Published var searchText = StringKeys.empty_string
@@ -38,6 +36,7 @@ class PricesViewViewModel: ObservableObject, Tradable {
         stopTimer()
         exchangePrices = []
         selectedMenuOptionText = item
+        SettingsManager.shared.setMonitoredCurrency(selectedMenuOptionText)
         startTimer()
     }
     

@@ -10,9 +10,11 @@ import SwiftUI
 struct AccountCardView: View {
     @StateObject private var loginManager = LoginManager.shared
     var body: some View {
-        VStack {
-            Text(loginManager.currentUser?.displayName ?? "")
-            Text(loginManager.currentUser?.email ?? "")
+        HStack{
+            VStack {
+                Text(loginManager.currentUser?.email ?? "")
+            }
+            Spacer()
             Button {
                 loginManager.logout()
             } label: {

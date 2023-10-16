@@ -9,8 +9,4 @@ import Foundation
 
 class KeychainManager {
     static let shared = KeychainManager()
-    
-    func getCurrentUser() -> String {
-        return "test"
-    }
 }

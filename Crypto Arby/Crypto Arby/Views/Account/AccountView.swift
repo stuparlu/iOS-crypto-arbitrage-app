@@ -11,7 +11,9 @@ struct AccountView: View {
     @StateObject var viewModel = AccountViewViewModel()
     @StateObject var loginManager = LoginManager.shared
     var body: some View {
-        loginManager.isLoggedIn ? AnyView(AccountCardView()) : AnyView(LoginButton())
+        Form {
+            loginManager.isLoggedIn ? AnyView(AccountCardView()) : AnyView(LoginButton())
+        }
     }
 }
 

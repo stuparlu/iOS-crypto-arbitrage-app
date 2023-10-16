@@ -11,6 +11,4 @@ import SwiftUI
 class ThemeManager {
     static let backgroundColor = Color("BackgroundColor")
     static let accentColor = Color("AccentColor")
-    
-    
 }

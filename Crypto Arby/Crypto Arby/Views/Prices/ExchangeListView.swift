@@ -18,15 +18,16 @@ struct ExchangeListView: View {
         }
         .padding(.horizontal, 20)
         .padding(.top, 10)
-        
-        List(viewModel.exchangePrices) { item in
-            PricesCellView(exchangeName: item.exchange, bidPrice: item.bidPrice, askPrice: item.askPrice)
-                .listRowSeparator(.hidden)
+        ZStack {
+            viewModel.exchangePrices.isEmpty ? AnyView(LoadingIndicatorView()) : AnyView(EmptyView())
+            List(viewModel.exchangePrices) { item in
+                PricesCellView(exchangeName: item.exchange, bidPrice: item.bidPrice, askPrice: item.askPrice)
+                    .listRowSeparator(.hidden)
+            }
+            .environment(\.defaultMinListRowHeight, 10)
+            .scrollContentBackground(.hidden)
+            .listStyle(PlainListStyle())
         }
-        .environment(\.defaultMinListRowHeight, 10)
-        .scrollContentBackground(.hidden)
-        .listStyle(PlainListStyle())
-        Spacer()
     }
 }
 

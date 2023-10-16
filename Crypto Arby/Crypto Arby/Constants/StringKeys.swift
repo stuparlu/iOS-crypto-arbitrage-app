@@ -65,4 +65,10 @@ struct StringKeys {
     struct alerts {
         static let select_exchanges = "You need to select a pair and at least two exchanges."
     }
+    
+    struct configuration {
+        static let monitoredCurrency = "monitoredCurrency"
+        static let newHistoryNotification = "newHistoryNotification"
+        static let unreadNotifications = "unreadNotifications"
+    }
 }

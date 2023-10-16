@@ -93,6 +93,7 @@ class DatabaseManager: ObservableObject {
             try viewContext.save()
         } catch {}
         toggleChanges()
+        NotificationCenter.default.post(name: NSNotification.Name(StringKeys.configuration.newHistoryNotification), object: nil)
     }
     
     func saveCrossHistoryData(lowestAsk: BidAskData, highestBid: BidAskData) {
@@ -107,6 +108,7 @@ class DatabaseManager: ObservableObject {
             try viewContext.save()
         } catch {}
         toggleChanges()
+        NotificationCenter.default.post(name: NSNotification.Name(StringKeys.configuration.newHistoryNotification), object: nil)
     }
     
     func getAllCrossHistory() -> [CrossArbitrageHistory] {
