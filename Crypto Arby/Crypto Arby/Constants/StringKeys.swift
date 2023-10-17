@@ -58,6 +58,11 @@ struct StringKeys {
     static let profit = "Profit:"
     static let time = "Time:"
     static let signPercent = "%"
+    static let apiKey = "API Key"
+    static let apiSecret = "API Secret"
+    static let manageExchange = "Manage Exchange"
+    static let manageExchanges = "Manage Exchanges"
+    static let saveConfiguration = "Save configuration"
     
     struct errors {
         static let generic_error = "Error"

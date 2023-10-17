@@ -43,3 +43,8 @@ struct ExchangeNames {
         }
     }
 }
+
+struct ExchangeConfiguration {
+    let apiKey: String
+    let apiSecret: String
+}

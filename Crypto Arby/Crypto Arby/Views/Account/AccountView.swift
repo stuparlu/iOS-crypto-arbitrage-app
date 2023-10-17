@@ -10,10 +10,21 @@ import SwiftUI
 struct AccountView: View {
     @StateObject var viewModel = AccountViewViewModel()
     @StateObject var loginManager = LoginManager.shared
+    @State private var showingManageExchanges = false
+
     var body: some View {
         Form {
             loginManager.isLoggedIn ? AnyView(AccountCardView()) : AnyView(LoginButton())
+            Button {
+                showingManageExchanges.toggle()
+            } label: {
+                Text(StringKeys.manageExchanges)
+            }
         }
+        .sheet(isPresented: $showingManageExchanges) {
+            ManageExchangesView()
+        }
+
     }
 }
 
