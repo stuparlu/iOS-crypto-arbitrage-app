@@ -23,6 +23,11 @@ struct ManageExchangesView: View {
                 }
             }
             .scrollContentBackground(.hidden)
+            Button {
+                viewModel.clearAllData()
+            } label: {
+                Text(StringKeys.clearAllKeys)
+            }
         }
         .popover(isPresented: $viewModel.showingPopover) {
             VStack {
@@ -37,6 +42,12 @@ struct ManageExchangesView: View {
                     } label: {
                         Text(StringKeys.saveConfiguration)
                     }
+                    Button {
+                        viewModel.deleteExchangeData()
+                    } label: {
+                        Text(StringKeys.clearConfiguration)
+                    }
+                    .disabled(viewModel.exchangeDisabled)
                 }
                 .background(ThemeManager.backgroundColor)
                 .scrollContentBackground(.hidden)

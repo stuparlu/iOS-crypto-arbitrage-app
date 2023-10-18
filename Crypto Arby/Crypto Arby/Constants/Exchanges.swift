@@ -44,7 +44,7 @@ struct ExchangeNames {
     }
 }
 
-struct ExchangeConfiguration {
+struct ExchangeConfiguration : Codable {
     let apiKey: String
     let apiSecret: String
 }

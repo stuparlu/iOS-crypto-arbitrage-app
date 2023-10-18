@@ -12,29 +12,51 @@ class KeychainManager {
     static let shared = KeychainManager()
     
     func save(_ configuration: ExchangeConfiguration, for exchange: String) {
-        let apiKey = configuration.apiKey
-        let apiSecret = configuration.apiSecret
-        let exchangeData = "\(apiKey)!\(apiSecret)".data(using: String.Encoding.utf8)!
-        let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
-                                    kSecAttrAccount as String: exchange,
-                                    kSecValueData as String: exchangeData]
-        let status = SecItemAdd(query as CFDictionary, nil)
-        guard status == errSecSuccess else {
-            return print("save error")
-        }
+        do {
+            let encoder = JSONEncoder()
+            let encodedCredentials = try encoder.encode(configuration)
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrAccount as String: exchange,
+                kSecValueData as String: encodedCredentials
+            ]
+            SecItemDelete(query as CFDictionary)
+            let status = SecItemAdd(query as CFDictionary, nil)
+            print(status == errSecSuccess ? "Save success" : "Save failure")
+        } catch {}
     }
     
     func retriveConfiguration(for exchange: String) -> ExchangeConfiguration? {
-        let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
-                                    kSecAttrAccount as String: exchange,
-                                    kSecMatchLimit as String: kSecMatchLimitOne,
-                                    kSecReturnData as String: kCFBooleanTrue!]
-        var retrivedData: AnyObject? = nil
-        let _ = SecItemCopyMatching(query as CFDictionary, &retrivedData)
-        guard let data = retrivedData as? Data else {return nil}
-        guard let apiData = String(data: data, encoding: String.Encoding.utf8)?.split(separator: "!") else {return nil}
-        let apiKey = String(apiData[0])
-        let apiSecret = String(apiData[1])
-        return ExchangeConfiguration(apiKey: apiKey, apiSecret: apiSecret)
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: exchange,
+            kSecReturnData as String: kCFBooleanTrue!,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        
+        var dataTypeRef: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
+        
+        if status == errSecSuccess, let retrievedData = dataTypeRef as? Data {
+            do {
+                let decoder = JSONDecoder()
+                let credentials = try decoder.decode(ExchangeConfiguration.self, from: retrievedData)
+                return credentials
+            } catch {
+                print("Error: \(error.localizedDescription)")
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    func deleteConfiguration(for exchange: String) {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: exchange
+        ]
+        let status = SecItemDelete(query as CFDictionary)
+        print(status == errSecSuccess ? "Delete success": "Delete failed")
     }
 }

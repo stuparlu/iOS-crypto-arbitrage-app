@@ -63,6 +63,8 @@ struct StringKeys {
     static let manageExchange = "Manage Exchange"
     static let manageExchanges = "Manage Exchanges"
     static let saveConfiguration = "Save configuration"
+    static let clearConfiguration = "Delete"
+    static let clearAllKeys = "Clear all keys"
     
     struct errors {
         static let generic_error = "Error"
