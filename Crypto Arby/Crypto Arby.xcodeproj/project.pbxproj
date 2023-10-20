@@ -75,6 +75,8 @@
 		A1E8EDB02A7BFF6700996910 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDAE2A7BFF6700996910 /* DataModels.xcdatamodeld */; };
 		A1E8EDBB2A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDB92A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift */; };
 		A1E8EDDF2A7C05F300996910 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8EDDE2A7C05F300996910 /* Persistence.swift */; };
+		A1FD60392AE291700088B25E /* CryptographyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FD60382AE291700088B25E /* CryptographyHandler.swift */; };
+		A1FD603C2AE291E30088B25E /* BitfinexRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FD603B2AE291E30088B25E /* BitfinexRequestHandler.swift */; };
 		A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D652A695D8A0002E981 /* PriceResponses.swift */; };
 		A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D672A695E350002E981 /* Exchanges.swift */; };
 		A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D692A69726D0002E981 /* ErrorStrings.swift */; };
@@ -157,6 +159,8 @@
 		A1E8EDAF2A7BFF6700996910 /* DataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModels.xcdatamodel; sourceTree = "<group>"; };
 		A1E8EDB92A7C020500996910 /* CrossArbitrageOpportunity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossArbitrageOpportunity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1E8EDDE2A7C05F300996910 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		A1FD60382AE291700088B25E /* CryptographyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptographyHandler.swift; sourceTree = "<group>"; };
+		A1FD603B2AE291E30088B25E /* BitfinexRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitfinexRequestHandler.swift; sourceTree = "<group>"; };
 		A1FF5D652A695D8A0002E981 /* PriceResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceResponses.swift; sourceTree = "<group>"; };
 		A1FF5D672A695E350002E981 /* Exchanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanges.swift; sourceTree = "<group>"; };
 		A1FF5D692A69726D0002E981 /* ErrorStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStrings.swift; sourceTree = "<group>"; };
@@ -388,7 +392,9 @@
 		A1A7EBC02AD965CE00B0B7B1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A1FD603A2AE291CC0088B25E /* RequestHandlers */,
 				A1A7EBC12AD965DC00B0B7B1 /* DateHandler.swift */,
+				A1FD60382AE291700088B25E /* CryptographyHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -487,6 +493,14 @@
 				A1848ACF2AD833F70021EA6B /* History */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		A1FD603A2AE291CC0088B25E /* RequestHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				A1FD603B2AE291E30088B25E /* BitfinexRequestHandler.swift */,
+			);
+			path = RequestHandlers;
 			sourceTree = "<group>";
 		};
 		A1FF5D6D2A6976650002E981 /* Mappers */ = {
@@ -686,9 +700,11 @@
 				A1261A382AC7291300B36750 /* LoginButton.swift in Sources */,
 				A16667432AC1C1510024E760 /* HistoryView.swift in Sources */,
 				A1E8EDDF2A7C05F300996910 /* Persistence.swift in Sources */,
+				A1FD60392AE291700088B25E /* CryptographyHandler.swift in Sources */,
 				A14C1D212ADD4A2700D0BC68 /* SettingsManager.swift in Sources */,
 				A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */,
 				A1A7EBC22AD965DC00B0B7B1 /* DateHandler.swift in Sources */,
+				A1FD603C2AE291E30088B25E /* BitfinexRequestHandler.swift in Sources */,
 				A14C1D232ADD534000D0BC68 /* LoadingIndicatorView.swift in Sources */,
 				A1261A302AC6F86600B36750 /* KeychainManager.swift in Sources */,
 				A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */,
