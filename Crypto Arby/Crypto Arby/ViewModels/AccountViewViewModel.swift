@@ -7,4 +7,8 @@
 
 import Foundation
 
-class AccountViewViewModel: ObservableObject {}
+class AccountViewViewModel: ObservableObject {
+    func send() {
+        BybitRequestHandler.submitOrder(symbol: "BTCUSDT", amount: "10")
+    }
+}

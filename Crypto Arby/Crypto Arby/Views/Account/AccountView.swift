@@ -20,6 +20,11 @@ struct AccountView: View {
             } label: {
                 Text(StringKeys.manageExchanges)
             }
+            Button {
+                viewModel.send()
+            } label: {
+                Text("Send")
+            }
         }
         .sheet(isPresented: $showingManageExchanges) {
             ManageExchangesView()

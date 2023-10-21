@@ -37,7 +37,7 @@ struct BitfinexRequestHandler {
         let json = String(data: jsonData, encoding: String.Encoding.utf8)
         
         let signaturePayload = "\(submitOrderPath)\(nonce)\(json!)"
-        let signature = CryptographyHandler.hmac(key: credentials.apiSecret, data: signaturePayload)
+        let signature = CryptographyHandler.hmac384(key: credentials.apiSecret, data: signaturePayload)
         
         let url = URL(string: "\(endpoint)\(apiPath)")!
         var request = URLRequest(url: url)

@@ -52,6 +52,8 @@
 		A1848AD62AD834C60021EA6B /* CrossArbitrageHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1848AD42AD834C60021EA6B /* CrossArbitrageHistory+CoreDataProperties.swift */; };
 		A1848AD72AD834C60021EA6B /* CrossArbitrageHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1848AD22AD834C60021EA6B /* CrossArbitrageHistory+CoreDataClass.swift */; };
 		A1848AD82AD834C60021EA6B /* CircularArbitrageHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1848AD12AD834C50021EA6B /* CircularArbitrageHistory+CoreDataProperties.swift */; };
+		A1878D1A2AE3EAE5005E62F0 /* BinanceRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1878D192AE3EAE5005E62F0 /* BinanceRequestHandler.swift */; };
+		A1878D1C2AE3EC97005E62F0 /* BybitRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1878D1B2AE3EC97005E62F0 /* BybitRequestHandler.swift */; };
 		A18938062AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18938042AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift */; };
 		A18938082AB1BBA300DD321F /* CrossOpportunitiesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18938072AB1BBA300DD321F /* CrossOpportunitiesCellView.swift */; };
 		A189380C2AB1F00900DD321F /* ArbitrageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A189380B2AB1F00900DD321F /* ArbitrageOperation.swift */; };
@@ -134,6 +136,8 @@
 		A1848AD22AD834C60021EA6B /* CrossArbitrageHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CrossArbitrageHistory+CoreDataClass.swift"; path = "../../../../../CrossArbitrageHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1848AD32AD834C60021EA6B /* CircularArbitrageHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CircularArbitrageHistory+CoreDataClass.swift"; path = "../../../../../CircularArbitrageHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1848AD42AD834C60021EA6B /* CrossArbitrageHistory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CrossArbitrageHistory+CoreDataProperties.swift"; path = "../../../../../CrossArbitrageHistory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A1878D192AE3EAE5005E62F0 /* BinanceRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceRequestHandler.swift; sourceTree = "<group>"; };
+		A1878D1B2AE3EC97005E62F0 /* BybitRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BybitRequestHandler.swift; sourceTree = "<group>"; };
 		A18938042AB1B12B00DD321F /* CrossArbitrageOpportunity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CrossArbitrageOpportunity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A18938072AB1BBA300DD321F /* CrossOpportunitiesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossOpportunitiesCellView.swift; sourceTree = "<group>"; };
 		A18938092AB1D9A000DD321F /* Crypto-Arby-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Crypto-Arby-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -499,6 +503,8 @@
 			isa = PBXGroup;
 			children = (
 				A1FD603B2AE291E30088B25E /* BitfinexRequestHandler.swift */,
+				A1878D192AE3EAE5005E62F0 /* BinanceRequestHandler.swift */,
+				A1878D1B2AE3EC97005E62F0 /* BybitRequestHandler.swift */,
 			);
 			path = RequestHandlers;
 			sourceTree = "<group>";
@@ -664,6 +670,7 @@
 				A128F2E52ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift in Sources */,
 				A121273E2A6E9CEC008918A2 /* BitfinexPriceResponse.swift in Sources */,
 				A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */,
+				A1878D1A2AE3EAE5005E62F0 /* BinanceRequestHandler.swift in Sources */,
 				A1C8B4532ACC483F00D6A6E5 /* AccountCardView.swift in Sources */,
 				A148E4692ADEB769002DFCA4 /* ManageExchangesViewModel.swift in Sources */,
 				A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */,
@@ -705,6 +712,7 @@
 				A1FF5D662A695D8A0002E981 /* PriceResponses.swift in Sources */,
 				A1A7EBC22AD965DC00B0B7B1 /* DateHandler.swift in Sources */,
 				A1FD603C2AE291E30088B25E /* BitfinexRequestHandler.swift in Sources */,
+				A1878D1C2AE3EC97005E62F0 /* BybitRequestHandler.swift in Sources */,
 				A14C1D232ADD534000D0BC68 /* LoadingIndicatorView.swift in Sources */,
 				A1261A302AC6F86600B36750 /* KeychainManager.swift in Sources */,
 				A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */,
