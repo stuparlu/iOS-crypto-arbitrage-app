@@ -19,21 +19,8 @@ struct BybitRequestHandler {
     static let endpoint = "https://api-testnet.bybit.com/"
     static let submitOrderPath = "/v5/order/create"
     
-    static func getCurrentUTCTimestampInMilliseconds() -> String {
-        let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        let currentDateString = dateFormatter.string(from: currentDate)
-        if let utcDate = dateFormatter.date(from: currentDateString) {
-            return String(Int64(utcDate.timeIntervalSince1970 * 1000))
-        } else {
-            return "0"
-        }
-    }
-    
     static func submitOrder(symbol: String, amount: String) {
-        let timestamp = getCurrentUTCTimestampInMilliseconds()
+        let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
         let credentials = KeychainManager.shared.retriveConfiguration(for: ExchangeNames.bybit)
         guard let credentials = credentials else {
             return

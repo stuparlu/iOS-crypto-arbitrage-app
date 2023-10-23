@@ -30,4 +30,17 @@ struct CryptographyHandler {
         let hmacData = Data(bytes: result, count: result.count)
         return hmacData.map { String(format: "%02hhx", $0) }.joined()
     }
+    
+    static func getCurrentUTCTimestampInMilliseconds() -> String {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        let currentDateString = dateFormatter.string(from: currentDate)
+        if let utcDate = dateFormatter.date(from: currentDateString) {
+            return String(Int64(utcDate.timeIntervalSince1970 * 1000))
+        } else {
+            return "0"
+        }
+    }
 }
