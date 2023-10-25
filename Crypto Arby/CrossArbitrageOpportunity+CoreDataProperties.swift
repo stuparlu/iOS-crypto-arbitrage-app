@@ -53,6 +53,8 @@ extension CrossArbitrageOpportunity {
                     if safeHistory[0] && !safeHistory[1] {
                         sendCrossOpportunityNotificaiton(pair: lowestAsk.symbol, buyExchange: lowestAsk.exchange.capitalized, sellExchange: highestBid.exchange.capitalized)
                         DatabaseManager.shared.saveCrossHistoryData(lowestAsk: lowestAsk, highestBid: highestBid)
+                        // If enabled execution
+                        CrossArbitrageExcutor().executeTrades(bid: highestBid, ask: lowestAsk)
                     }
                 } else {
                     safeHistory[0] = false

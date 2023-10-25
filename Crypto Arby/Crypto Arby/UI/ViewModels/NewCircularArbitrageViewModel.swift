@@ -14,6 +14,9 @@ class NewCircularArbitrageViewModel: ObservableObject {
     @Published var selectedPairs: [CurrencyPair] = []
     @Published var nextPairs: [CurrencyPair] = []
     @Published var saveAlertShown = false
+    @Published var tradingEnabled: Bool = false
+    @Published var autotradeAvailable: Bool = false
+    
     var startPair: CurrencyPair? = nil
     let viewContext = PersistenceController.shared.container.viewContext
     let exchangeList = Exchanges.names.allNames
@@ -34,12 +37,14 @@ class NewCircularArbitrageViewModel: ObservableObject {
         selectedExchange = StringKeys.empty_string
         searchText = StringKeys.empty_string
         selectedPairs = []
+        autotradeAvailable = false
         recalculatePairs()
     }
     
     func selectExchange(name: String) {
         selectedExchange = name
         exchangeSelected.toggle()
+        autotradeAvailable = KeychainManager.shared.retriveConfiguration(for: selectedExchange) != nil
     }
     
     func recalculatePairs() {

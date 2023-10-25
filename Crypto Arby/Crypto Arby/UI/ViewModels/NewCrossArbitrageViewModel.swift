@@ -16,6 +16,8 @@ class NewCrossArbitrageViewModel: ObservableObject {
     @Published var selectedExchanges: [String] = []
     @Published var showAlert = false
     @Published var shouldDismissView: Bool = false
+    @Published var tradingEnabled: Bool = false
+    @Published var autotradeAvailable: Bool = false
     
     func selectPair(pairName: String) {
         selectedPair = Cryptocurrencies.findPair(by: pairName).searchableName
@@ -32,6 +34,13 @@ class NewCrossArbitrageViewModel: ObservableObject {
         } else {
             selectedExchanges.append(exchangeName)
         }
+        for exchange in selectedExchanges {
+            guard KeychainManager.shared.retriveConfiguration(for: exchange) != nil else {
+                autotradeAvailable = false
+                break
+            }
+        }
+        autotradeAvailable = true
     }
     
     func isExchangeEnabled(exchangeName:String) -> Bool {

@@ -65,6 +65,7 @@ struct StringKeys {
     static let saveConfiguration = "Save configuration"
     static let clearConfiguration = "Delete"
     static let clearAllKeys = "Clear all keys"
+    static let autoTradePrompt = "Automatic trade execution"
     
     struct errors {
         static let generic_error = "Error"

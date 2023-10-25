@@ -15,6 +15,8 @@ struct CrossArbitrageExchangeSelectionView: View {
         Spacer()
         Text("\(StringKeys.pair_selected)\(viewModel.selectedPair)")
         List {
+            Toggle(StringKeys.autoTradePrompt, isOn: $viewModel.tradingEnabled)
+                .disabled(!viewModel.autotradeAvailable)
             Text(StringKeys.select_exchanges)
             ForEach(Exchanges.names.allNames, id: \.self) { item in
                 Button(action: {
