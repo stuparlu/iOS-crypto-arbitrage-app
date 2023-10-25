@@ -21,7 +21,7 @@ struct BinanceRequestHandler {
     
     static func submitOrder(symbol: String, amount: String) {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
-        let credentials = KeychainManager.shared.retriveConfiguration(for: ExchangeNames.binance)
+        let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.binance)
         guard let credentials = credentials else {
             return
         }

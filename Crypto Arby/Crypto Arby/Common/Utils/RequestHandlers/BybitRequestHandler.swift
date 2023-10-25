@@ -21,7 +21,7 @@ struct BybitRequestHandler {
     
     static func submitOrder(symbol: String, amount: String) {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
-        let credentials = KeychainManager.shared.retriveConfiguration(for: ExchangeNames.bybit)
+        let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.bybit)
         guard let credentials = credentials else {
             return
         }

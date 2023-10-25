@@ -25,7 +25,7 @@ struct BitfinexRequestHandler {
     
     static func submitOrder(symbol: String, amount: String) {
         let nonce = getNonce()
-        let credentials = KeychainManager.shared.retriveConfiguration(for: ExchangeNames.bitfinex)
+        let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.bitfinex)
         guard let credentials = credentials else {
             return
         }

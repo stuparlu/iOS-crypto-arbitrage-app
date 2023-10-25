@@ -60,7 +60,7 @@ final class ArbitrqageOperation: Operation {
                 continue
             }
             for pair in pairs {
-                let ticker = ExchangeNames.getSearchableName(for: Cryptocurrencies.findPair(by: pair), at: exchange) 
+                let ticker = Exchanges.getSearchableName(for: Cryptocurrencies.findPair(by: pair), at: exchange) 
                 PricesModel.getPricesForTickerAtExchange(exchange: exchange, ticker: ticker, delegate: opportunity)
             }
         }
