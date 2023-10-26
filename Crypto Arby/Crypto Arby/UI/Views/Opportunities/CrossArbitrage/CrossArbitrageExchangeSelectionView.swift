@@ -17,6 +17,7 @@ struct CrossArbitrageExchangeSelectionView: View {
         List {
             Toggle(StringKeys.autoTradePrompt, isOn: $viewModel.tradingEnabled)
                 .disabled(!viewModel.autotradeAvailable)
+                .tint(ThemeManager.accentColor)
             Text(StringKeys.select_exchanges)
             ForEach(Exchanges.names.allNames, id: \.self) { item in
                 Button(action: {

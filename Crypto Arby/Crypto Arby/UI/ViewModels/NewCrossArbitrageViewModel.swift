@@ -58,6 +58,6 @@ class NewCrossArbitrageViewModel: ObservableObject {
     }
     
     func saveNewOpportunity() {
-        DatabaseManager.shared.saveNewCrossOpportunity(pairName: selectedPair, exchanges: selectedExchanges)
+        DatabaseManager.shared.saveNewCrossOpportunity(pairName: selectedPair, exchanges: selectedExchanges, tradingActive: tradingEnabled)
     }
 }

@@ -9,6 +9,5 @@ import Foundation
 
 class AccountViewViewModel: ObservableObject {
     func send() {
-        BinanceRequestHandler.submitOrder(symbol: "BTCUSDT", amount: "10")
     }
 }

@@ -65,7 +65,7 @@ struct MainView: View {
     
     func scheduleAppRefresh() {
         let request = BGAppRefreshTaskRequest(identifier: "com.lukastupar.Crypto-Arby.Refresh")
-        request.earliestBeginDate = Calendar.current.date(byAdding: .second, value: 30, to: Date())
+        request.earliestBeginDate = Calendar.current.date(byAdding: .second, value: Int(DefaultConfiguration.scanInterval), to: Date())
         do {
             try BGTaskScheduler.shared.submit(request)
         } catch {

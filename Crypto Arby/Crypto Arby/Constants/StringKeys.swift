@@ -31,6 +31,8 @@ struct StringKeys {
     static let coin_ticker = "coin_ticker"
     static let coin_name = "coin_name"
     static let ticker_placeholder = "[TICKER]"
+    static let main_placeholder = "[MAIN]"
+    static let quote_placeholder = "[QUOTE]"
     static let empty_string = ""
     static let ok = "OK"
     static let login = "Log in"

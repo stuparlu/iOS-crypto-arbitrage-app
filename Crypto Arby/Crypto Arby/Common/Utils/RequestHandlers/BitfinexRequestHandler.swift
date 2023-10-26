@@ -13,33 +13,35 @@ struct MarketRequestBody: Codable {
     var amount: String
 }
 
-struct BitfinexRequestHandler {
-    static let endpoint = "https://api.bitfinex.com/"
-    static let submitOrderPath = "/api/v2/auth/w/order/submit"
-    static let apiPath = "v2/auth/w/order/submit"
+struct BitfinexRequestHandler: RequestHandler {
+    static let exchangeParameters = Exchanges.parameters.bitfinex
     
     static func getNonce() -> String {
         let nonceString = String((Date().timeIntervalSince1970 * 1000000).rounded())
         return String(nonceString[..<nonceString.firstIndex(of: ".")!])
     }
     
-    static func submitOrder(symbol: String, amount: String) {
+    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) {
         let nonce = getNonce()
         let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.bitfinex)
         guard let credentials = credentials else {
             return
         }
-        let body = MarketRequestBody(type: "MARKET", symbol: symbol, amount:amount)
+        var tradeAmount = amount
+        if side == .sell {
+            tradeAmount = -tradeAmount
+        }
+        let body = MarketRequestBody(type: "EXCHANGE MARKET", symbol: symbol, amount:String(tradeAmount))
         
         let jsonEncoder = JSONEncoder()
         jsonEncoder.outputFormatting = .sortedKeys
         let jsonData = try! jsonEncoder.encode(body)
         let json = String(data: jsonData, encoding: String.Encoding.utf8)
         
-        let signaturePayload = "\(submitOrderPath)\(nonce)\(json!)"
+        let signaturePayload = "/api/\(exchangeParameters.submitOrderPath)\(nonce)\(json!)"
         let signature = CryptographyHandler.hmac384(key: credentials.apiSecret, data: signaturePayload)
         
-        let url = URL(string: "\(endpoint)\(apiPath)")!
+        let url = URL(string: "\(exchangeParameters.apiEndpoint)\(exchangeParameters.submitOrderPath)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData

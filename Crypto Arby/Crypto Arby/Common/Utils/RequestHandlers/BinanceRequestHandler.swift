@@ -15,27 +15,27 @@ struct BinanceMarketRequestBody: Codable {
     var timestamp: String
 }
 
-struct BinanceRequestHandler {
-    static let endpoint = "https://testnet.binance.vision"
-    static let submitOrderPath = "/api/v3/order"
+struct BinanceRequestHandler: RequestHandler {
+    static let exchangeParameters = Exchanges.parameters.binance
     
-    static func submitOrder(symbol: String, amount: String) {
+    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
         let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.binance)
         guard let credentials = credentials else {
             return
         }
-        let body = BinanceMarketRequestBody(symbol: symbol, side: "BUY", type: "MARKET", quantity: amount, timestamp: timestamp)
+        
+        let body = BinanceMarketRequestBody(
+            symbol: symbol, side: side == .buy ? "BUY" : "SELL", type: "MARKET", quantity: String(amount), timestamp: timestamp)
         var query = "symbol=\(body.symbol)&side=\(body.side)&type=\(body.type)&quantity=\(body.quantity)&timestamp=\(body.timestamp)"
         let signature = CryptographyHandler.hmac256(key: credentials.apiSecret, data: query)
         query += "&signature=\(signature)"
 
-        let url = URL(string: "\(endpoint)\(submitOrderPath)?\(query)")!
+        let url = URL(string: "\(exchangeParameters.apiEndpoint)\(exchangeParameters.submitOrderPath)?\(query)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue(credentials.apiKey, forHTTPHeaderField: "X-MBX-APIKEY")
 
-        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print(error)

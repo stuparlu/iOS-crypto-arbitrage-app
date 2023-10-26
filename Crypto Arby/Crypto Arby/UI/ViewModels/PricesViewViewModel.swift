@@ -17,6 +17,7 @@ class PricesViewViewModel: ObservableObject, Tradable {
     private var timer: AnyCancellable?
     
     init() {
+        PricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
         startTimer()
     }
     
@@ -34,6 +35,7 @@ class PricesViewViewModel: ObservableObject, Tradable {
     
     func menuItemChanged(item:String) {
         stopTimer()
+        PricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
         exchangePrices = []
         selectedMenuOptionText = item
         SettingsManager.shared.setMonitoredCurrency(selectedMenuOptionText)

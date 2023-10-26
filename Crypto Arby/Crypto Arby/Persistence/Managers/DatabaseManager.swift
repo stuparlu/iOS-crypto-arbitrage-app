@@ -17,11 +17,12 @@ class DatabaseManager: ObservableObject {
         changes.toggle()
     }
     
-    func saveNewCrossOpportunity(pairName: String, exchanges: [String]) {
+    func saveNewCrossOpportunity(pairName: String, exchanges: [String], tradingActive: Bool) {
         let newOpportunity = CrossArbitrageOpportunity(context: viewContext)
         newOpportunity.isActive = true
         newOpportunity.pairName = pairName
         newOpportunity.selectedExchanges = exchanges
+        newOpportunity.tradingActive = tradingActive
         newOpportunity.history = [false, false]
         do {
             try viewContext.save()
@@ -29,11 +30,12 @@ class DatabaseManager: ObservableObject {
         toggleChanges()
     }
     
-    func saveNewCircularOpportunity(exchangeName: String, pairs: [String]) {
+    func saveNewCircularOpportunity(exchangeName: String, pairs: [String], tradingActive: Bool) {
         let newOpportunity = CircularArbitrageOpportunity(context: viewContext)
         newOpportunity.isActive = true
         newOpportunity.exchangeName = exchangeName
         newOpportunity.selectedPairs = pairs
+        newOpportunity.tradingActive = tradingActive
         newOpportunity.history = [false, false]
         do {
             try viewContext.save()

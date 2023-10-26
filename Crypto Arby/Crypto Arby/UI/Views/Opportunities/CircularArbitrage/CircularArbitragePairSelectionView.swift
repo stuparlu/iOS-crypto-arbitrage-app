@@ -35,6 +35,7 @@ struct CircularArbitragePairSelectionView: View {
             Spacer()
             Toggle(StringKeys.autoTradePrompt, isOn: $viewModel.tradingEnabled)
                 .disabled(!viewModel.autotradeAvailable)
+                .tint(ThemeManager.accentColor)
             Button {
                 if viewModel.saveOpportunity() {
                     navModel.shouldDismissToRoot.toggle()

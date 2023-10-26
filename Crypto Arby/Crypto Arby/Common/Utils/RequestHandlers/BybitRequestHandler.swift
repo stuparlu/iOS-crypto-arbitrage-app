@@ -15,18 +15,16 @@ struct BybitMarketRequestBody: Codable {
     let qty: String
 }
 
-struct BybitRequestHandler {
-    static let endpoint = "https://api-testnet.bybit.com/"
-    static let submitOrderPath = "/v5/order/create"
+struct BybitRequestHandler: RequestHandler {
+    static let exchangeParameters = Exchanges.parameters.bybit
     
-    static func submitOrder(symbol: String, amount: String) {
+    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
         let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.bybit)
         guard let credentials = credentials else {
             return
         }
-        let body = BybitMarketRequestBody(category: "spot", symbol: symbol, side: "Buy", orderType: "Market", qty: amount)
-        
+        let body = BybitMarketRequestBody(category: "spot", symbol: symbol, side: side == .buy ? "Buy" : "Sell", orderType: "Market", qty: String(amount))
         let jsonEncoder = JSONEncoder()
         jsonEncoder.outputFormatting = .sortedKeys
         let jsonData = try! jsonEncoder.encode(body)
@@ -35,7 +33,7 @@ struct BybitRequestHandler {
         let signaturePayload = "\(timestamp)\(credentials.apiKey)\(json!)"
         let signature = CryptographyHandler.hmac256(key: credentials.apiSecret, data: signaturePayload)
         
-        let url = URL(string: "\(endpoint)\(submitOrderPath)")!
+        let url = URL(string: "\(exchangeParameters.apiEndpoint)\(exchangeParameters.submitOrderPath)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = jsonData
