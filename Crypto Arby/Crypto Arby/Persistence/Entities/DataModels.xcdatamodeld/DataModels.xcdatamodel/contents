@@ -10,6 +10,7 @@
         <attribute name="history" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Bool]"/>
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="selectedPairs" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="tradingActive" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <entity name="CrossArbitrageHistory" representedClassName="CrossArbitrageHistory" parentEntity="History" syncable="YES">
         <attribute name="askPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -23,6 +24,7 @@
         <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="pairName" optional="YES" attributeType="String"/>
         <attribute name="selectedExchanges" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="tradingActive" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <entity name="History" representedClassName="History" isAbstract="YES" syncable="YES">
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
