@@ -26,7 +26,23 @@
         <attribute name="selectedExchanges" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="tradingActive" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
+    <entity name="CrossArbitrageTradeHistory" representedClassName="CrossArbitrageTradeHistory" parentEntity="TradeHistory" syncable="YES">
+        <attribute name="askAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="askExchange" optional="YES" attributeType="String"/>
+        <attribute name="askOrderID" optional="YES" attributeType="String"/>
+        <attribute name="askPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="bidAmount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="bidExchange" optional="YES" attributeType="String"/>
+        <attribute name="bidOrderID" optional="YES" attributeType="String"/>
+        <attribute name="bidPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="symbol" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="History" representedClassName="History" isAbstract="YES" syncable="YES">
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="TradeHistory" representedClassName="TradeHistory" isAbstract="YES" syncable="YES">
+        <attribute name="message" attributeType="String"/>
+        <attribute name="success" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model>

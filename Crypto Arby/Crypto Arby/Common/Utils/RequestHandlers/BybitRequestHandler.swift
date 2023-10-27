@@ -15,14 +15,27 @@ struct BybitMarketRequestBody: Codable {
     let qty: String
 }
 
+struct BybitMarketResponseBody: Codable {
+    let result: BybitOrderId
+    let retCode: Int
+    let retExtInfo: [String: String]
+    let retMsg: String
+    let time: Int
+}
+
+struct BybitOrderId: Codable {
+    let orderId: String
+    let orderLinkId: Int
+}
+
 struct BybitRequestHandler: RequestHandler {
     static let exchangeParameters = Exchanges.parameters.bybit
     
-    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) {
+    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
         let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.bybit)
         guard let credentials = credentials else {
-            return
+            return TradeResponse.getNullResponse()
         }
         let body = BybitMarketRequestBody(category: "spot", symbol: symbol, side: side == .buy ? "Buy" : "Sell", orderType: "Market", qty: String(amount))
         let jsonEncoder = JSONEncoder()
@@ -41,16 +54,20 @@ struct BybitRequestHandler: RequestHandler {
         request.addValue(timestamp, forHTTPHeaderField: "X-BAPI-TIMESTAMP")
         request.addValue(credentials.apiKey, forHTTPHeaderField: "X-BAPI-API-KEY")
         request.addValue(signature, forHTTPHeaderField: "X-BAPI-SIGN")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print(error)
-            } else if let data = data {
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                    print(json)
-                }
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return makeTradeResponse(for: data)
+    }
+    
+    static func makeTradeResponse(for data: Data) -> TradeResponse {
+        do {
+            let response = try JSONDecoder().decode(BybitMarketResponseBody.self, from: data)
+            if response.retCode == 0 {
+                return TradeResponse(isSuccessful: true, orderID: response.result.orderId)
+            } else {
+                throw "Error submitting order"
             }
+        } catch {
+            return TradeResponse.getNullResponse()
         }
-        task.resume()
     }
 }

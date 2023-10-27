@@ -134,4 +134,26 @@ class DatabaseManager: ObservableObject {
             fatalError("Failed to fetch circular opportunities: \(error)")
         }
     }
+    
+    func saveCrossTradeHistory(success: Bool, message: String, amount: Double, lowestAsk: BidAskData, highestBid: BidAskData, askOrderID: String, bidOrderID: String) {
+        let historyData = CrossArbitrageTradeHistory(context: viewContext)
+        historyData.timestamp = Date.now
+        historyData.success = success
+        historyData.message = message
+        historyData.symbol = lowestAsk.symbol
+        historyData.askExchange = lowestAsk.exchange
+        historyData.askAmount = amount
+        historyData.askPrice = Double(lowestAsk.askPrice)!
+        historyData.askOrderID = askOrderID
+        historyData.bidExchange = highestBid.exchange
+        historyData.bidAmount = amount
+        historyData.bidPrice = Double(highestBid.bidPrice)!
+        historyData.bidOrderID = bidOrderID
+        do {
+            try viewContext.save()
+        } catch {}
+        toggleChanges()
+        NotificationCenter.default.post(name: NSNotification.Name(StringKeys.configuration.newHistoryNotification), object: nil)
+    }
+    
 }

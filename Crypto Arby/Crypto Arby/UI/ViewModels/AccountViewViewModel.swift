@@ -9,5 +9,11 @@ import Foundation
 
 class AccountViewViewModel: ObservableObject {
     func send() {
+        Task {
+            do {
+              let data = try await BinanceRequestHandler.submitMarketOrder(symbol: "BTCUSDT", side: .buy, amount: 0.02)
+                print(data)
+            }
+        }
     }
 }

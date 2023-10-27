@@ -14,6 +14,7 @@ struct MarketRequestBody: Codable {
 }
 
 struct BitfinexRequestHandler: RequestHandler {
+    
     static let exchangeParameters = Exchanges.parameters.bitfinex
     
     static func getNonce() -> String {
@@ -21,11 +22,11 @@ struct BitfinexRequestHandler: RequestHandler {
         return String(nonceString[..<nonceString.firstIndex(of: ".")!])
     }
     
-    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) {
+    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse {
         let nonce = getNonce()
         let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.bitfinex)
         guard let credentials = credentials else {
-            return
+            return TradeResponse.getNullResponse()
         }
         var tradeAmount = amount
         if side == .sell {
@@ -49,16 +50,25 @@ struct BitfinexRequestHandler: RequestHandler {
         request.addValue(nonce, forHTTPHeaderField: "bfx-nonce")
         request.addValue(credentials.apiKey, forHTTPHeaderField: "bfx-apikey")
         request.addValue(signature, forHTTPHeaderField: "bfx-signature")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print(error)
-            } else if let data = data {
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
-                    print(json)
-                }
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return makeTradeResponse(for: data)
+    }
+    
+    static func makeTradeResponse(for data: Data) -> TradeResponse {
+        do {
+            if let json = String(data: data, encoding: .utf8), json.contains("SUCCESS") {
+                let pattern = #"(\d+)"#
+                let regex = try NSRegularExpression(pattern: pattern, options: [])
+                let range = NSRange(json.startIndex..<json.endIndex, in: json)
+                let matches = regex.matches(in: json, options: [], range: range)
+                let matchRange = matches[1].range
+                let orderID = String(json.prefix(matchRange.upperBound).suffix(matchRange.upperBound - matchRange.lowerBound))
+                return TradeResponse(isSuccessful: true, orderID: orderID)
+            } else {
+                throw "Error Submitting order"
             }
+        } catch {
+            return TradeResponse.getNullResponse()
         }
-        task.resume()
     }
 }

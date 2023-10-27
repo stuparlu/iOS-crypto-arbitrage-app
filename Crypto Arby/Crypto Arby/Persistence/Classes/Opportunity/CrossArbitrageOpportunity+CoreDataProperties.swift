@@ -45,18 +45,27 @@ extension CrossArbitrageOpportunity {
                     highestBid = exchangePrice
                 }
             }
-            
             if let highestBid = highestBid, let lowestAsk = lowestAsk, var safeHistory = history {
                 safeHistory[1] = safeHistory[0]
-//                if highestBid.exchange != lowestAsk.exchange && (Double(highestBid.bidPrice) ?? kCFNumberPositiveInfinity as! Double) < Double(lowestAsk.askPrice) ?? 0 {
+                if highestBid.exchange != lowestAsk.exchange && (Double(highestBid.bidPrice) ?? kCFNumberPositiveInfinity as! Double) > Double(lowestAsk.askPrice) ?? 0 {
                     safeHistory[0] = true
-//                    if safeHistory[0] && !safeHistory[1] {
+                    if safeHistory[0] && !safeHistory[1] {
                         sendCrossOpportunityNotificaiton(pair: lowestAsk.symbol, buyExchange: lowestAsk.exchange.capitalized, sellExchange: highestBid.exchange.capitalized)
                         DatabaseManager.shared.saveCrossHistoryData(lowestAsk: lowestAsk, highestBid: highestBid)
                         if tradingActive {
-                            CrossArbitrageExecutor().executeTrades(bid: highestBid, ask: lowestAsk)
-//                        }
-//                    }
+                            Task {
+                                let result = await CrossArbitrageExecutor().executeTrades(bid: highestBid, ask: lowestAsk)
+                                if !result {
+                                    self.tradingActive = false
+                                    DispatchQueue.main.async {
+                                        do {
+                                            try self.viewContext.save()
+                                        } catch {}
+                                    }
+                                }
+                            }
+                        }
+                    }
                 } else {
                     safeHistory[0] = false
                 }
