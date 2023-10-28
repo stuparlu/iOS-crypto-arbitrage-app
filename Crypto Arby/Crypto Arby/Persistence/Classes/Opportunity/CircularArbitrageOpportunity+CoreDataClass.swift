@@ -12,9 +12,4 @@ import CoreData
 @objc(CircularArbitrageOpportunity)
 public class CircularArbitrageOpportunity: NSManagedObject {
     let viewContext = PersistenceController.shared.container.viewContext
-    @Published var pairPrices : [BidAskData] = [] {
-        didSet {
-            comparePrices()
-        }
-    }
 }

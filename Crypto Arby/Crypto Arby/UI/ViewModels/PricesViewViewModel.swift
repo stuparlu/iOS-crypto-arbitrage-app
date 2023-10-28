@@ -9,20 +9,22 @@ import Foundation
 import SwiftUI
 import Combine
 
-class PricesViewViewModel: ObservableObject, Tradable {
+class PricesViewViewModel: ObservableObject {
     @Published var selectedMenuOptionText = SettingsManager.shared.getMonitoredCurrency()
     @Published var exchangePrices: [BidAskData] = []
     @Published var isNavigationViewHidden = true
     @Published var searchText = StringKeys.empty_string
-    private var timer: AnyCancellable?
+    var workItem: DispatchWorkItem?
     
     init() {
-        PricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
-        startTimer()
+        Task {
+            await self.fetchPrices()
+        }
+        scheduleRefreshing()
     }
     
     deinit {
-        stopTimer()
+        stopRefreshing()
     }
     
     func closeSearchMenu(item: String?) {
@@ -34,13 +36,13 @@ class PricesViewViewModel: ObservableObject, Tradable {
     }
     
     func menuItemChanged(item:String) {
-        stopTimer()
-        PricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
-        exchangePrices = []
+        stopRefreshing()
+        self.exchangePrices = []
         selectedMenuOptionText = item
         SettingsManager.shared.setMonitoredCurrency(selectedMenuOptionText)
-        startTimer()
+        scheduleRefreshing()
     }
+
     
     func fetchMenuItems() -> Set<String> {
         return Set(Cryptocurrencies.cryptocurrencyPairs.map({$0.searchableName}))
@@ -50,18 +52,32 @@ class PricesViewViewModel: ObservableObject, Tradable {
         return exchangePrices
     }
     
-    func startTimer() {
-        timer = Timer.publish(every: DefaultConfiguration.scanInterval, on: .main, in: .common).autoconnect().sink { _ in
-            PricesModel.getPricesForTicker(ticker: self.selectedMenuOptionText, delegate: self)
-            self.exchangePrices = []
+    @MainActor
+    func fetchPrices() async {
+        self.exchangePrices = []
+        for exchangeName in Exchanges.names.allNames {
+            let prices = await PricesModel.getPricesFor(ticker: self.selectedMenuOptionText, at: exchangeName)
+            if let prices = prices {
+                self.exchangePrices.append(prices)
+            }
         }
     }
     
-    func stopTimer() {
-        timer?.cancel()
+    func scheduleRefreshing() {
+        let queue = DispatchQueue.global()
+        let interval: DispatchTimeInterval = .seconds(DefaultConfiguration.scanInterval)
+        workItem = DispatchWorkItem {
+            Task {
+                await self.fetchPrices()
+            }
+            self.scheduleRefreshing()
+        }
+        queue.asyncAfter(deadline: .now() + interval, execute: workItem!)
     }
     
-    func addPrices(price: BidAskData) {
-        self.exchangePrices.append(price)
+    func stopRefreshing() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.workItem?.cancel()
+        }
     }
 }

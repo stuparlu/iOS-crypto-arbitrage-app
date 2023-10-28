@@ -8,48 +8,31 @@
 import Foundation
 
 struct PricesModel {
-    static func getPricesForTicker(ticker: String, delegate: Tradable) {
-        getPricesForTickerAtExchange(exchange: Exchanges.names.binance, ticker: ticker, delegate: delegate)
-        getPricesForTickerAtExchange(exchange: Exchanges.names.bybit, ticker: ticker, delegate: delegate)
-        getPricesForTickerAtExchange(exchange: Exchanges.names.bitfinex, ticker: ticker, delegate: delegate)
-    }
-    
-    static func getPricesForTickerAtExchange(exchange: String, ticker: String, delegate: Tradable) {
-        let exchangePairName = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: ticker), at: exchange)
-        let url = URL(string: Exchanges.mapper.getSymbolUrl(for: exchange, ticker: exchangePairName))!
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                self.parseResult(result: .failure(error), delegate: delegate)
-                return
+    static func getPricesFor(ticker: String, at exchange: String) async -> BidAskData? {
+        do {
+            let exchangePairName = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: ticker), at: exchange)
+            if let url = URL(string: Exchanges.mapper.getSymbolUrl(for: exchange, ticker: exchangePairName)) {
+                var request = URLRequest(url: url)
+                let (data, _) = try await URLSession.shared.data(for: request)
+                return try parseData(data, for: exchange, ticker: ticker)
+            } else {
+                throw URLError(.badURL)
             }
-            guard let data = data else {
-                self.parseResult(result: .failure(NSError(domain: StringKeys.empty_string, code: 0, userInfo: nil)), delegate: delegate)
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let responseType = Exchanges.mapper.getResponseType(for: exchange)
-                if let priceResponse = try decoder.decode(responseType, from: data) as? PriceResponse {
-                    self.parseResult(result: .success(priceResponse.fetchBidAskData(exchange: exchange, ticker: ticker)), delegate: delegate)
-                } else {
-                    self.parseResult(result: .failure(NSError(domain: StringKeys.empty_string, code: 0, userInfo: nil)), delegate: delegate)
-                }
-            } catch {
-                self.parseResult(result: .failure(error), delegate: delegate)
-            }
-        }
-        task.resume()
-    }
-    
-    static func parseResult(result: Result<BidAskData, Error>, delegate:Tradable) {
-        switch result {
-        case .success(let bidAskData):
+        } catch {
             DispatchQueue.main.async {
-                delegate.addPrices(price: bidAskData)
+                print("Error retrieving data for \(ticker) at \(exchange): \(error)")
             }
-        case .failure(let error):
-            print("\(ErrorStrings.errorFetchingPrice)\(error)")
+            return nil
+        }
+    }
+    
+    static func parseData(_ data: Data, for exchange: String, ticker: String) throws -> BidAskData? {
+        let decoder = JSONDecoder()
+        let responseType = Exchanges.mapper.getResponseType(for: exchange)
+        if let priceResponse = try decoder.decode(responseType, from: data) as? PriceResponse {
+            return priceResponse.fetchBidAskData(exchange: exchange, ticker: ticker)
+        } else {
+            throw NSError(domain: "ParsingError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error retrieving bid-ask data for \(ticker) at \(exchange)"])
         }
     }
 }

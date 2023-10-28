@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		15C2585007762BD16371E69F /* Pods_Crypto_Arby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11BFD56D63692AB0B5DEAC8 /* Pods_Crypto_Arby.framework */; };
-		A107A1702AB9D26600640F5B /* Tradable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107A16F2AB9D26600640F5B /* Tradable.swift */; };
 		A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642D2A66A86C00FD06DA /* Symbols.swift */; };
 		A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642F2A66AFAC00FD06DA /* StringKeys.swift */; };
 		A11BCCB82AEC117400E8EB17 /* TradeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11BCCB72AEC117400E8EB17 /* TradeResponse.swift */; };
@@ -89,6 +88,8 @@
 		A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */; };
 		A1E2D6D72AC82B66001DA32C /* LoginFormViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2D6D62AC82B66001DA32C /* LoginFormViewViewModel.swift */; };
 		A1E329962AD97512009E218C /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E329952AD97512009E218C /* DefaultConfiguration.swift */; };
+		A1F649492AED39980041E55C /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F649482AED39980041E55C /* NotificationHandler.swift */; };
+		A1F6494B2AED3A5C0041E55C /* PriceComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F6494A2AED3A5C0041E55C /* PriceComparator.swift */; };
 		A1FD60392AE291700088B25E /* CryptographyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FD60382AE291700088B25E /* CryptographyHandler.swift */; };
 		A1FD603C2AE291E30088B25E /* BitfinexRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FD603B2AE291E30088B25E /* BitfinexRequestHandler.swift */; };
 		A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF5D672A695E350002E981 /* Exchanges.swift */; };
@@ -102,7 +103,6 @@
 /* Begin PBXFileReference section */
 		4485E75D3733F7993D0F2CD4 /* Pods-Crypto Arby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crypto Arby.release.xcconfig"; path = "Target Support Files/Pods-Crypto Arby/Pods-Crypto Arby.release.xcconfig"; sourceTree = "<group>"; };
 		A107A16D2AB9CD2E00640F5B /* Crypto Arby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Crypto Arby.entitlements"; sourceTree = "<group>"; };
-		A107A16F2AB9D26600640F5B /* Tradable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tradable.swift; sourceTree = "<group>"; };
 		A10D642D2A66A86C00FD06DA /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		A10D642F2A66AFAC00FD06DA /* StringKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKeys.swift; sourceTree = "<group>"; };
 		A11BCCB72AEC117400E8EB17 /* TradeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeResponse.swift; sourceTree = "<group>"; };
@@ -185,6 +185,8 @@
 		A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesNavigationModel.swift; sourceTree = "<group>"; };
 		A1E2D6D62AC82B66001DA32C /* LoginFormViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormViewViewModel.swift; sourceTree = "<group>"; };
 		A1E329952AD97512009E218C /* DefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
+		A1F649482AED39980041E55C /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
+		A1F6494A2AED3A5C0041E55C /* PriceComparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceComparator.swift; sourceTree = "<group>"; };
 		A1FD60382AE291700088B25E /* CryptographyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptographyHandler.swift; sourceTree = "<group>"; };
 		A1FD603B2AE291E30088B25E /* BitfinexRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitfinexRequestHandler.swift; sourceTree = "<group>"; };
 		A1FF5D672A695E350002E981 /* Exchanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchanges.swift; sourceTree = "<group>"; };
@@ -230,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				A15EF8382AEA7BF5007921CA /* RequestHandler.swift */,
-				A107A16F2AB9D26600640F5B /* Tradable.swift */,
 				A184A2132AE93B18005B3C0C /* PriceResponse.swift */,
 			);
 			path = Protocols;
@@ -497,6 +498,8 @@
 				A1FD603A2AE291CC0088B25E /* RequestHandlers */,
 				A1A7EBC12AD965DC00B0B7B1 /* DateHandler.swift */,
 				A1FD60382AE291700088B25E /* CryptographyHandler.swift */,
+				A1F649482AED39980041E55C /* NotificationHandler.swift */,
+				A1F6494A2AED3A5C0041E55C /* PriceComparator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A15EF8342AEA6AE3007921CA /* BinancePriceResponse.swift in Sources */,
+				A1F649492AED39980041E55C /* NotificationHandler.swift in Sources */,
 				A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */,
 				A15EF81B2AEA61BA007921CA /* CircularArbitrageHistory+CoreDataProperties.swift in Sources */,
 				A15EF8352AEA6AE3007921CA /* BybitPriceResponse.swift in Sources */,
@@ -731,6 +735,7 @@
 				A19CDBDA2AD58D7B00C5FCE5 /* CircularArbitrageHistoryCellView.swift in Sources */,
 				A11BCCC52AEC305500E8EB17 /* CrossArbitrageTradeHistory+CoreDataProperties.swift in Sources */,
 				A128F2E52ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift in Sources */,
+				A1F6494B2AED3A5C0041E55C /* PriceComparator.swift in Sources */,
 				A184A2142AE93B18005B3C0C /* PriceResponse.swift in Sources */,
 				A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */,
 				A1878D1A2AE3EAE5005E62F0 /* BinanceRequestHandler.swift in Sources */,
@@ -769,7 +774,6 @@
 				A11BCCB82AEC117400E8EB17 /* TradeResponse.swift in Sources */,
 				A16D47B82ACEF9FB00F955ED /* PairSelectionList.swift in Sources */,
 				A1848ABE2AD81E4F0021EA6B /* Double.swift in Sources */,
-				A107A1702AB9D26600640F5B /* Tradable.swift in Sources */,
 				A15EF81E2AEA61BA007921CA /* History+CoreDataClass.swift in Sources */,
 				A161C6B72AE7BC35005C1F09 /* CrossArbitrageExecutor.swift in Sources */,
 				A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */,

@@ -12,9 +12,4 @@ import CoreData
 @objc(CrossArbitrageOpportunity)
 public class CrossArbitrageOpportunity: NSManagedObject {
     let viewContext = PersistenceController.shared.container.viewContext
-    @Published var exchangePrices : [BidAskData] = [] {
-        didSet {
-            comparePrices()
-        }
-    }
 }

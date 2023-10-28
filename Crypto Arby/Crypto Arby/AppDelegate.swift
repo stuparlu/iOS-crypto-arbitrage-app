@@ -12,7 +12,8 @@ import FirebaseCore
 class AppDelegate: NSObject, UIApplicationDelegate {
     let databaseManager = DatabaseManager.shared
     let operationQueue = OperationQueue()
-    var timer = Timer()
+    var arbitrageRunning: Bool = false
+    let arbitrageQueue = DispatchQueue(label: "com.lukastupar.CryptoArby.arbitrageQueue", qos: .background)
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
@@ -23,18 +24,28 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 print("Error while requesting push notification permission. Error \(String(describing: error))")
             }
         }
-        startTimer()
+        scheduleScanner()
         return true
     }
     
-    func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: DefaultConfiguration.scanInterval, repeats: true) { _ in
-            self.operationQueue.addOperation(ArbitrqageOperation())
+    func scheduleScanner() {
+        guard !arbitrageRunning else {
+            return
         }
+        arbitrageRunning = true
+        let interval: TimeInterval = TimeInterval(DefaultConfiguration.scanInterval)
+        arbitrageQueue.asyncAfter(deadline: .now() + interval) { [weak self] in
+            Task {
+                await ArbitrageOperation.execute()
+                self?.arbitrageRunning = false
+                self?.scheduleScanner()
+            }
+        }
+        
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        timer.invalidate()
+        arbitrageQueue.suspend()
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

@@ -9,35 +9,8 @@ import Foundation
 import CoreData
 import SwiftUI
 
-final class ArbitrqageOperation: Operation {
-    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
-    private let viewContext = PersistenceController.shared.container.viewContext
-    
-    func getCrossOpportunities() -> [CrossArbitrageOpportunity] {
-        do {
-            let opportunitiesRequest : NSFetchRequest<CrossArbitrageOpportunity> = NSFetchRequest(entityName: "CrossArbitrageOpportunity")
-            var opportunities : [CrossArbitrageOpportunity] = []
-            opportunities = try viewContext.fetch(opportunitiesRequest)
-            return opportunities
-        } catch {
-            print("Failed to fetch cross opportunities: \(error)")
-            return []
-        }
-    }
-    
-    func getCircularOpportunities() -> [CircularArbitrageOpportunity] {
-        do {
-            let opportunitiesRequest : NSFetchRequest<CircularArbitrageOpportunity> = NSFetchRequest(entityName: "CircularArbitrageOpportunity")
-            var opportunities : [CircularArbitrageOpportunity] = []
-            opportunities = try viewContext.fetch(opportunitiesRequest)
-            return opportunities
-        } catch {
-            print("Failed to fetch circular opportunities: \(error)")
-            return []
-        }
-    }
-    
-    func refreshCrossOpportunities(_ opportunities: [CrossArbitrageOpportunity]) {
+final class ArbitrageOperation {
+    static func refreshCrossOpportunities(_ opportunities: [CrossArbitrageOpportunity]) async {
         for opportunity in opportunities {
             if !opportunity.isActive {
                 continue
@@ -45,13 +18,20 @@ final class ArbitrqageOperation: Operation {
             guard let ticker = opportunity.pairName, let exchanges = opportunity.selectedExchanges else {
                 continue
             }
+            var opportunityPrices: [BidAskData] = []
             for exchange in exchanges {
-                PricesModel.getPricesForTickerAtExchange(exchange: exchange, ticker: ticker, delegate: opportunity)
+                let prices = await PricesModel.getPricesFor(ticker: ticker, at: exchange)
+                if let prices = prices {
+                    opportunityPrices.append(prices)
+                }
+                if opportunityPrices.count == 2 {
+                    PriceComparator.compareCrossPrices(for: opportunity, exchangePrices: opportunityPrices)
+                }
             }
         }
     }
     
-    func refreshCircularOpportunities(_ opportunities: [CircularArbitrageOpportunity]) {
+    static func refreshCircularOpportunities(_ opportunities: [CircularArbitrageOpportunity]) async {
         for opportunity in opportunities {
             if !opportunity.isActive {
                 continue
@@ -59,15 +39,26 @@ final class ArbitrqageOperation: Operation {
             guard let exchange = opportunity.exchangeName, let pairs = opportunity.selectedPairs else {
                 continue
             }
+            var opportunityPrices: [BidAskData] = []
             for pair in pairs {
-                let ticker = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: pair), at: exchange) 
-                PricesModel.getPricesForTickerAtExchange(exchange: exchange, ticker: ticker, delegate: opportunity)
+                let ticker = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: pair), at: exchange)
+                let prices = await PricesModel.getPricesFor(ticker:ticker, at:exchange)
+                if let prices = prices {
+                    opportunityPrices.append(prices)
+                }
+            }
+            if opportunityPrices.count == pairs.count {
+                PriceComparator.compareCircularPrices(for: opportunity, exchangePrices: opportunityPrices)
             }
         }
     }
     
-    override func main() {
-        refreshCrossOpportunities(getCrossOpportunities())
-        refreshCircularOpportunities(getCircularOpportunities())
+    @Sendable
+    static func execute() async {
+        DispatchQueue.main.async {
+            print("work \(Date.now)")
+        }
+        await refreshCrossOpportunities(DatabaseManager.shared.getAllCrossOpportunities())
+        await refreshCircularOpportunities(DatabaseManager.shared.getAllCircularOpportunities())
     }
 }
