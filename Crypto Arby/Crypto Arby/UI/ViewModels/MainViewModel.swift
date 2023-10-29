@@ -11,6 +11,7 @@ import SwiftUI
 class MainViewModel: ObservableObject {
     @Published var selection = 0
     @Published var unreadNotifications : Int = SettingsManager.shared.getUnreadNotifications()
+    @Published var unreadTradeResults : Int = 0
     private let notificationCenter = NotificationCenter.default
     private var observationToken: Any?
     
@@ -33,5 +34,9 @@ class MainViewModel: ObservableObject {
     func historyViewed() {
         self.unreadNotifications = 0
         SettingsManager.shared.setUnreadNotifications(0)
+    }
+    
+    func tradesViewed() {
+        self.unreadTradeResults = 0
     }
 }

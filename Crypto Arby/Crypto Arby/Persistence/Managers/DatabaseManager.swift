@@ -156,4 +156,26 @@ class DatabaseManager: ObservableObject {
         NotificationCenter.default.post(name: NSNotification.Name(StringKeys.configuration.newHistoryNotification), object: nil)
     }
     
+    func getAllCrossTradeHistory() -> [CrossArbitrageTradeHistory] {
+        do {
+            let historyRequest : NSFetchRequest<CrossArbitrageTradeHistory> = NSFetchRequest(entityName: "CrossArbitrageTradeHistory")
+            var historyElements : [CrossArbitrageTradeHistory] = []
+            historyElements = try viewContext.fetch(historyRequest)
+            return historyElements
+        } catch {
+            fatalError("Failed to fetch cross opportunities: \(error)")
+        }
+    }
+    
+    func getAllCircularTradeHistory() -> [CircularArbitrageTradeHistory] {
+        do {
+            let historyRequest : NSFetchRequest<CircularArbitrageTradeHistory> = NSFetchRequest(entityName: "CircularArbitrageTradeHistory")
+            var historyElements : [CircularArbitrageTradeHistory] = []
+            historyElements = try viewContext.fetch(historyRequest)
+            return historyElements
+        } catch {
+            fatalError("Failed to fetch cross opportunities: \(error)")
+        }
+    }
+    
 }

@@ -36,17 +36,28 @@ struct MainView: View {
                     .badge(viewModel.unreadNotifications)
                     .tag(2)
                 
+                TradesView()
+                    .tabItem {
+                        Image(systemName: Symbols.opportunity_trade_icon)
+                        Text(StringKeys.trades)
+
+                    }
+                    .badge(viewModel.unreadTradeResults)
+                    .tag(3)
+                
                 AccountView()
                     .tabItem {
                         Image(systemName: Symbols.user_account_icon)
                         Text(StringKeys.account)
                     }
-                    .tag(3)
+                    .tag(4)
             }
         }
         .onChange(of: viewModel.selection) { newTab in
             if newTab == 2 {
                 viewModel.historyViewed()
+            } else if newTab == 3 {
+                viewModel.tradesViewed()
             }
         }
         .onAppear() {

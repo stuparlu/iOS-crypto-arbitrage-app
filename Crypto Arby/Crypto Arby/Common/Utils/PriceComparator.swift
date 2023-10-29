@@ -8,19 +8,10 @@
 import Foundation
 
 struct PriceComparator {
-    static func compareCrossPrices(for opportunity: CrossArbitrageOpportunity, exchangePrices: [BidAskData]) {
+    static func compareCrossPrices(for opportunity: CrossArbitrageOpportunity, exchangePrices: [BidAskData]) async {
         if exchangePrices.count > 1 {
-            var lowestAsk = exchangePrices.first
-            var highestBid = exchangePrices.first
-            for exchangePrice in exchangePrices {
-                if Double(exchangePrice.askPrice) ?? 0 < Double(lowestAsk?.askPrice ?? "0") ?? 0 {
-                    lowestAsk = exchangePrice
-                }
-                
-                if Double(exchangePrice.bidPrice) ?? 0 > Double(lowestAsk?.bidPrice ?? "0") ?? 0 {
-                    highestBid = exchangePrice
-                }
-            }
+            var lowestAsk = exchangePrices.min(by: {$0.askPrice < $1.askPrice})
+            var highestBid = exchangePrices.max(by: {$0.bidPrice > $1.bidPrice})
             if let highestBid = highestBid, let lowestAsk = lowestAsk, var safeHistory = opportunity.history {
                 safeHistory[1] = safeHistory[0]
                 if highestBid.exchange != lowestAsk.exchange && (Double(highestBid.bidPrice) ?? kCFNumberPositiveInfinity as! Double) > Double(lowestAsk.askPrice) ?? 0 {
@@ -29,15 +20,13 @@ struct PriceComparator {
                         NotificationHandler.sendCrossOpportunityNotificaiton(pair: lowestAsk.symbol, buyExchange: lowestAsk.exchange.capitalized, sellExchange: highestBid.exchange.capitalized)
                         DatabaseManager.shared.saveCrossHistoryData(lowestAsk: lowestAsk, highestBid: highestBid)
                         if opportunity.tradingActive {
-                            Task {
-                                let result = await CrossArbitrageExecutor().executeTrades(bid: highestBid, ask: lowestAsk)
-                                if !result {
-                                    opportunity.tradingActive = false
-                                    DispatchQueue.main.async {
-                                        do {
-                                            try opportunity.viewContext.save()
-                                        } catch {}
-                                    }
+                            let result = await CrossArbitrageExecutor.executeTrades(bid: highestBid, ask: lowestAsk)
+                            if !result {
+                                opportunity.tradingActive = false
+                                DispatchQueue.main.async {
+                                    do {
+                                        try opportunity.viewContext.save()
+                                    } catch {}
                                 }
                             }
                         }
@@ -63,7 +52,7 @@ struct PriceComparator {
         })
     }
     
-    static func compareCircularPrices(for opportunity: CircularArbitrageOpportunity, exchangePrices: [BidAskData]) {
+    static func compareCircularPrices(for opportunity: CircularArbitrageOpportunity, exchangePrices: [BidAskData]) async {
         if var safeHistory = opportunity.history {
             let startBalance = 100.0
             let tradeSteps = sortPrices(exchangePrices, opportunity: opportunity)
@@ -90,6 +79,17 @@ struct PriceComparator {
                     let totalReturn = (((output - startBalance)/startBalance) * 100).rounded(toPlaces: 4)
                     NotificationHandler.sendCircularOpportunityNotificaiton(exchangeName: opportunity.exchangeName!, pairs: tradeSteps, returnPercent: totalReturn)
                     DatabaseManager.shared.saveCircularHistoryData(exchange: opportunity.exchangeName!, pairs: tradeSteps.map({$0.symbol}), profitPercentage: totalReturn)
+                    if opportunity.tradingActive {
+                        let result = await CircularArbitrageExecutor.executeTrades()
+                        if !result {
+                            opportunity.tradingActive = false
+                            DispatchQueue.main.async {
+                                do {
+                                    try opportunity.viewContext.save()
+                                } catch {}
+                            }
+                        }
+                    }
                 }
             } else {
                 safeHistory[0] = false

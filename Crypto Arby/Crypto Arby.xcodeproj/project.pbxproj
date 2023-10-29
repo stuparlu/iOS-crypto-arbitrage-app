@@ -20,6 +20,12 @@
 		A1261A362AC721FE00B36750 /* AccountViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1261A352AC721FE00B36750 /* AccountViewViewModel.swift */; };
 		A1261A382AC7291300B36750 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1261A372AC7291300B36750 /* LoginButton.swift */; };
 		A1261A3A2AC72A0D00B36750 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1261A392AC72A0D00B36750 /* LoginFormView.swift */; };
+		A1268B002AEE5DDC0058B633 /* CircularArbitrageExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268AFF2AEE5DDC0058B633 /* CircularArbitrageExecutor.swift */; };
+		A1268B032AEE65C30058B633 /* TradesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B022AEE65C30058B633 /* TradesView.swift */; };
+		A1268B052AEE68910058B633 /* TradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B042AEE68910058B633 /* TradesViewModel.swift */; };
+		A1268B082AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B062AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift */; };
+		A1268B092AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B072AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift */; };
+		A1268B0B2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B0A2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift */; };
 		A128CC492AC2F46F008D9470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128CC482AC2F46F008D9470 /* AppDelegate.swift */; };
 		A128F2E52ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128F2E42ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift */; };
 		A128F2E72ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128F2E62ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift */; };
@@ -115,6 +121,12 @@
 		A1261A352AC721FE00B36750 /* AccountViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewViewModel.swift; sourceTree = "<group>"; };
 		A1261A372AC7291300B36750 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		A1261A392AC72A0D00B36750 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
+		A1268AFF2AEE5DDC0058B633 /* CircularArbitrageExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitrageExecutor.swift; sourceTree = "<group>"; };
+		A1268B022AEE65C30058B633 /* TradesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesView.swift; sourceTree = "<group>"; };
+		A1268B042AEE68910058B633 /* TradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradesViewModel.swift; sourceTree = "<group>"; };
+		A1268B062AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CircularArbitrageTradeHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A1268B072AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CircularArbitrageTradeHistory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A1268B0A2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageTradeHistoryCellView.swift; sourceTree = "<group>"; };
 		A128CC482AC2F46F008D9470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A128F2E42ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCircularArbitrageViewModel.swift; sourceTree = "<group>"; };
 		A128F2E62ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitrageExchangeSearchForm.swift; sourceTree = "<group>"; };
@@ -262,6 +274,8 @@
 		A11BCCB92AEC2F7D00E8EB17 /* Trade */ = {
 			isa = PBXGroup;
 			children = (
+				A1268B062AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift */,
+				A1268B072AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift */,
 				A11BCCC22AEC305500E8EB17 /* CrossArbitrageTradeHistory+CoreDataClass.swift */,
 				A11BCCC32AEC305500E8EB17 /* CrossArbitrageTradeHistory+CoreDataProperties.swift */,
 				A11BCCBC2AEC2FAC00E8EB17 /* TradeHistory+CoreDataClass.swift */,
@@ -280,6 +294,15 @@
 				A1C8B4522ACC483F00D6A6E5 /* AccountCardView.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		A1268B012AEE65B60058B633 /* Trades */ = {
+			isa = PBXGroup;
+			children = (
+				A1268B022AEE65C30058B633 /* TradesView.swift */,
+				A1268B0A2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift */,
+			);
+			path = Trades;
 			sourceTree = "<group>";
 		};
 		A128F2E02ACD70DB0000DCE0 /* CircularArbitrage */ = {
@@ -317,6 +340,7 @@
 				A128F2E42ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift */,
 				A14C1D242ADD561800D0BC68 /* MainViewModel.swift */,
 				A148E4682ADEB769002DFCA4 /* ManageExchangesViewModel.swift */,
+				A1268B042AEE68910058B633 /* TradesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -440,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				A161C6B62AE7BC35005C1F09 /* CrossArbitrageExecutor.swift */,
+				A1268AFF2AEE5DDC0058B633 /* CircularArbitrageExecutor.swift */,
 			);
 			path = Executors;
 			sourceTree = "<group>";
@@ -554,6 +579,7 @@
 		A1BD7B7F2A655858002B3F48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A1268B012AEE65B60058B633 /* Trades */,
 				A128F2E12ACD70F30000DCE0 /* History */,
 				A1261A312AC7215800B36750 /* Account */,
 				A13DAE3E2A711A14002FD780 /* Prices */,
@@ -709,9 +735,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A15EF8342AEA6AE3007921CA /* BinancePriceResponse.swift in Sources */,
+				A1268B082AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift in Sources */,
 				A1F649492AED39980041E55C /* NotificationHandler.swift in Sources */,
 				A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */,
+				A1268B0B2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift in Sources */,
 				A15EF81B2AEA61BA007921CA /* CircularArbitrageHistory+CoreDataProperties.swift in Sources */,
+				A1268B032AEE65C30058B633 /* TradesView.swift in Sources */,
 				A15EF8352AEA6AE3007921CA /* BybitPriceResponse.swift in Sources */,
 				A15EF8102AEA6109007921CA /* LoginManager.swift in Sources */,
 				A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */,
@@ -736,6 +765,7 @@
 				A11BCCC52AEC305500E8EB17 /* CrossArbitrageTradeHistory+CoreDataProperties.swift in Sources */,
 				A128F2E52ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift in Sources */,
 				A1F6494B2AED3A5C0041E55C /* PriceComparator.swift in Sources */,
+				A1268B052AEE68910058B633 /* TradesViewModel.swift in Sources */,
 				A184A2142AE93B18005B3C0C /* PriceResponse.swift in Sources */,
 				A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */,
 				A1878D1A2AE3EAE5005E62F0 /* BinanceRequestHandler.swift in Sources */,
@@ -793,8 +823,10 @@
 				A1BD7B712A65505E002B3F48 /* Crypto_ArbyApp.swift in Sources */,
 				A15EF8332AEA6AE3007921CA /* BitfinexPriceResponse.swift in Sources */,
 				A134ABA62A67ED4000196092 /* Cryptocurrencies.swift in Sources */,
+				A1268B092AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift in Sources */,
 				A11BCCC42AEC305500E8EB17 /* CrossArbitrageTradeHistory+CoreDataClass.swift in Sources */,
 				A184A2162AE9522E005B3C0C /* String.swift in Sources */,
+				A1268B002AEE5DDC0058B633 /* CircularArbitrageExecutor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

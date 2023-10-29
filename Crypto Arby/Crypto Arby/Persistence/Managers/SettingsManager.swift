@@ -25,4 +25,12 @@ struct SettingsManager {
     func setUnreadNotifications(_ notifications: Int) {
         UserDefaults.standard.set(notifications, forKey: StringKeys.configuration.unreadNotifications)
     }
+    
+    func getPercentageThreshold() -> Double {
+        UserDefaults.standard.double(forKey:StringKeys.configuration.percentageThreshold)
+    }
+    
+    func setPercentageThreshold(_ threshold: Double) {
+        UserDefaults.standard.set(threshold, forKey: StringKeys.configuration.percentageThreshold)
+    }
 }

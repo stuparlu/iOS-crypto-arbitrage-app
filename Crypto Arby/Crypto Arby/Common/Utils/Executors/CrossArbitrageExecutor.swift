@@ -8,7 +8,7 @@
 import Foundation
 
 class CrossArbitrageExecutor {
-    func executeTrades(bid: BidAskData, ask: BidAskData) async -> Bool {
+    static func executeTrades(bid: BidAskData, ask: BidAskData) async -> Bool {
         guard let askAmount = Double(ask.askQuantity), let bidAmount = Double(bid.bidQuantity) else {
             return false
         }
@@ -38,7 +38,7 @@ class CrossArbitrageExecutor {
         } catch {
             DatabaseManager.shared.saveCrossTradeHistory(
                 success: false,
-                message: "Trade execution failed",
+                message: "Trade execution failed. Autotrading has been stopped for this opportunity.",
                 amount: tradeAmount,
                 lowestAsk: ask,
                 highestBid: bid,

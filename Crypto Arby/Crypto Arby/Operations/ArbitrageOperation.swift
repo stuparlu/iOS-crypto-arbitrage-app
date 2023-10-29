@@ -24,8 +24,8 @@ final class ArbitrageOperation {
                 if let prices = prices {
                     opportunityPrices.append(prices)
                 }
-                if opportunityPrices.count == 2 {
-                    PriceComparator.compareCrossPrices(for: opportunity, exchangePrices: opportunityPrices)
+                if opportunityPrices.count >= 2 {
+                   await PriceComparator.compareCrossPrices(for: opportunity, exchangePrices: opportunityPrices)
                 }
             }
         }
@@ -48,7 +48,7 @@ final class ArbitrageOperation {
                 }
             }
             if opportunityPrices.count == pairs.count {
-                PriceComparator.compareCircularPrices(for: opportunity, exchangePrices: opportunityPrices)
+               await PriceComparator.compareCircularPrices(for: opportunity, exchangePrices: opportunityPrices)
             }
         }
     }

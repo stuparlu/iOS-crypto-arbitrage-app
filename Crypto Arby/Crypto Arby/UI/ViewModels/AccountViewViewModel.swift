@@ -8,6 +8,12 @@
 import Foundation
 
 class AccountViewViewModel: ObservableObject {
+    @Published var percentageThreshold = String(SettingsManager.shared.getPercentageThreshold())
+    
+    func savePercentageThreshold() {
+        SettingsManager.shared.setPercentageThreshold(Double(percentageThreshold)!)
+    }
+    
     func send() {
         Task {
             do {

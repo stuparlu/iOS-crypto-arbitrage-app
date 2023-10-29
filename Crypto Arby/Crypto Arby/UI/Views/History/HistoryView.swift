@@ -19,9 +19,6 @@ struct HistoryView: View {
                     } else if String(describing: type(of: item.self)) == String(describing: CircularArbitrageHistory.self) {
                         AnyView(CircularArbitrageHistoryCellView(dataModel: item as! CircularArbitrageHistory))
                     }
-                    
-                    
-//                    String(describing: item.self) == String(describing: CrossArbitrageHistory.self) ? AnyView(CrossArbitrageHistoryCellView(dataModel: item as! CrossArbitrageHistory)):AnyView(CircularArbitrageHistoryCellView(dataModel: item as! CircularArbitrageHistory))
                 }
                 .scrollContentBackground(.hidden)
                 .listStyle(PlainListStyle())

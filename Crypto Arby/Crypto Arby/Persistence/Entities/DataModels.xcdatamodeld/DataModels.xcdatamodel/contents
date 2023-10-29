@@ -12,6 +12,9 @@
         <attribute name="selectedPairs" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="tradingActive" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
+    <entity name="CircularArbitrageTradeHistory" representedClassName="CircularArbitrageTradeHistory" parentEntity="TradeHistory" syncable="YES">
+        <attribute name="exchange" attributeType="String"/>
+    </entity>
     <entity name="CrossArbitrageHistory" representedClassName="CrossArbitrageHistory" parentEntity="History" syncable="YES">
         <attribute name="askPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="bidPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>

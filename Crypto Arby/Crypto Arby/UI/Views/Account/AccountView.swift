@@ -11,15 +11,32 @@ struct AccountView: View {
     @StateObject var viewModel = AccountViewViewModel()
     @StateObject var loginManager = LoginManager.shared
     @State private var showingManageExchanges = false
-
+    
     var body: some View {
         Form {
-            loginManager.isLoggedIn ? AnyView(AccountCardView()) : AnyView(LoginButton())
-            Button {
-                showingManageExchanges.toggle()
-            } label: {
-                Text(StringKeys.manageExchanges)
+            Section(header: Text(StringKeys.account)) {
+                loginManager.isLoggedIn ? AnyView(AccountCardView()) : AnyView(LoginButton())
+                Button {
+                    showingManageExchanges.toggle()
+                } label: {
+                    Text(StringKeys.manageExchanges)
+                }
             }
+            Section(header: Text(StringKeys.viewConfiguration)) {
+                Text(StringKeys.percentageThreshold)
+                    .lineLimit(1)
+                TextField(
+                    StringKeys.empty_string,
+                    text: $viewModel.percentageThreshold
+                )
+                .keyboardType(.decimalPad)
+                Button {
+                    viewModel.savePercentageThreshold()
+                } label: {
+                    Text(StringKeys.saveConfiguration)
+                }
+            }
+            
             Button {
                 viewModel.send()
             } label: {
@@ -29,7 +46,7 @@ struct AccountView: View {
         .sheet(isPresented: $showingManageExchanges) {
             ManageExchangesView()
         }
-
+        
     }
 }
 

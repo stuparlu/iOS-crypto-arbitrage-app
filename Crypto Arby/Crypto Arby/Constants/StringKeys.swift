@@ -11,6 +11,7 @@ struct StringKeys {
     static let opportunities = "Opportunities"
     static let prices = "Prices"
     static let history = "History"
+    static let trades = "Trades"
     static let account = "Account"
     static let exchange = "Exchange"
     static let highest_bid = "Highest Bid"
@@ -56,6 +57,7 @@ struct StringKeys {
     static let circularSaveFailedMessage = "The opportunity configuration is invalid. It has to contain at least 3 pairs. First and last pair have to have same quote symbol. Each non-last pair has to end with the beginning of the previous one."
     static let exchanges = "Exchanges:"
     static let price = "Price:"
+    static let amount = "Price:"
     static let path = "Path:"
     static let profit = "Profit:"
     static let time = "Time:"
@@ -65,9 +67,20 @@ struct StringKeys {
     static let manageExchange = "Manage Exchange"
     static let manageExchanges = "Manage Exchanges"
     static let saveConfiguration = "Save configuration"
+    static let viewConfiguration = "Configuration"
     static let clearConfiguration = "Delete"
     static let clearAllKeys = "Clear all keys"
     static let autoTradePrompt = "Automatic trade execution"
+    static let orderID = "Order ID: "
+    static let boughtAt = "Bought at: "
+    static let soldAt = "Sold at: "
+    static let status = "Status: "
+    static let description = "Description: "
+    static let success = "Success"
+    static let failed = "Failed"
+    static let none = "(none)"
+    static let percentageThreshold = "Profit percentage threshold"
+
     
     struct errors {
         static let generic_error = "Error"
@@ -80,5 +93,6 @@ struct StringKeys {
         static let monitoredCurrency = "monitoredCurrency"
         static let newHistoryNotification = "newHistoryNotification"
         static let unreadNotifications = "unreadNotifications"
+        static let percentageThreshold = "percentageThreshold"
     }
 }
