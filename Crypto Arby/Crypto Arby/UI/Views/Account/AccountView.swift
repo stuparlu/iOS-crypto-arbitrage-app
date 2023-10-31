@@ -11,6 +11,7 @@ struct AccountView: View {
     @StateObject var viewModel = AccountViewViewModel()
     @StateObject var loginManager = LoginManager.shared
     @State private var showingManageExchanges = false
+    @State private var showingManageWallets = false
     
     var body: some View {
         Form {
@@ -20,6 +21,11 @@ struct AccountView: View {
                     showingManageExchanges.toggle()
                 } label: {
                     Text(StringKeys.manageExchanges)
+                }
+                Button {
+                    showingManageWallets.toggle()
+                } label: {
+                    Text(StringKeys.manageWallets)
                 }
             }
             Section(header: Text(StringKeys.viewConfiguration)) {
@@ -46,7 +52,9 @@ struct AccountView: View {
         .sheet(isPresented: $showingManageExchanges) {
             ManageExchangesView()
         }
-        
+        .sheet(isPresented: $showingManageWallets) {
+            ManageWalletsView()
+        }
     }
 }
 

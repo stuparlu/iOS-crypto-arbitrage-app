@@ -12,7 +12,7 @@ struct PricesModel {
         do {
             let exchangePairName = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: ticker), at: exchange)
             if let url = URL(string: Exchanges.mapper.getSymbolUrl(for: exchange, ticker: exchangePairName)) {
-                var request = URLRequest(url: url)
+                let request = URLRequest(url: url)
                 let (data, _) = try await URLSession.shared.data(for: request)
                 return try parseData(data, for: exchange, ticker: ticker)
             } else {

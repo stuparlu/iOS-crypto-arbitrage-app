@@ -9,5 +9,6 @@ import Foundation
 
 protocol RequestHandler {
     static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse
+    static func getBalance(symbol: String) async -> Double?
     static func makeTradeResponse(for: Data) -> TradeResponse
 }

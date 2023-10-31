@@ -33,6 +33,7 @@ struct Cryptocurrencies {
         CurrencyPair(mainSymbol: "MATIC", quoteSymbol: "USDT"),
         
         CurrencyPair(mainSymbol: "ETH", quoteSymbol: "BTC"),
+        CurrencyPair(mainSymbol: "BTC", quoteSymbol: "USD"),
 
     ]
 

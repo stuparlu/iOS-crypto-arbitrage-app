@@ -1,23 +1,23 @@
 //
-//  ManageExchangesView.swift
+//  ManageWalletsView.swift
 //  Crypto Arby
 //
-//  Created by Luka Stupar on 17.10.23..
+//  Created by Luka Stupar on 31.10.23..
 //
 
 import SwiftUI
 
-struct ManageExchangesView: View {
-    @StateObject var viewModel = ManageExchangesViewModel()
+struct ManageWalletsView: View {
+    @StateObject var viewModel = ManageWalletsViewModel()
     
     var body: some View {
         VStack {
-            Text(StringKeys.manageExchanges)
+            Text(StringKeys.manageWallets)
                 .font(.largeTitle)
                 .fontWeight(.bold)
-            List(Exchanges.names.allNonWallets, id: \.self) { item in
+            List(Exchanges.wallets.allNames, id: \.self) { item in
                 Button {
-                    viewModel.manage(exchange: item)
+                    viewModel.manage(wallet: item)
                 } label: {
                     Text(item.capitalized)
                 }
@@ -31,23 +31,22 @@ struct ManageExchangesView: View {
         }
         .popover(isPresented: $viewModel.showingPopover) {
             VStack {
-                Text(StringKeys.manageExchange)
+                Text(StringKeys.manageWallet)
                     .font(.title)
                 Form {
-                    Text(viewModel.currentExchange.capitalized)
-                    TextField(StringKeys.apiKey, text: $viewModel.apiKeyText)
-                    TextField(StringKeys.apiSecret, text: $viewModel.apiSecretText)
+                    Text(viewModel.currentWallet.capitalized)
+                    TextField(StringKeys.privateKey, text: $viewModel.privateKeyText)
                     Button {
-                        viewModel.saveExchangeData()
+                        viewModel.saveWalletData()
                     } label: {
                         Text(StringKeys.saveConfiguration)
                     }
                     Button {
-                        viewModel.deleteExchangeData()
+                        viewModel.deleteWalletData()
                     } label: {
                         Text(StringKeys.clearConfiguration)
                     }
-                    .disabled(viewModel.exchangeDisabled)
+                    .disabled(viewModel.walletDisabled)
                 }
                 .background(ThemeManager.backgroundColor)
                 .scrollContentBackground(.hidden)
@@ -59,5 +58,5 @@ struct ManageExchangesView: View {
 }
 
 #Preview {
-    ManageExchangesView()
+    ManageWalletsView()
 }

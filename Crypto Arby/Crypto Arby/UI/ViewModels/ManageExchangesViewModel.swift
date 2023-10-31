@@ -44,7 +44,7 @@ class ManageExchangesViewModel : ObservableObject {
     }
 
     func loadExchangeData() {
-        if let data = KeychainManager.shared.retriveConfiguration(for: currentExchange) {
+        if let data = KeychainManager.shared.retriveConfiguration(forExchange: currentExchange) {
             apiKeyText = data.apiKey
             apiSecretText = data.apiSecret
             if apiKeyText != "" && apiSecretText != "" {

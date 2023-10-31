@@ -7,47 +7,12 @@
 
 import Foundation
 
-struct BinanceMarketRequestBody: Codable {
-    var symbol: String
-    var side: String
-    var type: String
-    var quantity: String
-    var timestamp: String
-}
-
-struct BinanceMarketResponseBody: Codable {
-    let clientOrderId: String
-        let cummulativeQuoteQty: String
-        let executedQty: String
-        let fills: [BinanceMarketFills]
-        let orderId: Int
-        let orderListId: String
-        let origQty: String
-        let price: String
-        let selfTradePreventionMode: String
-        let side: String
-        let status: String
-        let symbol: String
-        let timeInForce: String
-        let transactTime: Int
-        let type: String
-        let workingTime: Int
-}
-
-struct BinanceMarketFills: Codable {
-    let commission: String
-    let commissionAsset: String
-    let price: String
-    let qty: String
-    let tradeId: Int
-}
-
 struct BinanceRequestHandler: RequestHandler {
     static let exchangeParameters = Exchanges.parameters.binance
     
-    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse {        
+    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
-        let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.binance)
+        let credentials = KeychainManager.shared.retriveConfiguration(forExchange: Exchanges.names.binance)
         guard let credentials = credentials else {
             return TradeResponse.getNullResponse()
         }
@@ -57,13 +22,36 @@ struct BinanceRequestHandler: RequestHandler {
         var query = "symbol=\(body.symbol)&side=\(body.side)&type=\(body.type)&quantity=\(body.quantity)&timestamp=\(body.timestamp)"
         let signature = CryptographyHandler.hmac256(key: credentials.apiSecret, data: query)
         query += "&signature=\(signature)"
-
+        
         let url = URL(string: "\(exchangeParameters.apiEndpoint)\(exchangeParameters.submitOrderPath)?\(query)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue(credentials.apiKey, forHTTPHeaderField: "X-MBX-APIKEY")
         let (data, _) = try await URLSession.shared.data(for: request)
         return makeTradeResponse(for: data)
+    }
+    
+    static func getBalance(symbol: String) async -> Double? {
+        let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
+        let credentials = KeychainManager.shared.retriveConfiguration(forExchange: Exchanges.names.binance)
+        guard let credentials = credentials else {
+            return nil
+        }
+        
+        var query = "timestamp=\(timestamp)"
+        let signature = CryptographyHandler.hmac256(key: credentials.apiSecret, data: query)
+        query += "&signature=\(signature)"
+        
+        let url = URL(string: "\(exchangeParameters.apiEndpoint)\(exchangeParameters.getbalancePath)?\(query)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue(credentials.apiKey, forHTTPHeaderField: "X-MBX-APIKEY")
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return makeBalanceResponse(for: data, symbol: symbol)
+        } catch {
+            return nil
+        }
     }
     
     static func makeTradeResponse(for data : Data) -> TradeResponse {
@@ -78,5 +66,18 @@ struct BinanceRequestHandler: RequestHandler {
             return TradeResponse.getNullResponse()
         }
     }
-}
     
+    static func makeBalanceResponse(for data: Data, symbol: String) -> Double? {
+        do {
+            let response = try JSONDecoder().decode(BinanceBalanceResponse.self, from: data)
+            if response.balances.count > 0, let balance = response.balances.first(where: { $0.asset == symbol}) {
+                return Double(balance.free)
+            } else {
+                throw "Error fetching balance"
+            }
+        } catch {
+            return nil
+        }
+    }
+}
+

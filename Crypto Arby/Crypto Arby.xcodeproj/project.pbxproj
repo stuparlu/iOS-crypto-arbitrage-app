@@ -26,6 +26,7 @@
 		A1268B082AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B062AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift */; };
 		A1268B092AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B072AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift */; };
 		A1268B0B2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B0A2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift */; };
+		A1268B0E2AEFFF960058B633 /* BybitCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1268B0D2AEFFF960058B633 /* BybitCodables.swift */; };
 		A128CC492AC2F46F008D9470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128CC482AC2F46F008D9470 /* AppDelegate.swift */; };
 		A128F2E52ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128F2E42ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift */; };
 		A128F2E72ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A128F2E62ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift */; };
@@ -72,6 +73,10 @@
 		A16667452AC1C2010024E760 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667442AC1C2010024E760 /* HistoryViewModel.swift */; };
 		A16667472AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667462AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift */; };
 		A16D47B82ACEF9FB00F955ED /* PairSelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */; };
+		A17FC1892AF12DFC00827E09 /* BinanceCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FC1882AF12DFC00827E09 /* BinanceCodables.swift */; };
+		A17FC18B2AF1489600827E09 /* BitfinexCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FC18A2AF1489600827E09 /* BitfinexCodables.swift */; };
+		A17FC18D2AF1592A00827E09 /* ManageWalletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FC18C2AF1592A00827E09 /* ManageWalletsView.swift */; };
+		A17FC18F2AF159D400827E09 /* ManageWalletsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FC18E2AF159D400827E09 /* ManageWalletsViewModel.swift */; };
 		A1848ABE2AD81E4F0021EA6B /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1848ABD2AD81E4F0021EA6B /* Double.swift */; };
 		A184A2122AE93ABB005B3C0C /* BidAskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A184A2112AE93ABB005B3C0C /* BidAskData.swift */; };
 		A184A2142AE93B18005B3C0C /* PriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A184A2132AE93B18005B3C0C /* PriceResponse.swift */; };
@@ -127,6 +132,7 @@
 		A1268B062AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CircularArbitrageTradeHistory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A1268B072AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CircularArbitrageTradeHistory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A1268B0A2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageTradeHistoryCellView.swift; sourceTree = "<group>"; };
+		A1268B0D2AEFFF960058B633 /* BybitCodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BybitCodables.swift; sourceTree = "<group>"; };
 		A128CC482AC2F46F008D9470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A128F2E42ACD72040000DCE0 /* NewCircularArbitrageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCircularArbitrageViewModel.swift; sourceTree = "<group>"; };
 		A128F2E62ACD78030000DCE0 /* CircularArbitrageExchangeSearchForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitrageExchangeSearchForm.swift; sourceTree = "<group>"; };
@@ -173,6 +179,10 @@
 		A16667442AC1C2010024E760 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A16667462AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageHistoryCellView.swift; sourceTree = "<group>"; };
 		A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairSelectionList.swift; sourceTree = "<group>"; };
+		A17FC1882AF12DFC00827E09 /* BinanceCodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceCodables.swift; sourceTree = "<group>"; };
+		A17FC18A2AF1489600827E09 /* BitfinexCodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitfinexCodables.swift; sourceTree = "<group>"; };
+		A17FC18C2AF1592A00827E09 /* ManageWalletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletsView.swift; sourceTree = "<group>"; };
+		A17FC18E2AF159D400827E09 /* ManageWalletsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWalletsViewModel.swift; sourceTree = "<group>"; };
 		A1848ABD2AD81E4F0021EA6B /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		A184A2112AE93ABB005B3C0C /* BidAskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidAskData.swift; sourceTree = "<group>"; };
 		A184A2132AE93B18005B3C0C /* PriceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceResponse.swift; sourceTree = "<group>"; };
@@ -305,6 +315,16 @@
 			path = Trades;
 			sourceTree = "<group>";
 		};
+		A1268B0C2AEFFF880058B633 /* Codables */ = {
+			isa = PBXGroup;
+			children = (
+				A1268B0D2AEFFF960058B633 /* BybitCodables.swift */,
+				A17FC1882AF12DFC00827E09 /* BinanceCodables.swift */,
+				A17FC18A2AF1489600827E09 /* BitfinexCodables.swift */,
+			);
+			path = Codables;
+			sourceTree = "<group>";
+		};
 		A128F2E02ACD70DB0000DCE0 /* CircularArbitrage */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +361,7 @@
 				A14C1D242ADD561800D0BC68 /* MainViewModel.swift */,
 				A148E4682ADEB769002DFCA4 /* ManageExchangesViewModel.swift */,
 				A1268B042AEE68910058B633 /* TradesViewModel.swift */,
+				A17FC18E2AF159D400827E09 /* ManageWalletsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -381,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				A148E4662ADE9640002DFCA4 /* ManageExchangesView.swift */,
+				A17FC18C2AF1592A00827E09 /* ManageWalletsView.swift */,
 			);
 			path = Management;
 			sourceTree = "<group>";
@@ -491,6 +513,7 @@
 		A184A2102AE93AAF005B3C0C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A1268B0C2AEFFF880058B633 /* Codables */,
 				A11BCCB62AEC115E00E8EB17 /* TradeResponse */,
 				A15EF82F2AEA6AE3007921CA /* PriceResponses */,
 				A184A2112AE93ABB005B3C0C /* BidAskData.swift */,
@@ -741,6 +764,9 @@
 				A1268B0B2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift in Sources */,
 				A15EF81B2AEA61BA007921CA /* CircularArbitrageHistory+CoreDataProperties.swift in Sources */,
 				A1268B032AEE65C30058B633 /* TradesView.swift in Sources */,
+				A17FC18B2AF1489600827E09 /* BitfinexCodables.swift in Sources */,
+				A17FC1892AF12DFC00827E09 /* BinanceCodables.swift in Sources */,
+				A1268B0E2AEFFF960058B633 /* BybitCodables.swift in Sources */,
 				A15EF8352AEA6AE3007921CA /* BybitPriceResponse.swift in Sources */,
 				A15EF8102AEA6109007921CA /* LoginManager.swift in Sources */,
 				A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */,
@@ -787,6 +813,7 @@
 				A184A2122AE93ABB005B3C0C /* BidAskData.swift in Sources */,
 				A1261A342AC7217800B36750 /* AccountView.swift in Sources */,
 				A15EF8122AEA6109007921CA /* SettingsManager.swift in Sources */,
+				A17FC18F2AF159D400827E09 /* ManageWalletsViewModel.swift in Sources */,
 				A128CC492AC2F46F008D9470 /* AppDelegate.swift in Sources */,
 				A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */,
 				A1FFF2AF2AC446B0007CAF91 /* CrossArbitrageSaveButtonView.swift in Sources */,
@@ -825,6 +852,7 @@
 				A134ABA62A67ED4000196092 /* Cryptocurrencies.swift in Sources */,
 				A1268B092AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataProperties.swift in Sources */,
 				A11BCCC42AEC305500E8EB17 /* CrossArbitrageTradeHistory+CoreDataClass.swift in Sources */,
+				A17FC18D2AF1592A00827E09 /* ManageWalletsView.swift in Sources */,
 				A184A2162AE9522E005B3C0C /* String.swift in Sources */,
 				A1268B002AEE5DDC0058B633 /* CircularArbitrageExecutor.swift in Sources */,
 			);

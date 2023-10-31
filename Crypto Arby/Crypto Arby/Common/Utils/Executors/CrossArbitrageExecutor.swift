@@ -9,10 +9,16 @@ import Foundation
 
 class CrossArbitrageExecutor {
     static func executeTrades(bid: BidAskData, ask: BidAskData) async -> Bool {
+        let currencies = Cryptocurrencies.findPair(by: bid.symbol)
+        let mainBalance = await Exchanges.mapper.getRequestHandler(for: bid.exchange).getBalance(symbol:         Exchanges.mapper.getSearchableName(currencies.mainSymbol, at: bid.exchange))
+        let quoteBalance = await Exchanges.mapper.getRequestHandler(for: bid.exchange).getBalance(symbol:         Exchanges.mapper.getSearchableName(currencies.quoteSymbol, at: bid.exchange))
+        guard let mainBalance = mainBalance, let quoteBalance = quoteBalance else {
+            return false
+        }
         guard let askAmount = Double(ask.askQuantity), let bidAmount = Double(bid.bidQuantity) else {
             return false
         }
-        let tradeAmount = min(askAmount, bidAmount)
+        let tradeAmount = min(min(min(askAmount, bidAmount), mainBalance), quoteBalance / Double(ask.askPrice)!)
         do {
             let bidResult = try await Exchanges.mapper.getRequestHandler(for: bid.exchange).submitMarketOrder(
                 symbol: Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: bid.symbol), at: bid.exchange),

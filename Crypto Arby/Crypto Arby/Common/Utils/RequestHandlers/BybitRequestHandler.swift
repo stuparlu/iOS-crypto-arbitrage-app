@@ -7,33 +7,12 @@
 
 import Foundation
 
-struct BybitMarketRequestBody: Codable {
-    let category: String
-    let symbol: String
-    let side: String
-    let orderType: String
-    let qty: String
-}
-
-struct BybitMarketResponseBody: Codable {
-    let result: BybitOrderId
-    let retCode: Int
-    let retExtInfo: [String: String]
-    let retMsg: String
-    let time: Int
-}
-
-struct BybitOrderId: Codable {
-    let orderId: String
-    let orderLinkId: Int
-}
-
 struct BybitRequestHandler: RequestHandler {
     static let exchangeParameters = Exchanges.parameters.bybit
     
     static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
-        let credentials = KeychainManager.shared.retriveConfiguration(for: Exchanges.names.bybit)
+        let credentials = KeychainManager.shared.retriveConfiguration(forExchange: Exchanges.names.bybit)
         guard let credentials = credentials else {
             return TradeResponse.getNullResponse()
         }
@@ -58,6 +37,31 @@ struct BybitRequestHandler: RequestHandler {
         return makeTradeResponse(for: data)
     }
     
+    static func getBalance(symbol: String) async -> Double? {
+        let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
+        let credentials = KeychainManager.shared.retriveConfiguration(forExchange: Exchanges.names.bybit)
+        guard let credentials = credentials else {
+            return nil
+        }
+        let query = "accountType=SPOT&coin=\(symbol)"
+        let signaturePayload = "\(timestamp)\(credentials.apiKey)\(query)"
+        let signature = CryptographyHandler.hmac256(key: credentials.apiSecret, data: signaturePayload)
+        
+        let url = URL(string: "\(exchangeParameters.apiEndpoint)\(exchangeParameters.getbalancePath)?\(query)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(timestamp, forHTTPHeaderField: "X-BAPI-TIMESTAMP")
+        request.addValue(credentials.apiKey, forHTTPHeaderField: "X-BAPI-API-KEY")
+        request.addValue(signature, forHTTPHeaderField: "X-BAPI-SIGN")
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return makeBalanceResponse(for: data)
+        } catch {
+            return nil
+        }
+    }
+    
     static func makeTradeResponse(for data: Data) -> TradeResponse {
         do {
             let response = try JSONDecoder().decode(BybitMarketResponseBody.self, from: data)
@@ -68,6 +72,19 @@ struct BybitRequestHandler: RequestHandler {
             }
         } catch {
             return TradeResponse.getNullResponse()
+        }
+    }
+    
+    static func makeBalanceResponse(for data: Data) -> Double? {
+        do {
+            let response = try JSONDecoder().decode(BybitBalanceResponseBody.self, from: data)
+            if response.retCode == 0 {
+                return Double(response.result.list[0].coin[0].free)
+            } else {
+                throw "Error fetching balance"
+            }
+        } catch {
+            return nil
         }
     }
 }

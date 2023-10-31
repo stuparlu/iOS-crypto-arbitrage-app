@@ -35,7 +35,7 @@ class NewCrossArbitrageViewModel: ObservableObject {
             selectedExchanges.append(exchangeName)
         }
         for exchange in selectedExchanges {
-            guard KeychainManager.shared.retriveConfiguration(for: exchange) != nil else {
+            guard KeychainManager.shared.retriveConfiguration(forExchange: exchange) != nil else {
                 autotradeAvailable = false
                 break
             }

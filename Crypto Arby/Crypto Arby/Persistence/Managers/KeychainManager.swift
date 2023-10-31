@@ -26,7 +26,20 @@ class KeychainManager {
         } catch {}
     }
     
-    func retriveConfiguration(for exchange: String) -> ExchangeConfiguration? {
+    func save(privateKey: String, for wallet: String) {
+        if let valueData = privateKey.data(using: .utf8) {
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrAccount as String: wallet,
+                kSecValueData as String: valueData
+            ]
+            SecItemDelete(query as CFDictionary)
+            let status = SecItemAdd(query as CFDictionary, nil)
+            print(status == errSecSuccess ? "Save success" : "Save failure")
+        }
+    }
+    
+    func retriveConfiguration(forExchange exchange: String) -> ExchangeConfiguration? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: exchange,
@@ -46,6 +59,22 @@ class KeychainManager {
                 print("Error: \(error.localizedDescription)")
                 return nil
             }
+        } else {
+            return nil
+        }
+    }
+    
+    func retriveConfiguration(forWallet wallet: String) -> String? {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: wallet,
+            kSecReturnData as String: kCFBooleanTrue!,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        var dataTypeRef: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &dataTypeRef)
+        if status == errSecSuccess, let retrievedData = dataTypeRef as? Data {
+            return String(data: retrievedData, encoding: .utf8)
         } else {
             return nil
         }

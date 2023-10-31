@@ -44,7 +44,7 @@ class NewCircularArbitrageViewModel: ObservableObject {
     func selectExchange(name: String) {
         selectedExchange = name
         exchangeSelected.toggle()
-        autotradeAvailable = KeychainManager.shared.retriveConfiguration(for: selectedExchange) != nil
+        autotradeAvailable = KeychainManager.shared.retriveConfiguration(forExchange: selectedExchange) != nil
     }
     
     func recalculatePairs() {
