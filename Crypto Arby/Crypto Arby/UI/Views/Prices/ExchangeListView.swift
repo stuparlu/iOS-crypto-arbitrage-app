@@ -21,7 +21,7 @@ struct ExchangeListView: View {
         ZStack {
             viewModel.exchangePrices.isEmpty ? AnyView(LoadingIndicatorView()) : AnyView(EmptyView())
             List(viewModel.exchangePrices) { item in
-                PricesCellView(exchangeName: item.exchange, bidPrice: item.bidPrice, askPrice: item.askPrice)
+                PricesCellView(exchangeName: item.exchange, bidPrice: String(item.bidPrice), askPrice: String(item.askPrice))
                     .listRowSeparator(.hidden)
             }
             .environment(\.defaultMinListRowHeight, 10)

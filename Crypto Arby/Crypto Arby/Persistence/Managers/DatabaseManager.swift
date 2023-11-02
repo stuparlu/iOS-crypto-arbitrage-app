@@ -100,8 +100,8 @@ class DatabaseManager: ObservableObject {
     
     func saveCrossHistoryData(lowestAsk: BidAskData, highestBid: BidAskData) {
         let historyData = CrossArbitrageHistory(context: viewContext)
-        historyData.askPrice = Double(lowestAsk.askPrice) ?? 0
-        historyData.bidPrice = Double(highestBid.bidPrice) ?? 0
+        historyData.askPrice = lowestAsk.askPrice
+        historyData.bidPrice = highestBid.bidPrice
         historyData.maxExchange = highestBid.exchange
         historyData.minExchange = lowestAsk.exchange
         historyData.pairName = lowestAsk.symbol
@@ -143,11 +143,11 @@ class DatabaseManager: ObservableObject {
         historyData.symbol = lowestAsk.symbol
         historyData.askExchange = lowestAsk.exchange
         historyData.askAmount = amount
-        historyData.askPrice = Double(lowestAsk.askPrice)!
+        historyData.askPrice = lowestAsk.askPrice
         historyData.askOrderID = askOrderID
         historyData.bidExchange = highestBid.exchange
         historyData.bidAmount = amount
-        historyData.bidPrice = Double(highestBid.bidPrice)!
+        historyData.bidPrice = highestBid.bidPrice
         historyData.bidOrderID = bidOrderID
         do {
             try viewContext.save()

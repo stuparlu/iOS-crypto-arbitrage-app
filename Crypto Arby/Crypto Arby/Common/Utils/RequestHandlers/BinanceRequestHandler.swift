@@ -8,17 +8,19 @@
 import Foundation
 
 struct BinanceRequestHandler: RequestHandler {
-    static let exchangeParameters = Exchanges.parameters.binance
-    
-    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse {
+    static var exchangeParameters: ExchangeParameters = Exchanges.parameters.binance
+        
+    static func submitTradeOrder(with orderData: OrderData) async -> TradeResponse {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
         let credentials = KeychainManager.shared.retriveConfiguration(forExchange: Exchanges.names.binance)
         guard let credentials = credentials else {
             return TradeResponse.getNullResponse()
         }
         
+        let symbol = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: orderData.symbol), at: exchangeParameters.name)
+        let orderType = orderData.type == .market ? "MARKET": "LIMIT"
         let body = BinanceMarketRequestBody(
-            symbol: symbol, side: side == .buy ? "BUY" : "SELL", type: "MARKET", quantity: String(amount), timestamp: timestamp)
+            symbol: symbol, side: orderData.side == .buy ? "BUY" : "SELL", type: orderType, quantity: String(orderData.quantity), timestamp: timestamp)
         var query = "symbol=\(body.symbol)&side=\(body.side)&type=\(body.type)&quantity=\(body.quantity)&timestamp=\(body.timestamp)"
         let signature = CryptographyHandler.hmac256(key: credentials.apiSecret, data: query)
         query += "&signature=\(signature)"
@@ -27,8 +29,12 @@ struct BinanceRequestHandler: RequestHandler {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue(credentials.apiKey, forHTTPHeaderField: "X-MBX-APIKEY")
-        let (data, _) = try await URLSession.shared.data(for: request)
-        return makeTradeResponse(for: data)
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return makeTradeResponse(for: data)
+        } catch {
+            return TradeResponse.getNullResponse()
+        }
     }
     
     static func getBalance(symbol: String) async -> Double? {

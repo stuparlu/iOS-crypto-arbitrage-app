@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15C2585007762BD16371E69F /* Pods_Crypto_Arby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11BFD56D63692AB0B5DEAC8 /* Pods_Crypto_Arby.framework */; };
+		A10912F22AF3CF31002CFEFD /* HivePoolsRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10912F12AF3CF31002CFEFD /* HivePoolsRequestHandler.swift */; };
 		A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642D2A66A86C00FD06DA /* Symbols.swift */; };
 		A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10D642F2A66AFAC00FD06DA /* StringKeys.swift */; };
 		A11BCCB82AEC117400E8EB17 /* TradeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11BCCB72AEC117400E8EB17 /* TradeResponse.swift */; };
@@ -45,6 +46,10 @@
 		A148E4692ADEB769002DFCA4 /* ManageExchangesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148E4682ADEB769002DFCA4 /* ManageExchangesViewModel.swift */; };
 		A14C1D232ADD534000D0BC68 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14C1D222ADD534000D0BC68 /* LoadingIndicatorView.swift */; };
 		A14C1D252ADD561800D0BC68 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14C1D242ADD561800D0BC68 /* MainViewModel.swift */; };
+		A15968CF2AF28A3B0069B311 /* HiveDexRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15968CE2AF28A3B0069B311 /* HiveDexRequestHandler.swift */; };
+		A15968D12AF2AA640069B311 /* PriceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15968D02AF2AA640069B311 /* PriceData.swift */; };
+		A15968D32AF2AAAF0069B311 /* OrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15968D22AF2AAAF0069B311 /* OrderData.swift */; };
+		A15968D52AF2AAE10069B311 /* OrderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15968D42AF2AAE10069B311 /* OrderType.swift */; };
 		A15EF80D2AEA6109007921CA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF8032AEA6109007921CA /* Persistence.swift */; };
 		A15EF80E2AEA6109007921CA /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF8052AEA6109007921CA /* KeychainManager.swift */; };
 		A15EF80F2AEA6109007921CA /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF8062AEA6109007921CA /* ThemeManager.swift */; };
@@ -65,7 +70,6 @@
 		A15EF8332AEA6AE3007921CA /* BitfinexPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF8302AEA6AE3007921CA /* BitfinexPriceResponse.swift */; };
 		A15EF8342AEA6AE3007921CA /* BinancePriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF8312AEA6AE3007921CA /* BinancePriceResponse.swift */; };
 		A15EF8352AEA6AE3007921CA /* BybitPriceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF8322AEA6AE3007921CA /* BybitPriceResponse.swift */; };
-		A15EF8372AEA6AF6007921CA /* PricesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF8362AEA6AF6007921CA /* PricesModel.swift */; };
 		A15EF8392AEA7BF5007921CA /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF8382AEA7BF5007921CA /* RequestHandler.swift */; };
 		A15EF83B2AEA7CA5007921CA /* TradeSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15EF83A2AEA7CA5007921CA /* TradeSide.swift */; };
 		A161C6B72AE7BC35005C1F09 /* CrossArbitrageExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161C6B62AE7BC35005C1F09 /* CrossArbitrageExecutor.swift */; };
@@ -114,6 +118,7 @@
 /* Begin PBXFileReference section */
 		4485E75D3733F7993D0F2CD4 /* Pods-Crypto Arby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crypto Arby.release.xcconfig"; path = "Target Support Files/Pods-Crypto Arby/Pods-Crypto Arby.release.xcconfig"; sourceTree = "<group>"; };
 		A107A16D2AB9CD2E00640F5B /* Crypto Arby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Crypto Arby.entitlements"; sourceTree = "<group>"; };
+		A10912F12AF3CF31002CFEFD /* HivePoolsRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HivePoolsRequestHandler.swift; sourceTree = "<group>"; };
 		A10D642D2A66A86C00FD06DA /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		A10D642F2A66AFAC00FD06DA /* StringKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringKeys.swift; sourceTree = "<group>"; };
 		A11BCCB72AEC117400E8EB17 /* TradeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeResponse.swift; sourceTree = "<group>"; };
@@ -151,6 +156,10 @@
 		A148E4682ADEB769002DFCA4 /* ManageExchangesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageExchangesViewModel.swift; sourceTree = "<group>"; };
 		A14C1D222ADD534000D0BC68 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		A14C1D242ADD561800D0BC68 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		A15968CE2AF28A3B0069B311 /* HiveDexRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveDexRequestHandler.swift; sourceTree = "<group>"; };
+		A15968D02AF2AA640069B311 /* PriceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceData.swift; sourceTree = "<group>"; };
+		A15968D22AF2AAAF0069B311 /* OrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderData.swift; sourceTree = "<group>"; };
+		A15968D42AF2AAE10069B311 /* OrderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderType.swift; sourceTree = "<group>"; };
 		A15EF8032AEA6109007921CA /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A15EF8052AEA6109007921CA /* KeychainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		A15EF8062AEA6109007921CA /* ThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
@@ -171,7 +180,6 @@
 		A15EF8302AEA6AE3007921CA /* BitfinexPriceResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitfinexPriceResponse.swift; sourceTree = "<group>"; };
 		A15EF8312AEA6AE3007921CA /* BinancePriceResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinancePriceResponse.swift; sourceTree = "<group>"; };
 		A15EF8322AEA6AE3007921CA /* BybitPriceResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BybitPriceResponse.swift; sourceTree = "<group>"; };
-		A15EF8362AEA6AF6007921CA /* PricesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricesModel.swift; sourceTree = "<group>"; };
 		A15EF8382AEA7BF5007921CA /* RequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandler.swift; sourceTree = "<group>"; };
 		A15EF83A2AEA7CA5007921CA /* TradeSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeSide.swift; sourceTree = "<group>"; };
 		A161C6B62AE7BC35005C1F09 /* CrossArbitrageExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageExecutor.swift; sourceTree = "<group>"; };
@@ -269,6 +277,7 @@
 				A1FF5D692A69726D0002E981 /* ErrorStrings.swift */,
 				A1E329952AD97512009E218C /* DefaultConfiguration.swift */,
 				A15EF83A2AEA7CA5007921CA /* TradeSide.swift */,
+				A15968D42AF2AAE10069B311 /* OrderType.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -517,6 +526,8 @@
 				A11BCCB62AEC115E00E8EB17 /* TradeResponse */,
 				A15EF82F2AEA6AE3007921CA /* PriceResponses */,
 				A184A2112AE93ABB005B3C0C /* BidAskData.swift */,
+				A15968D02AF2AA640069B311 /* PriceData.swift */,
+				A15968D22AF2AAAF0069B311 /* OrderData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -541,7 +552,6 @@
 		A1A7EBC02AD965CE00B0B7B1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A15EF8362AEA6AF6007921CA /* PricesModel.swift */,
 				A161C6B52AE7BC21005C1F09 /* Executors */,
 				A1FD603A2AE291CC0088B25E /* RequestHandlers */,
 				A1A7EBC12AD965DC00B0B7B1 /* DateHandler.swift */,
@@ -626,6 +636,8 @@
 				A1FD603B2AE291E30088B25E /* BitfinexRequestHandler.swift */,
 				A1878D192AE3EAE5005E62F0 /* BinanceRequestHandler.swift */,
 				A1878D1B2AE3EC97005E62F0 /* BybitRequestHandler.swift */,
+				A15968CE2AF28A3B0069B311 /* HiveDexRequestHandler.swift */,
+				A10912F12AF3CF31002CFEFD /* HivePoolsRequestHandler.swift */,
 			);
 			path = RequestHandlers;
 			sourceTree = "<group>";
@@ -773,6 +785,7 @@
 				A15EF8392AEA7BF5007921CA /* RequestHandler.swift in Sources */,
 				A1FFF2AD2AC445AC007CAF91 /* CrossArbitrageExchangeSelectionView.swift in Sources */,
 				A14654242A6FD273007003F2 /* OpportinitiesViewViewModel.swift in Sources */,
+				A10912F22AF3CF31002CFEFD /* HivePoolsRequestHandler.swift in Sources */,
 				A12127372A6E78CC008918A2 /* PricesCellView.swift in Sources */,
 				A1E2D6D72AC82B66001DA32C /* LoginFormViewViewModel.swift in Sources */,
 				A10D64302A66AFAC00FD06DA /* StringKeys.swift in Sources */,
@@ -784,6 +797,7 @@
 				A148E4672ADE9640002DFCA4 /* ManageExchangesView.swift in Sources */,
 				A14654222A6FBDDE007003F2 /* OpportunitiesView.swift in Sources */,
 				A15EF83B2AEA7CA5007921CA /* TradeSide.swift in Sources */,
+				A15968D12AF2AA640069B311 /* PriceData.swift in Sources */,
 				A1FFF2AB2AC444F3007CAF91 /* CrossArbitrageSearchList.swift in Sources */,
 				A16667452AC1C2010024E760 /* HistoryViewModel.swift in Sources */,
 				A128F2EB2ACD7CE90000DCE0 /* CircularArbitragePairSelectionView.swift in Sources */,
@@ -807,6 +821,7 @@
 				A15EF8132AEA6109007921CA /* DataModels.xcdatamodeld in Sources */,
 				A13DAE442A711C16002FD780 /* NewCircularArbitrageView.swift in Sources */,
 				A15EF8272AEA622F007921CA /* CircularArbitrageOpportunity+CoreDataProperties.swift in Sources */,
+				A15968CF2AF28A3B0069B311 /* HiveDexRequestHandler.swift in Sources */,
 				A1CC44512AC441C80067046D /* CurrencyTogglerView.swift in Sources */,
 				A14C1D252ADD561800D0BC68 /* MainViewModel.swift in Sources */,
 				A15EF8252AEA622F007921CA /* CrossArbitrageOpportunity+CoreDataProperties.swift in Sources */,
@@ -820,7 +835,6 @@
 				A15EF81C2AEA61BA007921CA /* CrossArbitrageHistory+CoreDataClass.swift in Sources */,
 				A15EF81D2AEA61BA007921CA /* CrossArbitrageHistory+CoreDataProperties.swift in Sources */,
 				A15EF8242AEA622F007921CA /* CrossArbitrageOpportunity+CoreDataClass.swift in Sources */,
-				A15EF8372AEA6AF6007921CA /* PricesModel.swift in Sources */,
 				A15EF8262AEA622F007921CA /* CircularArbitrageOpportunity+CoreDataClass.swift in Sources */,
 				A1FF5D682A695E350002E981 /* Exchanges.swift in Sources */,
 				A134ABA42A67E15E00196092 /* PricesView.swift in Sources */,
@@ -833,12 +847,14 @@
 				A1848ABE2AD81E4F0021EA6B /* Double.swift in Sources */,
 				A15EF81E2AEA61BA007921CA /* History+CoreDataClass.swift in Sources */,
 				A161C6B72AE7BC35005C1F09 /* CrossArbitrageExecutor.swift in Sources */,
+				A15968D52AF2AAE10069B311 /* OrderType.swift in Sources */,
 				A134ABA92A67FA6D00196092 /* PricesViewViewModel.swift in Sources */,
 				A1261A3A2AC72A0D00B36750 /* LoginFormView.swift in Sources */,
 				A1261A382AC7291300B36750 /* LoginButton.swift in Sources */,
 				A16667432AC1C1510024E760 /* HistoryView.swift in Sources */,
 				A1FD60392AE291700088B25E /* CryptographyHandler.swift in Sources */,
 				A15EF80D2AEA6109007921CA /* Persistence.swift in Sources */,
+				A15968D32AF2AAAF0069B311 /* OrderData.swift in Sources */,
 				A1A7EBC22AD965DC00B0B7B1 /* DateHandler.swift in Sources */,
 				A1FD603C2AE291E30088B25E /* BitfinexRequestHandler.swift in Sources */,
 				A1878D1C2AE3EC97005E62F0 /* BybitRequestHandler.swift in Sources */,

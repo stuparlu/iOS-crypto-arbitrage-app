@@ -32,6 +32,11 @@ class BinancePriceResponse: PriceResponse {
     }
     
     func fetchBidAskData(exchange: String, ticker: String) -> BidAskData {
-        return BidAskData(exchange: exchange, symbol: ticker, bidPrice: Double(self.bidPrice)!, askPrice: Double(self.askPrice)!, bidQuantity: self.bidQty, askQuantity: self.askQty )
+        return BidAskData(exchange: exchange, 
+                          symbol: ticker,
+                          bidPrice: Double(self.bidPrice) ?? Double.infinity,
+                          askPrice: Double(self.askPrice) ?? Double.infinity,
+                          bidQuantity: Double(self.bidQty) ?? 0.0,
+                          askQuantity:  Double(self.askQty) ?? 0.0)
     }
 }

@@ -20,12 +20,12 @@ final class ArbitrageOperation {
             }
             var opportunityPrices: [BidAskData] = []
             for exchange in exchanges {
-                let prices = await PricesModel.getPricesFor(ticker: ticker, at: exchange)
+                let prices = await Exchanges.mapper.getRequestHandler(for: exchange).getBidAskData(for: ticker)
                 if let prices = prices {
                     opportunityPrices.append(prices)
                 }
                 if opportunityPrices.count >= 2 {
-                   await PriceComparator.compareCrossPrices(for: opportunity, exchangePrices: opportunityPrices)
+                    await PriceComparator.compareCrossPrices(for: opportunity, exchangePrices: opportunityPrices)
                 }
             }
         }
@@ -42,13 +42,13 @@ final class ArbitrageOperation {
             var opportunityPrices: [BidAskData] = []
             for pair in pairs {
                 let ticker = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: pair), at: exchange)
-                let prices = await PricesModel.getPricesFor(ticker:ticker, at:exchange)
+                let prices = await Exchanges.mapper.getRequestHandler(for: exchange).getBidAskData(for: ticker)
                 if let prices = prices {
                     opportunityPrices.append(prices)
                 }
             }
             if opportunityPrices.count == pairs.count {
-               await PriceComparator.compareCircularPrices(for: opportunity, exchangePrices: opportunityPrices)
+                await PriceComparator.compareCircularPrices(for: opportunity, exchangePrices: opportunityPrices)
             }
         }
     }

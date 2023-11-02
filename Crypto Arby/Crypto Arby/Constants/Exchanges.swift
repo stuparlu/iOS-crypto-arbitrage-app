@@ -109,12 +109,12 @@ struct Exchanges {
         )
         
         static let hivePools = ExchangeParameters(
-            name: names.hiveDex,
+            name: names.hivePools,
             requestHandler: BitfinexRequestHandler.self,
             responseType: BitfinexPriceResponse.self,
             getSymbolUrl: "https://api.hive-engine.com/rpc/contracts",
             coinFormat: "\(StringKeys.main_placeholder)",
-            symbolFormat: "\(StringKeys.main_placeholder)\(StringKeys.quote_placeholder)",
+            symbolFormat: "\(StringKeys.main_placeholder):\(StringKeys.quote_placeholder)",
             apiEndpoint: "https://api.hive-engine.com",
             submitOrderPath: "",
             getbalancePath: "",
@@ -131,6 +131,10 @@ struct Exchanges {
                 return parameters.bybit
             case names.bitfinex:
                 return parameters.bitfinex
+            case names.hiveDex:
+                return parameters.hiveDex
+            case names.hivePools:
+                return parameters.hivePools
             default:
                 return parameters.binance
             }
@@ -149,7 +153,9 @@ struct Exchanges {
         }
         
         static func getSearchableName(_ mainSymbol: String, _ quoteSymbol: String, at exchange: String) -> String {
-            return getParameters(for: exchange).symbolFormat
+            let params = getParameters(for: exchange)
+            let format = params.symbolFormat
+            return format
                 .replacingOccurrences(of: StringKeys.main_placeholder, with: mainSymbol)
                 .replacingOccurrences(of: StringKeys.quote_placeholder, with: quoteSymbol)
         }

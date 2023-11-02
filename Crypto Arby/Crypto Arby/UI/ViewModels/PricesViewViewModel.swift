@@ -56,7 +56,7 @@ class PricesViewViewModel: ObservableObject {
     func fetchPrices() async {
         self.exchangePrices = []
         for exchangeName in Exchanges.names.allNames {
-            let prices = await PricesModel.getPricesFor(ticker: self.selectedMenuOptionText, at: exchangeName)
+            let prices = await Exchanges.mapper.getRequestHandler(for: exchangeName).getBidAskData(for: self.selectedMenuOptionText)
             if let prices = prices {
                 self.exchangePrices.append(prices)
             }

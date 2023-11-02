@@ -20,28 +20,30 @@ class CircularArbitrageExecutor {
         for tradeStep in tradeSteps {
             let currentTicker = Cryptocurrencies.findPair(by: tradeStep.symbol)
             if ownedCurrency == currentTicker.quoteSymbol {
-                let price = Double(tradeStep.askPrice) ?? Double.infinity
-                let quantity = Double(tradeStep.askQuantity)!
+                let price = tradeStep.askPrice
+                let quantity = tradeStep.askQuantity
                 let tradeOutput = tradeAmount / price
                 tradeAmount = min(tradeOutput, quantity)
                 ownedCurrency = currentTicker.mainSymbol
                 pairs.append(currentTicker.searchableName)
                 prices.append(price)
-                let orderID = await executeOrder(for: exchange, symbol: currentTicker, side: .buy, amount: tradeAmount)
+                let orderData = OrderData(symbol: currentTicker.searchableName, type: .market, side: .buy, quantity: tradeAmount, price: price)
+                let orderID = await executeOrder(for: orderData, at: exchange)
                 if let orderID = orderID {
                     tradeOrders.append(orderID)
                 } else {
                     return false
                 }
             } else {
-                let price = Double(tradeStep.bidPrice) ?? Double.infinity
-                let quantity = Double(tradeStep.bidQuantity)!
+                let price = tradeStep.bidPrice
+                let quantity = tradeStep.bidQuantity
                 let tradeOutput = min(tradeAmount, quantity)
                 tradeAmount = tradeOutput * price
                 ownedCurrency = currentTicker.quoteSymbol
                 pairs.append(currentTicker.searchableName)
                 prices.append(price)
-                let orderID = await executeOrder(for: exchange, symbol: currentTicker, side: .sell, amount: tradeAmount)
+                let orderData = OrderData(symbol: currentTicker.searchableName, type: .market, side: .sell, quantity: tradeAmount, price: price)
+                let orderID = await executeOrder(for: orderData, at: exchange)
                 if let orderID = orderID {
                     tradeOrders.append(orderID)
                 } else {
@@ -52,15 +54,11 @@ class CircularArbitrageExecutor {
         return true
     }
     
-    static func executeOrder(for exchange: String, symbol: CurrencyPair, side: TradeSide, amount: Double) async -> String? {
-        do {
-            let response = try await Exchanges.mapper.getRequestHandler(for: exchange).submitMarketOrder(symbol: Exchanges.mapper.getSearchableName(for: symbol, at: exchange), side: side, amount: amount)
-            if response.isSuccessful {
-                return response.orderID
-            } else {
-                throw "Error submitting order."
-            }
-        } catch {
+    static func executeOrder(for orderData: OrderData, at exchange: String) async -> String? {
+        let response = await Exchanges.mapper.getRequestHandler(for: exchange).submitTradeOrder(with: orderData)
+        if response.isSuccessful {
+            return response.orderID
+        } else {
             return nil
         }
     }

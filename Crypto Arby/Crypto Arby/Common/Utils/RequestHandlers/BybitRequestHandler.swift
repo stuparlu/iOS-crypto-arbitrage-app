@@ -8,15 +8,19 @@
 import Foundation
 
 struct BybitRequestHandler: RequestHandler {
-    static let exchangeParameters = Exchanges.parameters.bybit
-    
-    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse {
+    static var exchangeParameters: ExchangeParameters = Exchanges.parameters.bybit
+
+    static func submitTradeOrder(with orderData: OrderData) async -> TradeResponse {
         let timestamp = CryptographyHandler.getCurrentUTCTimestampInMilliseconds()
         let credentials = KeychainManager.shared.retriveConfiguration(forExchange: Exchanges.names.bybit)
         guard let credentials = credentials else {
             return TradeResponse.getNullResponse()
         }
-        let body = BybitMarketRequestBody(category: "spot", symbol: symbol, side: side == .buy ? "Buy" : "Sell", orderType: "Market", qty: String(amount))
+        
+        let symbol = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: orderData.symbol), at: exchangeParameters.name)
+        let side = orderData.side == .buy ? "Buy" : "Sell"
+        let type = orderData.type == .market ? "Market" : "Limit"
+        let body = BybitMarketRequestBody(category: "spot", symbol: symbol, side: side, orderType: type, qty: String(orderData.quantity))
         let jsonEncoder = JSONEncoder()
         jsonEncoder.outputFormatting = .sortedKeys
         let jsonData = try! jsonEncoder.encode(body)
@@ -33,8 +37,12 @@ struct BybitRequestHandler: RequestHandler {
         request.addValue(timestamp, forHTTPHeaderField: "X-BAPI-TIMESTAMP")
         request.addValue(credentials.apiKey, forHTTPHeaderField: "X-BAPI-API-KEY")
         request.addValue(signature, forHTTPHeaderField: "X-BAPI-SIGN")
-        let (data, _) = try await URLSession.shared.data(for: request)
-        return makeTradeResponse(for: data)
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return makeTradeResponse(for: data)
+        } catch {
+            return TradeResponse.getNullResponse()
+        }
     }
     
     static func getBalance(symbol: String) async -> Double? {

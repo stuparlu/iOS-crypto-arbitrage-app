@@ -10,24 +10,27 @@ import Foundation
 
 struct BitfinexRequestHandler: RequestHandler {
     
-    static let exchangeParameters = Exchanges.parameters.bitfinex
-    
+    static var exchangeParameters: ExchangeParameters = Exchanges.parameters.bitfinex
+
     static func getNonce() -> String {
         let nonceString = String((Date().timeIntervalSince1970 * 1000000).rounded())
         return String(nonceString[..<nonceString.firstIndex(of: ".")!])
     }
     
-    static func submitMarketOrder(symbol: String, side: TradeSide, amount: Double) async throws -> TradeResponse {
+    static func submitTradeOrder(with orderData: OrderData) async -> TradeResponse {
         let nonce = getNonce()
         let credentials = KeychainManager.shared.retriveConfiguration(forExchange: Exchanges.names.bitfinex)
         guard let credentials = credentials else {
             return TradeResponse.getNullResponse()
         }
-        var tradeAmount = amount
-        if side == .sell {
+
+        let symbol = Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: orderData.symbol), at: exchangeParameters.name)
+        let orderType = orderData.type == .market ? "EXCHANGE MARKET": "LIMIT"
+        var tradeAmount = orderData.quantity * orderData.price
+        if orderData.side == .sell {
             tradeAmount = -tradeAmount
         }
-        let body = BitfinexMarketRequestBody(type: "EXCHANGE MARKET", symbol: symbol, amount:String(tradeAmount))
+        let body = BitfinexMarketRequestBody(type: orderType, symbol: symbol, amount:String(tradeAmount))
         
         let jsonEncoder = JSONEncoder()
         jsonEncoder.outputFormatting = .sortedKeys
@@ -45,8 +48,12 @@ struct BitfinexRequestHandler: RequestHandler {
         request.addValue(nonce, forHTTPHeaderField: "bfx-nonce")
         request.addValue(credentials.apiKey, forHTTPHeaderField: "bfx-apikey")
         request.addValue(signature, forHTTPHeaderField: "bfx-signature")
-        let (data, _) = try await URLSession.shared.data(for: request)
-        return makeTradeResponse(for: data)
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return makeTradeResponse(for: data)
+        } catch {
+            return TradeResponse.getNullResponse()
+        }
     }
     
     static func getBalance(symbol: String) async -> Double? {

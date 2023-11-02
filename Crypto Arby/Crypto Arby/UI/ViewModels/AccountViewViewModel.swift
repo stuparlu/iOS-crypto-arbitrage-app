@@ -17,9 +17,10 @@ class AccountViewViewModel: ObservableObject {
     func send() {
         Task {
             do {
-                let data = await BitfinexRequestHandler.getBalance(symbol: "USD")
+                let data = await HivePoolsRequestHandler.getBidAskData(for: "POBSWAP.HIVE")
                 print(data)
-            }
+            } catch {}
         }
     }
 }
+

@@ -31,9 +31,9 @@ struct Cryptocurrencies {
         CurrencyPair(mainSymbol: "DOGE", quoteSymbol: "USDT"),
         CurrencyPair(mainSymbol: "TRX", quoteSymbol: "USDT"),
         CurrencyPair(mainSymbol: "MATIC", quoteSymbol: "USDT"),
-        
         CurrencyPair(mainSymbol: "ETH", quoteSymbol: "BTC"),
         CurrencyPair(mainSymbol: "BTC", quoteSymbol: "USD"),
+        CurrencyPair(mainSymbol: "POB", quoteSymbol: "SWAP.HIVE"),
 
     ]
 

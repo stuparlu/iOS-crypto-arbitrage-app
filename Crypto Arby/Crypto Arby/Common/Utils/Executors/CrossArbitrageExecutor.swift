@@ -15,33 +15,22 @@ class CrossArbitrageExecutor {
         guard let mainBalance = mainBalance, let quoteBalance = quoteBalance else {
             return false
         }
-        guard let askAmount = Double(ask.askQuantity), let bidAmount = Double(bid.bidQuantity) else {
-            return false
-        }
-        let tradeAmount = min(min(min(askAmount, bidAmount), mainBalance), quoteBalance / Double(ask.askPrice)!)
-        do {
-            let bidResult = try await Exchanges.mapper.getRequestHandler(for: bid.exchange).submitMarketOrder(
-                symbol: Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: bid.symbol), at: bid.exchange),
-                side: .sell,
-                amount: bidAmount)
-            let askResult = try await Exchanges.mapper.getRequestHandler(for: bid.exchange).submitMarketOrder(
-                symbol: Exchanges.mapper.getSearchableName(for: Cryptocurrencies.findPair(by: ask.symbol), at: ask.exchange),
-                side: .buy,
-                amount: askAmount)
-            if bidResult.isSuccessful && askResult.isSuccessful {
-                DatabaseManager.shared.saveCrossTradeHistory(
-                    success: true,
-                    message: "Trade executed",
-                    amount: tradeAmount,
-                    lowestAsk: ask,
-                    highestBid: bid,
-                    askOrderID: askResult.orderID,
-                    bidOrderID: bidResult.orderID)
-                return true
-            } else {
-                throw "Trade Failed"
-            }
-        } catch {
+        let tradeAmount = min(min(min(ask.askQuantity, bid.bidQuantity), mainBalance), quoteBalance / ask.askPrice)
+        let buyOrder = OrderData(symbol: ask.symbol, type: .market, side: .buy, quantity: tradeAmount, price: ask.askPrice)
+        let sellOrder = OrderData(symbol: bid.symbol, type: .market, side: .buy, quantity: tradeAmount, price: ask.bidPrice)
+        let askResult = await Exchanges.mapper.getRequestHandler(for: ask.exchange).submitTradeOrder(with: buyOrder)
+        let bidResult = await Exchanges.mapper.getRequestHandler(for: bid.exchange).submitTradeOrder(with: sellOrder)
+        if bidResult.isSuccessful && askResult.isSuccessful {
+            DatabaseManager.shared.saveCrossTradeHistory(
+                success: true,
+                message: "Trade executed",
+                amount: tradeAmount,
+                lowestAsk: ask,
+                highestBid: bid,
+                askOrderID: askResult.orderID,
+                bidOrderID: bidResult.orderID)
+            return true
+        } else {
             DatabaseManager.shared.saveCrossTradeHistory(
                 success: false,
                 message: "Trade execution failed. Autotrading has been stopped for this opportunity.",

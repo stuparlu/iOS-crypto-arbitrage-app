@@ -11,17 +11,17 @@ struct BidAskData: Identifiable {
     let id: UUID
     let exchange: String
     let symbol: String
-    let bidPrice: String
-    let askPrice: String
-    let bidQuantity: String
-    let askQuantity: String
+    let bidPrice: Double
+    let askPrice: Double
+    let bidQuantity: Double
+    let askQuantity: Double
     
-    init(exchange: String, symbol: String, bidPrice: Double, askPrice: Double, bidQuantity: String, askQuantity: String) {
+    init(exchange: String, symbol: String, bidPrice: Double, askPrice: Double, bidQuantity: Double, askQuantity: Double) {
         self.id = UUID()
         self.exchange = exchange
         self.symbol = symbol
-        self.bidPrice = String(bidPrice)
-        self.askPrice = String(askPrice)
+        self.bidPrice = bidPrice
+        self.askPrice = askPrice
         self.bidQuantity = bidQuantity
         self.askQuantity = askQuantity
     }

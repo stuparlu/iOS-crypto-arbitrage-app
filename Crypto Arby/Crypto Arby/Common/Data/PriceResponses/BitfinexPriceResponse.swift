@@ -10,8 +10,8 @@ import Foundation
 class BitfinexPriceResponse: PriceResponse {
     let bidPrice: Double
     let askPrice: Double
-    let bidQuantity: String
-    let askQuantity: String
+    let bidQuantity: Double
+    let askQuantity: Double
     
     enum CodingKeys: String, CodingKey {
         case values
@@ -29,12 +29,17 @@ class BitfinexPriceResponse: PriceResponse {
             throw "Error decoding bitfinex bid ask data"
         }
         bidPrice = decodedValues[0]
-        bidQuantity = String(decodedValues[1])
+        bidQuantity = decodedValues[1]
         askPrice = decodedValues[2]
-        askQuantity = String(decodedValues[3])
+        askQuantity = decodedValues[3]
     }
     
     func fetchBidAskData(exchange: String, ticker: String) -> BidAskData {
-        return BidAskData(exchange: exchange, symbol: ticker, bidPrice: bidPrice, askPrice: askPrice, bidQuantity: bidQuantity, askQuantity: askQuantity)
+        return BidAskData(exchange: exchange, 
+                          symbol: ticker,
+                          bidPrice: bidPrice,
+                          askPrice: askPrice,
+                          bidQuantity: bidQuantity,
+                          askQuantity: askQuantity)
     }
 }
