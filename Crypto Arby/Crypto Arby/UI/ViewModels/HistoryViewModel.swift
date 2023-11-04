@@ -10,7 +10,7 @@ import CoreData
 import Combine
 
 class HistoryViewModel: ObservableObject {
-    @Published var history: [History] = []
+    @Published var model = HistoryModel()
     private var cancellable: AnyCancellable?
     
     init() {
@@ -23,12 +23,16 @@ class HistoryViewModel: ObservableObject {
     func loadHistory() {
         let crossHistory = DatabaseManager.shared.getAllCrossHistory()
         let circularHistory = DatabaseManager.shared.getAllCircularHistory()
-        history = (crossHistory + circularHistory).sorted(by: {
+        model.history = (crossHistory + circularHistory).sorted(by: {
             if let time0 = $0.timestamp, let time1 = $1.timestamp {
                 return time0 > time1
             }
             return false
         })
+    }
+    
+    func getHistory() -> [History] {
+        return model.history
     }
     
     func getTimestampString(timestamp: Date) -> String {

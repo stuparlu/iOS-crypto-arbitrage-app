@@ -8,24 +8,21 @@
 import Foundation
 
 class ManageWalletsViewModel: ObservableObject {
-    @Published var showingPopover = false
-    @Published var accountName = ""
-    @Published var privateKeyText = ""
-    @Published var walletDisabled = false
-    var currentWallet = ""
+
+    @Published var model = ManageWalletsModel()
 
     func manage(wallet: String) {
         clearData()
-        currentWallet = wallet
+        model.currentWallet = wallet
         loadWalletData()
-        showingPopover.toggle()
+        model.showingPopover.toggle()
     }
     
     func clearData() {
-        accountName = ""
-        privateKeyText = ""
-        currentWallet = ""
-        walletDisabled = true
+        model.accountName = ""
+        model.privateKeyText = ""
+        model.currentWallet = ""
+        model.walletDisabled = true
     }
     
     func clearAllData() {
@@ -34,31 +31,35 @@ class ManageWalletsViewModel: ObservableObject {
         }
     }
     func saveWalletData() {
-        if privateKeyText == "" || accountName == "" {
+        if model.privateKeyText == "" || model.accountName == "" {
             return
         }
         KeychainManager.shared.save(
-            hiveConfiguration: HiveWalletConfiguration(accountName: accountName, activeKey: privateKeyText),
-            for: currentWallet)
-        walletDisabled = true
+            hiveConfiguration: HiveWalletConfiguration(accountName: model.accountName, activeKey: model.privateKeyText),
+            for: model.currentWallet)
+        model.walletDisabled = true
         clearData()
-        showingPopover.toggle()
+        model.showingPopover.toggle()
     }
     
     func loadWalletData() {
-        if let configuration = KeychainManager.shared.retriveHiveConfiguration(forWallet: currentWallet) {
-            accountName = configuration.accountName
-            privateKeyText = configuration.activeKey
-            if privateKeyText == "" {
-                walletDisabled = true
+        if let configuration = KeychainManager.shared.retriveHiveConfiguration(forWallet: model.currentWallet) {
+            model.accountName = configuration.accountName
+            model.privateKeyText = configuration.activeKey
+            if model.privateKeyText == "" {
+                model.walletDisabled = true
             } else {
-                walletDisabled = false
+                model.walletDisabled = false
             }
         }
     }
     
     func deleteWalletData() {
-        KeychainManager.shared.deleteConfiguration(for: currentWallet)
-        showingPopover.toggle()
+        KeychainManager.shared.deleteConfiguration(for: model.currentWallet)
+        model.showingPopover.toggle()
+    }
+    
+    func close() {
+        model.showingPopover.toggle()
     }
 }

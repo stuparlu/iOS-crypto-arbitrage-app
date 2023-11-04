@@ -29,9 +29,9 @@ struct CrossArbitrageTradeHistoryCellView: View {
         self.bidAmount = dataModel.bidAmount
         self.askPrice = dataModel.askPrice
         self.askAmount = dataModel.askAmount
-        self.bidOrderID = dataModel.bidOrderID ?? StringKeys.none
-        self.askOrderID = dataModel.askOrderID ?? StringKeys.none
-        self.status = dataModel.success ? StringKeys.success : StringKeys.failed
+        self.bidOrderID = dataModel.bidOrderID ?? StringKeys.placeholders.none
+        self.askOrderID = dataModel.askOrderID ?? StringKeys.placeholders.none
+        self.status = dataModel.success ? StringKeys.displayed.success : StringKeys.displayed.failed
         self.message = dataModel.message ?? ""
         self.timestamp = DateHandler.dateToString(dataModel.timestamp)
         
@@ -46,33 +46,33 @@ struct CrossArbitrageTradeHistoryCellView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 Spacer()
             }
-            Text("\(StringKeys.status)\(status)")
+            Text("\(StringKeys.displayed.status)\(status)")
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("\(StringKeys.description)\(message)")
+            Text("\(StringKeys.displayed.description)\(message)")
                 .frame(maxWidth: .infinity, alignment: .leading)
             Divider()
             VStack {
                 HStack {
-                    Text("\(StringKeys.boughtAt)\(askExchange)")
+                    Text("\(StringKeys.displayed.boughtAt)\(askExchange)")
                     Spacer()
-                    Text("\(StringKeys.soldAt)\(bidExchange)")
+                    Text("\(StringKeys.displayed.soldAt)\(bidExchange)")
                 }
                 HStack {
-                    Text("\(StringKeys.amount) \(bidAmount)")
+                    Text("\(StringKeys.displayed.amount) \(bidAmount)")
                     Spacer()
-                    Text("\(StringKeys.amount) \(askAmount)")
+                    Text("\(StringKeys.displayed.amount) \(askAmount)")
                 }
                 HStack {
-                    Text("\(StringKeys.price) \(askPrice)")
+                    Text("\(StringKeys.displayed.price) \(askPrice)")
                     Spacer()
-                    Text("\(StringKeys.price) \(bidPrice)")
+                    Text("\(StringKeys.displayed.price) \(bidPrice)")
                 }
                 HStack {
-                    Text("\(StringKeys.orderID)\(askOrderID)")
+                    Text("\(StringKeys.displayed.orderID)\(askOrderID)")
                     Spacer()
-                    Text("\(StringKeys.orderID)\(bidOrderID)")
+                    Text("\(StringKeys.displayed.orderID)\(bidOrderID)")
                 }
-                Text("\(StringKeys.time) \(timestamp)")
+                Text("\(StringKeys.displayed.time) \(timestamp)")
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }

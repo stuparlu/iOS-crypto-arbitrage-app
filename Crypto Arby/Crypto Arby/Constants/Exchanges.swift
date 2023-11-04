@@ -62,9 +62,9 @@ struct Exchanges {
             name: names.binance,
             requestHandler: BinanceRequestHandler.self,
             responseType: BinancePriceResponse.self,
-            getSymbolUrl: "https://api.binance.com/api/v3/ticker/bookTicker?symbol=\(StringKeys.ticker_placeholder)",
-            coinFormat: "\(StringKeys.main_placeholder)",
-            symbolFormat: "\(StringKeys.main_placeholder)\(StringKeys.quote_placeholder)",
+            getSymbolUrl: "https://api.binance.com/api/v3/ticker/bookTicker?symbol=\(StringKeys.placeholders.ticker)",
+            coinFormat: "\(StringKeys.placeholders.main)",
+            symbolFormat: "\(StringKeys.placeholders.main)\(StringKeys.placeholders.quote)",
             apiEndpoint: "https://testnet.binance.vision",
             submitOrderPath: "/api/v3/order",
             getbalancePath: "/api/v3/account",
@@ -74,9 +74,9 @@ struct Exchanges {
             name: names.bybit,
             requestHandler: BybitRequestHandler.self,
             responseType: BybitPriceResponse.self,
-            getSymbolUrl: "https://api.bybit.com/spot/v3/public/quote/ticker/bookTicker?symbol=\(StringKeys.ticker_placeholder)",
-            coinFormat: "\(StringKeys.main_placeholder)",
-            symbolFormat: "\(StringKeys.main_placeholder)\(StringKeys.quote_placeholder)",
+            getSymbolUrl: "https://api.bybit.com/spot/v3/public/quote/ticker/bookTicker?symbol=\(StringKeys.placeholders.ticker)",
+            coinFormat: "\(StringKeys.placeholders.main)",
+            symbolFormat: "\(StringKeys.placeholders.main)\(StringKeys.placeholders.quote)",
             apiEndpoint: "https://api-testnet.bybit.com/",
             submitOrderPath: "/v5/order/create",
             getbalancePath: "/v5/account/wallet-balance",
@@ -86,9 +86,9 @@ struct Exchanges {
             name: names.bitfinex,
             requestHandler: BitfinexRequestHandler.self,
             responseType: BitfinexPriceResponse.self,
-            getSymbolUrl: "https://api-pub.bitfinex.com/v2/ticker/\(StringKeys.ticker_placeholder)",
-            coinFormat: "t\(StringKeys.main_placeholder)",
-            symbolFormat: "t\(StringKeys.main_placeholder)\(StringKeys.quote_placeholder)",
+            getSymbolUrl: "https://api-pub.bitfinex.com/v2/ticker/\(StringKeys.placeholders.ticker)",
+            coinFormat: "t\(StringKeys.placeholders.main)",
+            symbolFormat: "t\(StringKeys.placeholders.main)\(StringKeys.placeholders.quote)",
             apiEndpoint: "https://api.bitfinex.com/",
             submitOrderPath: "v2/auth/w/order/submit",
             getbalancePath: "v2/auth/r/wallets",
@@ -100,8 +100,8 @@ struct Exchanges {
             requestHandler: HiveDexRequestHandler.self,
             responseType: GenericPriceResponse.self,
             getSymbolUrl: "https://api.hive-engine.com/rpc/contracts",
-            coinFormat: "\(StringKeys.main_placeholder)",
-            symbolFormat: "\(StringKeys.main_placeholder)\(StringKeys.quote_placeholder)",
+            coinFormat: "\(StringKeys.placeholders.main)",
+            symbolFormat: "\(StringKeys.placeholders.main)\(StringKeys.placeholders.quote)",
             apiEndpoint: "https://api.hive.blog",
             submitOrderPath: "",
             getbalancePath: "",
@@ -113,8 +113,8 @@ struct Exchanges {
             requestHandler: HivePoolsRequestHandler.self,
             responseType: GenericPriceResponse.self,
             getSymbolUrl: "https://api.hive-engine.com/rpc/contracts",
-            coinFormat: "\(StringKeys.main_placeholder)",
-            symbolFormat: "\(StringKeys.main_placeholder):\(StringKeys.quote_placeholder)",
+            coinFormat: "\(StringKeys.placeholders.main)",
+            symbolFormat: "\(StringKeys.placeholders.main):\(StringKeys.placeholders.quote)",
             apiEndpoint: "https://api.hive.blog",
             submitOrderPath: "",
             getbalancePath: "",
@@ -141,7 +141,7 @@ struct Exchanges {
         }
         
         static func getSymbolUrl(for exchange: String, ticker: String) -> String {
-            return getParameters(for: exchange).getSymbolUrl.replacingOccurrences(of: StringKeys.ticker_placeholder, with: ticker)
+            return getParameters(for: exchange).getSymbolUrl.replacingOccurrences(of: StringKeys.placeholders.ticker, with: ticker)
         }
         
         static func getResponseType(for exchange: String) -> PriceResponse.Type {
@@ -156,12 +156,12 @@ struct Exchanges {
             let params = getParameters(for: exchange)
             let format = params.symbolFormat
             return format
-                .replacingOccurrences(of: StringKeys.main_placeholder, with: mainSymbol)
-                .replacingOccurrences(of: StringKeys.quote_placeholder, with: quoteSymbol)
+                .replacingOccurrences(of: StringKeys.placeholders.main, with: mainSymbol)
+                .replacingOccurrences(of: StringKeys.placeholders.quote, with: quoteSymbol)
         }
         static func getSearchableName(_ coin: String, at exchange: String) -> String {
             return getParameters(for: exchange).coinFormat
-                .replacingOccurrences(of: StringKeys.main_placeholder, with: coin)
+                .replacingOccurrences(of: StringKeys.placeholders.main, with: coin)
         }
         
         static func getRequestHandler(for exchange: String) -> RequestHandler.Type {

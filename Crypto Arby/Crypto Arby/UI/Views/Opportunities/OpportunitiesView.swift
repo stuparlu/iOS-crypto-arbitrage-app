@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct OpportunitiesView: View {
-    @StateObject var viewModel = OpportinitiesViewViewModel()
+    @StateObject var viewModel = OpportunitiesViewModel()
     @State private var path: [Int] = []
     var body: some View {
         NavigationStack(path: $path) {
             VStack {
                 HStack {
                     VStack {
-                        Text(StringKeys.crossOpportunity)
+                        Text(StringKeys.displayed.crossOpportunity)
                             .fontWeight(.bold)
-                        List(viewModel.crossOpportunities) { item in
+                        List(viewModel.fetchCrossOpportunities()) { item in
                             if let name = item.pairName, let exchanges = item.selectedExchanges {
                                 CrossOpportunitiesCellView(dataBaseItem: item, pairName: name, isActive: item.isActive, exchanges: exchanges)
                                     .listRowSeparator(.hidden)
@@ -28,9 +28,9 @@ struct OpportunitiesView: View {
                     }
                     Spacer(minLength: 10)
                     VStack {
-                        Text(StringKeys.circularOpportunity)
+                        Text(StringKeys.displayed.circularOpportunity)
                             .fontWeight(.bold)
-                        List(viewModel.circularOpportunities) { item in
+                        List(viewModel.fetchCircularOpportunities()) { item in
                             if let name = item.exchangeName, let pairs = item.selectedPairs {
                                 CircularOpportunitiesCellView(dataBaseItem: item, exchangeName: name, isActive: item.isActive, pairs: pairs)
                                     .listRowSeparator(.hidden)
@@ -43,7 +43,7 @@ struct OpportunitiesView: View {
                 Spacer()
             }
             .padding(.top)
-            .navigationTitle(StringKeys.opportunities)
+            .navigationTitle(StringKeys.displayed.opportunities)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar() {
                 NavigationLink(destination: OpportunityTypePickerView()) {
@@ -64,7 +64,7 @@ struct OpportunitiesView_Previews: PreviewProvider {
             OpportunitiesView()
                 .tabItem {
                     Image(systemName: Symbols.opportunities_icon)
-                    Text(StringKeys.opportunities)
+                    Text(StringKeys.displayed.opportunities)
                 }
         }
     }

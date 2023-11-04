@@ -12,7 +12,7 @@ import Combine
 
 
 class TradesViewModel: ObservableObject {
-    @Published var trades: [TradeHistory] = []
+    @Published var model = TradesModel()
     private var cancellable: AnyCancellable?
 
     init() {
@@ -25,7 +25,7 @@ class TradesViewModel: ObservableObject {
     func loadTrades() {
         let crossHistory = DatabaseManager.shared.getAllCrossTradeHistory()
         let circularHistory = DatabaseManager.shared.getAllCircularTradeHistory()
-        trades = (crossHistory + circularHistory).sorted(by: {
+        model.trades = (crossHistory + circularHistory).sorted(by: {
             if let time0 = $0.timestamp, let time1 = $1.timestamp {
                 return time0 > time1
             }

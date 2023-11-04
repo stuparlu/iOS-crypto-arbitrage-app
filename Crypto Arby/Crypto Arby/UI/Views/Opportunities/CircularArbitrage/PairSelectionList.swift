@@ -10,8 +10,8 @@ import SwiftUI
 struct PairSelectionList: View {
     @StateObject var viewModel: NewCircularArbitrageViewModel
     var body: some View {
-        Text(StringKeys.selectPairsToAdd)
-        List(viewModel.nextPairs, id: \.searchableName) { item in
+        Text(StringKeys.displayed.selectPairsToAdd)
+        List(viewModel.model.nextPairs, id: \.searchableName) { item in
             Button {
                 viewModel.addPair(item)
             } label: {
@@ -21,7 +21,7 @@ struct PairSelectionList: View {
         .frame(minHeight:0, maxHeight: 220)
         .scrollContentBackground(.hidden)
         .listStyle(PlainListStyle())
-        .searchable(text: $viewModel.searchText, prompt: StringKeys.searchPairsToAdd)
+        .searchable(text: $viewModel.model.searchText, prompt: StringKeys.displayed.searchPairsToAdd)
     }
 }
 

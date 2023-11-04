@@ -9,11 +9,8 @@ import Foundation
 import SwiftUI
 import Combine
 
-class PricesViewViewModel: ObservableObject {
-    @Published var selectedMenuOptionText = SettingsManager.shared.getMonitoredCurrency()
-    @Published var exchangePrices: [BidAskData] = []
-    @Published var isNavigationViewHidden = true
-    @Published var searchText = StringKeys.empty_string
+class PricesViewModel: ObservableObject {
+    @Published var model = PricesModel()
     var workItem: DispatchWorkItem?
     
     init() {
@@ -31,15 +28,19 @@ class PricesViewViewModel: ObservableObject {
         if let safeItem = item {
             menuItemChanged(item: safeItem)
         }
-        isNavigationViewHidden.toggle()
-        searchText = StringKeys.empty_string
+        model.isNavigationViewHidden.toggle()
+        model.searchText = StringKeys.placeholders.emptyString
+    }
+    
+    func toggleNavigation() {
+        model.isNavigationViewHidden.toggle()
     }
     
     func menuItemChanged(item:String) {
         stopRefreshing()
-        self.exchangePrices = []
-        selectedMenuOptionText = item
-        SettingsManager.shared.setMonitoredCurrency(selectedMenuOptionText)
+        self.model.exchangePrices = []
+        model.selectedMenuOptionText = item
+        SettingsManager.shared.setMonitoredCurrency(model.selectedMenuOptionText)
         scheduleRefreshing()
     }
 
@@ -49,16 +50,16 @@ class PricesViewViewModel: ObservableObject {
     }
     
     func fetchExchangePrices() -> [BidAskData] {
-        return exchangePrices
+        return model.exchangePrices
     }
     
     @MainActor
     func fetchPrices() async {
-        self.exchangePrices = []
+        model.exchangePrices = []
         for exchangeName in Exchanges.names.allNames {
-            let prices = await Exchanges.mapper.getRequestHandler(for: exchangeName).getBidAskData(for: self.selectedMenuOptionText)
+            let prices = await Exchanges.mapper.getRequestHandler(for: exchangeName).getBidAskData(for: model.selectedMenuOptionText)
             if let prices = prices {
-                self.exchangePrices.append(prices)
+                model.exchangePrices.append(prices)
             }
         }
     }

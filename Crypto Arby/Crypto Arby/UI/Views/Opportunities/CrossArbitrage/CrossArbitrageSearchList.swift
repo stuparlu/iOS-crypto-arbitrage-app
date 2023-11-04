@@ -10,10 +10,10 @@ import SwiftUI
 struct CrossArbitrageSearchList: View {
     @StateObject var viewModel: NewCrossArbitrageViewModel
     var searchResults: [String] {
-        if viewModel.searchText.isEmpty {
+        if viewModel.model.searchText.isEmpty {
             return Array(viewModel.getTickers())
         } else {
-            return Array(viewModel.getTickers().filter { $0.contains(viewModel.searchText)
+            return Array(viewModel.getTickers().filter { $0.contains(viewModel.model.searchText)
             })
         }
     }
@@ -29,7 +29,7 @@ struct CrossArbitrageSearchList: View {
         .listStyle(PlainListStyle())
         .scrollContentBackground(.hidden)
         .background(ThemeManager.backgroundColor)
-        .searchable(text: $viewModel.searchText, prompt: StringKeys.search_pairs)
+        .searchable(text: $viewModel.model.searchText, prompt: StringKeys.displayed.searchPairs)
         .textInputAutocapitalization(.characters)
     }
 }

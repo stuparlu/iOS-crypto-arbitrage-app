@@ -8,38 +8,37 @@
 import SwiftUI
 
 struct AccountView: View {
-    @StateObject var viewModel = AccountViewViewModel()
+    @StateObject var viewModel = AccountViewModel()
     @StateObject var loginManager = LoginManager.shared
-    @State private var showingManageExchanges = false
-    @State private var showingManageWallets = false
+
     
     var body: some View {
         Form {
-            Section(header: Text(StringKeys.account)) {
+            Section(header: Text(StringKeys.displayed.account)) {
                 loginManager.isLoggedIn ? AnyView(AccountCardView()) : AnyView(LoginButton())
                 Button {
-                    showingManageExchanges.toggle()
+                    viewModel.model.showingManageExchanges.toggle()
                 } label: {
-                    Text(StringKeys.manageExchanges)
+                    Text(StringKeys.displayed.manageExchanges)
                 }
                 Button {
-                    showingManageWallets.toggle()
+                    viewModel.model.showingManageWallets.toggle()
                 } label: {
-                    Text(StringKeys.manageWallets)
+                    Text(StringKeys.displayed.manageWallets)
                 }
             }
-            Section(header: Text(StringKeys.viewConfiguration)) {
-                Text(StringKeys.percentageThreshold)
+            Section(header: Text(StringKeys.displayed.viewConfiguration)) {
+                Text(StringKeys.displayed.percentageThreshold)
                     .lineLimit(1)
                 TextField(
-                    StringKeys.empty_string,
-                    text: $viewModel.percentageThreshold
+                    StringKeys.placeholders.emptyString,
+                    text: $viewModel.model.percentageThreshold
                 )
                 .keyboardType(.decimalPad)
                 Button {
                     viewModel.savePercentageThreshold()
                 } label: {
-                    Text(StringKeys.saveConfiguration)
+                    Text(StringKeys.displayed.saveConfiguration)
                 }
             }
             
@@ -49,10 +48,10 @@ struct AccountView: View {
                 Text("Send")
             }
         }
-        .sheet(isPresented: $showingManageExchanges) {
+        .sheet(isPresented: $viewModel.model.showingManageExchanges) {
             ManageExchangesView()
         }
-        .sheet(isPresented: $showingManageWallets) {
+        .sheet(isPresented: $viewModel.model.showingManageWallets) {
             ManageWalletsView()
         }
     }

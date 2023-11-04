@@ -15,23 +15,23 @@ struct NewCrossArbitrageView: View {
     var body: some View {
         NavigationView {
             VStack {
-                !viewModel.pairSelected ? AnyView(CrossArbitrageSearchList(viewModel: viewModel)) : AnyView(CrossArbitrageExchangeSelectionView(viewModel: viewModel, navModel: navModel))
+                !viewModel.model.pairSelected ? AnyView(CrossArbitrageSearchList(viewModel: viewModel)) : AnyView(CrossArbitrageExchangeSelectionView(viewModel: viewModel, navModel: navModel))
                 
             }
-            .navigationTitle(StringKeys.new_cross_arbitrage)
+            .navigationTitle(StringKeys.displayed.newCrossArbitrage)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar() {
-                viewModel.pairSelected ? AnyView(CrossArbitrageSaveButtonView(viewModel: viewModel)) : AnyView(EmptyView())
+                viewModel.model.pairSelected ? AnyView(CrossArbitrageSaveButtonView(viewModel: viewModel)) : AnyView(EmptyView())
             }
         }
         .onChange(of: navModel.shouldDismissToRoot) { value in
             presentationMode.wrappedValue.dismiss()
         }
-        .alert(isPresented: $viewModel.showAlert) {
+        .alert(isPresented: $viewModel.model.showAlert) {
             Alert(
                 title: Text(StringKeys.errors.generic_error),
-                message: Text(StringKeys.alerts.select_exchanges),
-                dismissButton: .default(Text(StringKeys.ok))
+                message: Text(StringKeys.alerts.selectExchanges),
+                dismissButton: .default(Text(StringKeys.displayed.ok))
             )
         }
     }

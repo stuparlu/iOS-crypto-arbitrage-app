@@ -9,19 +9,11 @@ import Foundation
 
 class NewCrossArbitrageViewModel: ObservableObject {
     let viewContext = PersistenceController.shared.container.viewContext
-    
-    @Published var searchText = StringKeys.empty_string
-    @Published var selectedPair = StringKeys.empty_string
-    @Published var pairSelected = false
-    @Published var selectedExchanges: [String] = []
-    @Published var showAlert = false
-    @Published var shouldDismissView: Bool = false
-    @Published var tradingEnabled: Bool = false
-    @Published var autotradeAvailable: Bool = false
+    @Published var model = NewCrossArbitrageModel()
     
     func selectPair(pairName: String) {
-        selectedPair = Cryptocurrencies.findPair(by: pairName).searchableName
-        pairSelected.toggle()
+        model.selectedPair = Cryptocurrencies.findPair(by: pairName).searchableName
+        model.pairSelected.toggle()
     }
     
     func getTickers() -> [String] {
@@ -29,27 +21,27 @@ class NewCrossArbitrageViewModel: ObservableObject {
     }
     
     func toggleExchange(exchangeName: String) {
-        if selectedExchanges.contains(exchangeName) {
-            selectedExchanges.removeAll() { $0 == exchangeName}
+        if model.selectedExchanges.contains(exchangeName) {
+            model.selectedExchanges.removeAll() { $0 == exchangeName}
         } else {
-            selectedExchanges.append(exchangeName)
+            model.selectedExchanges.append(exchangeName)
         }
-        for exchange in selectedExchanges {
+        for exchange in model.selectedExchanges {
             guard KeychainManager.shared.retriveConfiguration(forExchange: exchange) != nil else {
-                autotradeAvailable = false
+                model.autotradeAvailable = false
                 break
             }
         }
-        autotradeAvailable = true
+        model.autotradeAvailable = true
     }
     
     func isExchangeEnabled(exchangeName:String) -> Bool {
-        return selectedExchanges.contains(exchangeName)
+        return model.selectedExchanges.contains(exchangeName)
     }
     
     func saveButtonPressed() -> Bool{
-        if selectedPair == StringKeys.empty_string || selectedExchanges.count <= 1 {
-            showAlert.toggle()
+        if model.selectedPair == StringKeys.placeholders.emptyString || model.selectedExchanges.count <= 1 {
+            model.showAlert.toggle()
             return false
         } else {
             saveNewOpportunity()
@@ -58,6 +50,6 @@ class NewCrossArbitrageViewModel: ObservableObject {
     }
     
     func saveNewOpportunity() {
-        DatabaseManager.shared.saveNewCrossOpportunity(pairName: selectedPair, exchanges: selectedExchanges, tradingActive: tradingEnabled)
+        DatabaseManager.shared.saveNewCrossOpportunity(pairName: model.selectedPair, exchanges: model.selectedExchanges, tradingActive: model.tradingEnabled)
     }
 }

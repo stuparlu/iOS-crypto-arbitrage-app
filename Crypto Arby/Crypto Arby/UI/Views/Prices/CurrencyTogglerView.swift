@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CurrencyTogglerView: View {
-    @StateObject var viewModel: PricesViewViewModel
+    @StateObject var viewModel: PricesViewModel
     var body: some View {
         HStack {
             Spacer()
             Button(action: {
-                viewModel.isNavigationViewHidden.toggle()
+                viewModel.toggleNavigation()
             }) {
-                Label(viewModel.selectedMenuOptionText, systemImage: Symbols.symbol_chevron_down)
+                Label(viewModel.model.selectedMenuOptionText, systemImage: Symbols.symbol_chevron_down)
             }
             Spacer()
         }
@@ -23,5 +23,5 @@ struct CurrencyTogglerView: View {
 }
 
 #Preview {
-    CurrencyTogglerView(viewModel:PricesViewViewModel())
+    CurrencyTogglerView(viewModel:PricesViewModel())
 }

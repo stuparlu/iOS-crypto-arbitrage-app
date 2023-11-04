@@ -12,7 +12,7 @@ struct CrossArbitrageSaveButtonView: View {
     
     var body: some View {
         Button(action: {
-            viewModel.pairSelected.toggle()
+            viewModel.model.pairSelected.toggle()
         }) {
             Image(systemName: Symbols.x_mark)
                 .resizable()

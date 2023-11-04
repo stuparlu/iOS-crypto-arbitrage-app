@@ -12,7 +12,7 @@ struct ManageExchangesView: View {
     
     var body: some View {
         VStack {
-            Text(StringKeys.manageExchanges)
+            Text(StringKeys.displayed.manageExchanges)
                 .font(.largeTitle)
                 .fontWeight(.bold)
             List(Exchanges.names.allNonWallets, id: \.self) { item in
@@ -26,28 +26,29 @@ struct ManageExchangesView: View {
             Button {
                 viewModel.clearAllData()
             } label: {
-                Text(StringKeys.clearAllKeys)
+                Text(StringKeys.displayed.clearAllKeys)
             }
+            
         }
-        .popover(isPresented: $viewModel.showingPopover) {
+        .popover(isPresented: $viewModel.model.showingPopover) {
             VStack {
-                Text(StringKeys.manageExchange)
+                Text(StringKeys.displayed.manageExchange)
                     .font(.title)
                 Form {
-                    Text(viewModel.currentExchange.capitalized)
-                    TextField(StringKeys.apiKey, text: $viewModel.apiKeyText)
-                    TextField(StringKeys.apiSecret, text: $viewModel.apiSecretText)
+                    Text(viewModel.model.currentExchange.capitalized)
+                    TextField(StringKeys.displayed.apiKey, text: $viewModel.model.apiKeyText)
+                    TextField(StringKeys.displayed.apiSecret, text: $viewModel.model.apiSecretText)
                     Button {
                         viewModel.saveExchangeData()
                     } label: {
-                        Text(StringKeys.saveConfiguration)
+                        Text(StringKeys.displayed.saveConfiguration)
                     }
                     Button {
                         viewModel.deleteExchangeData()
                     } label: {
-                        Text(StringKeys.clearConfiguration)
+                        Text(StringKeys.displayed.clearConfiguration)
                     }
-                    .disabled(viewModel.exchangeDisabled)
+                    .disabled(viewModel.model.exchangeDisabled)
                 }
                 .background(ThemeManager.backgroundColor)
                 .scrollContentBackground(.hidden)

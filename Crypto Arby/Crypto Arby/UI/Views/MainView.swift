@@ -17,54 +17,48 @@ struct MainView: View {
                 PricesView()
                     .tabItem {
                         Image(systemName: Symbols.price_history_icon)
-                        Text(StringKeys.prices)
+                        Text(StringKeys.displayed.prices)
                     }
                     .tag(0)
                 OpportunitiesView()
                     .tabItem {
                         Image(systemName:Symbols.opportunities_icon)
-                        Text(StringKeys.opportunities)
+                        Text(StringKeys.displayed.opportunities)
                     }
                     .tag(1)
                 
                 HistoryView()
                     .tabItem {
                         Image(systemName: Symbols.opportunity_history_icon)
-                        Text(StringKeys.history)
+                        Text(StringKeys.displayed.history)
 
                     }
-                    .badge(viewModel.unreadNotifications)
+                    .badge(viewModel.model.unreadNotifications)
                     .tag(2)
                 
                 TradesView()
                     .tabItem {
                         Image(systemName: Symbols.opportunity_trade_icon)
-                        Text(StringKeys.trades)
+                        Text(StringKeys.displayed.trades)
 
                     }
-                    .badge(viewModel.unreadTradeResults)
+                    .badge(viewModel.model.unreadTradeResults)
                     .tag(3)
                 
                 AccountView()
                     .tabItem {
                         Image(systemName: Symbols.user_account_icon)
-                        Text(StringKeys.account)
+                        Text(StringKeys.displayed.account)
                     }
                     .tag(4)
             }
         }
-        .onChange(of: viewModel.selection) { newTab in
+        .onChange(of: viewModel.model.selection) { newTab in
             if newTab == 2 {
                 viewModel.historyViewed()
             } else if newTab == 3 {
                 viewModel.tradesViewed()
             }
-        }
-        .onAppear() {
-            //            This should be tested on a device when available
-            //            self.registerBGTaskScheduler()
-            //            self.scheduleAppRefresh()
-            //            appDelegate.operationQueue.addOperation(ArbitrqageOperation())
         }
     }
     

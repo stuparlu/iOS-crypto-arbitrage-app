@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct CurrencySearchView: View {
-    @StateObject var viewModel: PricesViewViewModel
+    @StateObject var viewModel: PricesViewModel
     
     var filteredItems: [String] {
-        if viewModel.searchText.isEmpty {
+        if viewModel.model.searchText.isEmpty {
             return Array(viewModel.fetchMenuItems().sorted())
         } else {
-            return Array(viewModel.fetchMenuItems().filter { $0.localizedCaseInsensitiveContains(viewModel.searchText)
+            return Array(viewModel.fetchMenuItems().filter { $0.localizedCaseInsensitiveContains(viewModel.model.searchText)
             }.sorted())
         }
     }
@@ -31,8 +31,8 @@ struct CurrencySearchView: View {
             }
             .listStyle(PlainListStyle())
             .scrollContentBackground(.hidden)
-            .searchable(text: $viewModel.searchText, prompt: StringKeys.search)
-            .navigationTitle(StringKeys.search_pairs)
+            .searchable(text: $viewModel.model.searchText, prompt: StringKeys.displayed.search)
+            .navigationTitle(StringKeys.displayed.searchPairs)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar() {
                 Button(action: {
@@ -51,5 +51,5 @@ struct CurrencySearchView: View {
 }
 
 #Preview {
-    CurrencySearchView(viewModel: PricesViewViewModel())
+    CurrencySearchView(viewModel: PricesViewModel())
 }

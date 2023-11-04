@@ -12,18 +12,18 @@ struct CircularArbitragePairSelectionView: View {
     @StateObject var navModel: OpportunitiesNavigationModel
     var body: some View {
         VStack {
-            viewModel.nextPairs.count != 0 ? AnyView(PairSelectionList(viewModel: viewModel)) : AnyView(EmptyView())
+            viewModel.model.nextPairs.count != 0 ? AnyView(PairSelectionList(viewModel: viewModel)) : AnyView(EmptyView())
             HStack {
-                Text(StringKeys.selectedPairs)
+                Text(StringKeys.displayed.selectedPairs)
                 Spacer()
                 Button {
                     viewModel.clearLast()
                 } label: {
-                    Text(StringKeys.clearLast)
+                    Text(StringKeys.displayed.clearLast)
                 }
                 .buttonStyle(.borderedProminent)
             }
-            List(viewModel.selectedPairs, id: \.searchableName) { item in
+            List(viewModel.model.selectedPairs, id: \.searchableName) { item in
                 Button {
                     viewModel.removePair(item)
                 } label: {
@@ -33,15 +33,15 @@ struct CircularArbitragePairSelectionView: View {
             .scrollContentBackground(.hidden)
             .listStyle(PlainListStyle())
             Spacer()
-            Toggle(StringKeys.autoTradePrompt, isOn: $viewModel.tradingEnabled)
-                .disabled(!viewModel.autotradeAvailable)
+            Toggle(StringKeys.displayed.autoTradePrompt, isOn: $viewModel.model.tradingEnabled)
+                .disabled(!viewModel.model.autotradeAvailable)
                 .tint(ThemeManager.accentColor)
             Button {
                 if viewModel.saveOpportunity() {
                     navModel.shouldDismissToRoot.toggle()
                 }
             } label: {
-                Text(StringKeys.saveOpportunity)
+                Text(StringKeys.displayed.saveOpportunity)
                     .frame(width: 150, height: 40)
             }
             .buttonStyle(.borderedProminent)

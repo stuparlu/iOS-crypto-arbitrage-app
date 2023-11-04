@@ -15,7 +15,7 @@ struct CurrencyPair: Hashable {
     init(mainSymbol: String, quoteSymbol: String) {
         self.mainSymbol = mainSymbol
         self.quoteSymbol = quoteSymbol
-        self.searchableName = Exchanges.mapper.getSearchableName(mainSymbol, quoteSymbol, at: StringKeys.empty_string)
+        self.searchableName = Exchanges.mapper.getSearchableName(mainSymbol, quoteSymbol, at: StringKeys.placeholders.emptyString)
     }
 }
 

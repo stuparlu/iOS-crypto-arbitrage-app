@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct PricesView: View {
-    @StateObject var viewModel = PricesViewViewModel()
+    @StateObject var viewModel = PricesViewModel()
     
     var body: some View {
         VStack {
-            viewModel.isNavigationViewHidden ? AnyView(CurrencyTogglerView(viewModel: viewModel)) : AnyView(CurrencySearchView(viewModel: viewModel))
-            viewModel.isNavigationViewHidden ? AnyView(ExchangeListView(viewModel: viewModel)) : AnyView(EmptyView())
+            viewModel.model.isNavigationViewHidden ? AnyView(CurrencyTogglerView(viewModel: viewModel)) : AnyView(CurrencySearchView(viewModel: viewModel))
+            viewModel.model.isNavigationViewHidden ? AnyView(ExchangeListView(viewModel: viewModel)) : AnyView(EmptyView())
         }
     }
 }
@@ -24,7 +24,7 @@ struct PricesView_Previews: PreviewProvider {
             PricesView()
                 .tabItem {
                     Image(systemName: Symbols.price_history_icon)
-                    Text(StringKeys.prices)
+                    Text(StringKeys.displayed.prices)
                 }
         }
     }

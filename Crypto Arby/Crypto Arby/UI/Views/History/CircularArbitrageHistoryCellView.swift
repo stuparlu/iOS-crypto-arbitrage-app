@@ -32,7 +32,7 @@ struct CircularArbitrageHistoryCellView: View {
                 Spacer()
             }
             HStack {
-                Text(StringKeys.path)
+                Text(StringKeys.displayed.path)
                     .font(.headline)
                 Spacer()
                 ForEach(path, id: \.self) { item in
@@ -43,15 +43,15 @@ struct CircularArbitrageHistoryCellView: View {
                 }
             }
             HStack{
-                Text(StringKeys.profit)
+                Text(StringKeys.displayed.profit)
                     .font(.headline)
                 Spacer()
-                Text(("\(String(profitPercentage))\(StringKeys.signPercent)"))
+                Text(("\(String(profitPercentage))\(StringKeys.displayed.signPercent)"))
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
             HStack{
-                Text(StringKeys.time)
+                Text(StringKeys.displayed.time)
                     .font(.headline)
                 Spacer()
                 Text(timestamp)

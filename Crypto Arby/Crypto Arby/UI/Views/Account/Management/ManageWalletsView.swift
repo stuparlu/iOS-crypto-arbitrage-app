@@ -12,7 +12,7 @@ struct ManageWalletsView: View {
     
     var body: some View {
         VStack {
-            Text(StringKeys.manageWallets)
+            Text(StringKeys.displayed.manageWallets)
                 .font(.largeTitle)
                 .fontWeight(.bold)
             List(Exchanges.wallets.allNames, id: \.self) { item in
@@ -23,31 +23,33 @@ struct ManageWalletsView: View {
                 }
             }
             .scrollContentBackground(.hidden)
+            
             Button {
                 viewModel.clearAllData()
             } label: {
-                Text(StringKeys.clearAllKeys)
+                Text(StringKeys.displayed.clearAllKeys)
             }
+            
         }
-        .popover(isPresented: $viewModel.showingPopover) {
+        .popover(isPresented: $viewModel.model.showingPopover) {
             VStack {
-                Text(StringKeys.manageWallet)
+                Text(StringKeys.displayed.manageWallet)
                     .font(.title)
                 Form {
-                    Text(viewModel.currentWallet.capitalized)
-                    TextField(StringKeys.accountName, text: $viewModel.accountName)
-                    TextField(StringKeys.privateKey, text: $viewModel.privateKeyText)
+                    Text(viewModel.model.currentWallet.capitalized)
+                    TextField(StringKeys.displayed.accountName, text: $viewModel.model.accountName)
+                    TextField(StringKeys.displayed.privateKey, text: $viewModel.model.privateKeyText)
                     Button {
                         viewModel.saveWalletData()
                     } label: {
-                        Text(StringKeys.saveConfiguration)
+                        Text(StringKeys.displayed.saveConfiguration)
                     }
                     Button {
                         viewModel.deleteWalletData()
                     } label: {
-                        Text(StringKeys.clearConfiguration)
+                        Text(StringKeys.displayed.clearConfiguration)
                     }
-                    .disabled(viewModel.walletDisabled)
+                    .disabled(viewModel.model.walletDisabled)
                 }
                 .background(ThemeManager.backgroundColor)
                 .scrollContentBackground(.hidden)

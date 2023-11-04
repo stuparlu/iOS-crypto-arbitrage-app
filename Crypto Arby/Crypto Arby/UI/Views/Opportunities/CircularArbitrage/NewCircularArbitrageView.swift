@@ -15,23 +15,23 @@ struct NewCircularArbitrageView: View {
     var body: some View {
         NavigationView {
             VStack {
-                !viewModel.exchangeSelected ? AnyView(CircularArbitrageExchangeSearchForm(viewModel: viewModel)) : AnyView(CircularArbitragePairSelectionView(viewModel: viewModel, navModel: navModel))
+                !viewModel.model.exchangeSelected ? AnyView(CircularArbitrageExchangeSearchForm(viewModel: viewModel)) : AnyView(CircularArbitragePairSelectionView(viewModel: viewModel, navModel: navModel))
                 
             }
-            .navigationTitle(StringKeys.new_circular_arbitrage)
+            .navigationTitle(StringKeys.displayed.newCircularArbitrage)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar() {
-                viewModel.exchangeSelected ? AnyView(CircularArbitrageCancelButtonView(viewModel: viewModel)) : AnyView(EmptyView())
+                viewModel.model.exchangeSelected ? AnyView(CircularArbitrageCancelButtonView(viewModel: viewModel)) : AnyView(EmptyView())
             }
             CircularArbitragePairSelectionView(viewModel: viewModel, navModel: navModel)
         }
         .onChange(of: navModel.shouldDismissToRoot) { value in
             presentationMode.wrappedValue.dismiss()
         }
-        .alert(StringKeys.circularSaveFailedTitle, isPresented: $viewModel.saveAlertShown) {
-            Button(StringKeys.ok, role: .cancel) {}
+        .alert(StringKeys.alerts.circularSaveFailedTitle, isPresented: $viewModel.model.saveAlertShown) {
+            Button(StringKeys.displayed.ok, role: .cancel) {}
         } message: {
-            Text(StringKeys.circularSaveFailedMessage)
+            Text(StringKeys.alerts.circularSaveFailedMessage)
         }
     }
 }

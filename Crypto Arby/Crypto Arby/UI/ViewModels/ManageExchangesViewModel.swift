@@ -8,24 +8,20 @@
 import Foundation
 
 class ManageExchangesViewModel : ObservableObject {
-    @Published var showingPopover = false
-    @Published var apiKeyText = ""
-    @Published var apiSecretText = ""
-    @Published var exchangeDisabled = false
-    var currentExchange = ""
+    @Published var model = ManageExchangesModel()
     
     func manage(exchange: String) {
         clearData()
-        currentExchange = exchange
+        model.currentExchange = exchange
         loadExchangeData()
-        showingPopover.toggle()
+        model.showingPopover.toggle()
     }
     
     func clearData() {
-        apiKeyText = ""
-        apiSecretText = ""
-        currentExchange = ""
-        exchangeDisabled = true
+        model.apiKeyText = ""
+        model.apiSecretText = ""
+        model.currentExchange = ""
+        model.exchangeDisabled = true
     }
     
     func clearAllData() {
@@ -35,26 +31,30 @@ class ManageExchangesViewModel : ObservableObject {
     }
     
     func saveExchangeData() {
-        if apiKeyText == "" || apiSecretText == "" {
+        if model.apiKeyText == "" || model.apiSecretText == "" {
             return
         }
-        KeychainManager.shared.save(ExchangeConfiguration(apiKey: apiKeyText, apiSecret: apiSecretText), for: currentExchange)
+        KeychainManager.shared.save(ExchangeConfiguration(apiKey: model.apiKeyText, apiSecret: model.apiSecretText), for: model.currentExchange)
         clearData()
-        showingPopover.toggle()
+        model.showingPopover.toggle()
     }
 
     func loadExchangeData() {
-        if let data = KeychainManager.shared.retriveConfiguration(forExchange: currentExchange) {
-            apiKeyText = data.apiKey
-            apiSecretText = data.apiSecret
-            if apiKeyText != "" && apiSecretText != "" {
-                exchangeDisabled = false
+        if let data = KeychainManager.shared.retriveConfiguration(forExchange: model.currentExchange) {
+            model.apiKeyText = data.apiKey
+            model.apiSecretText = data.apiSecret
+            if model.apiKeyText != "" && model.apiSecretText != "" {
+                model.exchangeDisabled = false
             }
         }
     }
     
     func deleteExchangeData() {
-        KeychainManager.shared.deleteConfiguration(for: currentExchange)
-        showingPopover.toggle()
+        KeychainManager.shared.deleteConfiguration(for: model.currentExchange)
+        model.showingPopover.toggle()
+    }
+    
+    func close() {
+        model.showingPopover.toggle()
     }
 }

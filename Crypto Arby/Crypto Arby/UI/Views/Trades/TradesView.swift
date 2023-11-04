@@ -12,7 +12,7 @@ struct TradesView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(viewModel.trades) { item in
+                List(viewModel.model.trades) { item in
                     if String(describing: type(of: item.self)) == String(describing: CrossArbitrageTradeHistory.self) {
                         AnyView(CrossArbitrageTradeHistoryCellView(dataModel: item as! CrossArbitrageTradeHistory))
                     } else if String(describing: type(of: item.self)) == String(describing: CircularArbitrageHistory.self) {
@@ -22,7 +22,7 @@ struct TradesView: View {
                 .scrollContentBackground(.hidden)
                 .listStyle(PlainListStyle())
             }
-            .navigationTitle(StringKeys.history)
+            .navigationTitle(StringKeys.displayed.history)
             .navigationBarTitleDisplayMode(.inline)
         }
     }

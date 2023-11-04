@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ExchangeListView: View {
-    @StateObject var viewModel: PricesViewViewModel
+    @StateObject var viewModel: PricesViewModel
     var body: some View {
         HStack() {
-            Text(StringKeys.exchange)
+            Text(StringKeys.displayed.exchange)
             Spacer()
-            Text(StringKeys.highest_bid)
-            Text(StringKeys.lowestAsk)
+            Text(StringKeys.displayed.highestBid)
+            Text(StringKeys.displayed.lowestAsk)
         }
         .padding(.horizontal, 20)
         .padding(.top, 10)
         ZStack {
-            viewModel.exchangePrices.isEmpty ? AnyView(LoadingIndicatorView()) : AnyView(EmptyView())
-            List(viewModel.exchangePrices) { item in
+            viewModel.model.exchangePrices.isEmpty ? AnyView(LoadingIndicatorView()) : AnyView(EmptyView())
+            List(viewModel.model.exchangePrices) { item in
                 PricesCellView(exchangeName: item.exchange, bidPrice: String(item.bidPrice), askPrice: String(item.askPrice))
                     .listRowSeparator(.hidden)
             }
@@ -36,7 +36,7 @@ struct ExchangeListView: View {
         PricesView()
             .tabItem {
                 Image(systemName: Symbols.price_history_icon)
-                Text(StringKeys.prices)
+                Text(StringKeys.displayed.prices)
             }
     }
 }

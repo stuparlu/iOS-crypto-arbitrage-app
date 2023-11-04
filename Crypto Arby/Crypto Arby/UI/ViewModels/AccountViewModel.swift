@@ -7,11 +7,11 @@
 
 import Foundation
 
-class AccountViewViewModel: ObservableObject {
-    @Published var percentageThreshold = String(SettingsManager.shared.getPercentageThreshold())
+class AccountViewModel: ObservableObject {
+    @Published var model = AccountModel()
     
     func savePercentageThreshold() {
-        SettingsManager.shared.setPercentageThreshold(Double(percentageThreshold)!)
+        SettingsManager.shared.setPercentageThreshold(Double(model.percentageThreshold)!)
     }
     
     func send() {

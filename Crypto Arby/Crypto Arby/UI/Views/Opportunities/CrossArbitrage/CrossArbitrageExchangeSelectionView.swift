@@ -13,12 +13,12 @@ struct CrossArbitrageExchangeSelectionView: View {
     
     var body: some View {
         Spacer()
-        Text("\(StringKeys.pair_selected)\(viewModel.selectedPair)")
+        Text("\(StringKeys.displayed.pairSelected)\(viewModel.model.selectedPair)")
         List {
-            Toggle(StringKeys.autoTradePrompt, isOn: $viewModel.tradingEnabled)
-                .disabled(!viewModel.autotradeAvailable)
+            Toggle(StringKeys.displayed.autoTradePrompt, isOn: $viewModel.model.tradingEnabled)
+                .disabled(!viewModel.model.autotradeAvailable)
                 .tint(ThemeManager.accentColor)
-            Text(StringKeys.select_exchanges)
+            Text(StringKeys.displayed.selectExchanges)
             ForEach(Exchanges.names.allNames, id: \.self) { item in
                 Button(action: {
                     viewModel.toggleExchange(exchangeName: item)
@@ -49,7 +49,7 @@ struct CrossArbitrageExchangeSelectionView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .frame(width: 200, height: 60)
-                Text(StringKeys.saveOpportunity)
+                Text(StringKeys.displayed.saveOpportunity)
                     .multilineTextAlignment(.center)
                     .foregroundColor(ThemeManager.backgroundColor)
 

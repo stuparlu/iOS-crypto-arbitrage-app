@@ -17,7 +17,7 @@ struct LoginButton: View {
         } label: {
             HStack {
                 Image(systemName: Symbols.user_account_icon)
-                Text(StringKeys.login)
+                Text(StringKeys.displayed.login)
             }
         }
         .sheet(isPresented: $showingSheet) {

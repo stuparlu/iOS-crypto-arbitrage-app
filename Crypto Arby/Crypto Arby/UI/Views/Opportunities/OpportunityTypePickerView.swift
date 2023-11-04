@@ -18,7 +18,7 @@ struct OpportunityTypePickerView: View {
                 Image(systemName: Symbols.symbol_circlepath)
                     .resizable()
                     .frame(width: 60, height: 60)
-                Text(StringKeys.cross_arbitrage)
+                Text(StringKeys.displayed.crossArbitrage)
             }
         }
         .onChange(of: navModel.shouldDismissToRoot) { value in
@@ -30,7 +30,7 @@ struct OpportunityTypePickerView: View {
                 Image(systemName: Symbols.symbol_trianglepath)
                     .resizable()
                     .frame(width: 60, height: 60)
-                Text(StringKeys.circular_arbitrage)
+                Text(StringKeys.displayed.circularArbitrage)
             }
         }
         Spacer()

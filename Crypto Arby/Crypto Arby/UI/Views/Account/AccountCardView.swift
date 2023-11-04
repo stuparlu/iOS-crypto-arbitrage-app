@@ -18,7 +18,7 @@ struct AccountCardView: View {
             Button {
                 loginManager.logout()
             } label: {
-                Text(StringKeys.logout)
+                Text(StringKeys.displayed.logout)
             }
         }
     }

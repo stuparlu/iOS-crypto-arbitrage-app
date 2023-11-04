@@ -11,10 +11,10 @@ struct CircularArbitrageExchangeSearchForm: View {
     @StateObject var viewModel: NewCircularArbitrageViewModel
     
     var searchResults: [String] {
-        if viewModel.searchText.isEmpty {
-            return Array(viewModel.exchangeList).sorted()
+        if viewModel.model.searchText.isEmpty {
+            return Array(viewModel.model.exchangeList).sorted()
         } else {
-            return Array(viewModel.exchangeList.filter { $0.contains(viewModel.searchText)
+            return Array(viewModel.model.exchangeList.filter { $0.contains(viewModel.model.searchText)
             }.sorted())
         }
     }
@@ -30,7 +30,7 @@ struct CircularArbitrageExchangeSearchForm: View {
         .listStyle(PlainListStyle())
         .scrollContentBackground(.hidden)
         .background(ThemeManager.backgroundColor)
-        .searchable(text: $viewModel.searchText, prompt: StringKeys.search_exchanges)
+        .searchable(text: $viewModel.model.searchText, prompt: StringKeys.displayed.searchExchanges)
         .textInputAutocapitalization(.characters)
     }
 }

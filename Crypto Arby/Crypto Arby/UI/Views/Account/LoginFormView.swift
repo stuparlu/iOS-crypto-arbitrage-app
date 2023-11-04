@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LoginFormView: View {
-    @StateObject private var viewModel = LoginFormViewViewModel()
+    @StateObject private var viewModel = LoginFormViewModel()
     @StateObject private var loginManager = LoginManager.shared
     var body: some View {
         VStack {
             Spacer()
             Form {
-                Picker("", selection: $viewModel.isLogin) {
-                    Text(StringKeys.login).tag(true)
-                    Text(StringKeys.register).tag(false)
+                Picker("", selection: $viewModel.model.isLogin) {
+                    Text(StringKeys.displayed.login).tag(true)
+                    Text(StringKeys.displayed.register).tag(false)
                 }
                 .frame(height: 10)
                 .padding()
@@ -25,45 +25,45 @@ struct LoginFormView: View {
                     RoundedRectangle(
                         cornerRadius: 10.0)
                     .fill(ThemeManager.accentColor))
-                TextField(StringKeys.email, text: $viewModel.email)
+                TextField(StringKeys.displayed.email, text: $viewModel.model.email)
                     .frame(height: 30)
                     .textInputAutocapitalization(.never)
                     .onTapGesture {
-                        viewModel.email = ""
+                        viewModel.model.email = ""
                     }
-                SecureField(StringKeys.password, text: $viewModel.password)
+                SecureField(StringKeys.displayed.password, text: $viewModel.model.password)
                     .frame(height: 30)
                     .textInputAutocapitalization(.never)
                     .onTapGesture {
-                        viewModel.password = ""
+                        viewModel.model.password = ""
                     }
             }
             .formStyle(ColumnsFormStyle())
             .scrollContentBackground(.hidden)
-            .alert(StringKeys.invalidEmailTitle, isPresented: $viewModel.emailAlertIsShown) {
-                Button(StringKeys.ok, role: .cancel) {}
+            .alert(StringKeys.alerts.invalidEmailTitle, isPresented: $viewModel.model.emailAlertIsShown) {
+                Button(StringKeys.displayed.ok, role: .cancel) {}
             } message: {
-                Text(StringKeys.invalidEmailMessage)
+                Text(StringKeys.alerts.invalidEmailMessage)
             }
-            .alert(StringKeys.invalidPasswordTitle, isPresented: $viewModel.passwordAlertIsShown) {
-                Button(StringKeys.ok, role: .cancel) {}
+            .alert(StringKeys.alerts.invalidPasswordTitle, isPresented: $viewModel.model.passwordAlertIsShown) {
+                Button(StringKeys.displayed.ok, role: .cancel) {}
             } message: {
-                Text(StringKeys.invalidPasswordMessage)
+                Text(StringKeys.alerts.invalidPasswordMessage)
             }
-            .alert(StringKeys.registrationFailedTitle, isPresented: $loginManager.registerErrorHappened) {
-                Button(StringKeys.ok, role: .cancel) {}
+            .alert(StringKeys.alerts.registrationFailedTitle, isPresented: $loginManager.registerErrorHappened) {
+                Button(StringKeys.displayed.ok, role: .cancel) {}
             } message: {
-                Text(StringKeys.registrationFailedMessage)
+                Text(StringKeys.alerts.registrationFailedMessage)
             }
-            .alert(StringKeys.loginFailedTitle, isPresented: $loginManager.loginErrorHappened) {
-                Button(StringKeys.ok, role: .cancel) {}
+            .alert(StringKeys.alerts.loginFailedTitle, isPresented: $loginManager.loginErrorHappened) {
+                Button(StringKeys.displayed.ok, role: .cancel) {}
             } message: {
-                Text(StringKeys.loginFailedMessage)
+                Text(StringKeys.alerts.loginFailedMessage)
             }
             Button {
                 viewModel.authenticate()
             } label: {
-                Text(viewModel.isLogin ? StringKeys.login : StringKeys.register)
+                Text(viewModel.model.isLogin ? StringKeys.displayed.login : StringKeys.displayed.register)
                     .frame(width: 150, height: 40)
             }
             .buttonStyle(.borderedProminent)

@@ -8,82 +8,73 @@
 import Foundation
 
 class NewCircularArbitrageViewModel: ObservableObject {
-    @Published var exchangeSelected = false
-    @Published var selectedExchange = StringKeys.empty_string
-    @Published var searchText = StringKeys.empty_string
-    @Published var selectedPairs: [CurrencyPair] = []
-    @Published var nextPairs: [CurrencyPair] = []
-    @Published var saveAlertShown = false
-    @Published var tradingEnabled: Bool = false
-    @Published var autotradeAvailable: Bool = false
+    @Published var model = NewCircularArbitrageModel()
     
-    var startPair: CurrencyPair? = nil
     let viewContext = PersistenceController.shared.container.viewContext
-    let exchangeList = Exchanges.names.allNames
     
     init() {
         recalculatePairs()
     }
     
     func clearLast() {
-        if !selectedPairs.isEmpty {
-            selectedPairs.removeLast()
+        if !model.selectedPairs.isEmpty {
+            model.selectedPairs.removeLast()
             recalculatePairs()
         }
     }
     
     func clearData() {
-        exchangeSelected.toggle()
-        selectedExchange = StringKeys.empty_string
-        searchText = StringKeys.empty_string
-        selectedPairs = []
-        autotradeAvailable = false
+        model.exchangeSelected.toggle()
+        model.selectedExchange = StringKeys.placeholders.emptyString
+        model.searchText = StringKeys.placeholders.emptyString
+        model.selectedPairs = []
+        model.autotradeAvailable = false
         recalculatePairs()
     }
     
     func selectExchange(name: String) {
-        selectedExchange = name
-        exchangeSelected.toggle()
-        autotradeAvailable = KeychainManager.shared.retriveConfiguration(forExchange: selectedExchange) != nil
+        model.selectedExchange = name
+        model.exchangeSelected.toggle()
+        model.autotradeAvailable = KeychainManager.shared.retriveConfiguration(forExchange: model.selectedExchange) != nil
     }
     
     func recalculatePairs() {
-        if selectedPairs.isEmpty {
-            nextPairs = Cryptocurrencies.cryptocurrencyPairs
-            startPair = nil
+        if model.selectedPairs.isEmpty {
+            model.nextPairs = Cryptocurrencies.cryptocurrencyPairs
+            model.startPair = nil
         } else {
-            nextPairs = Cryptocurrencies.cryptocurrencyPairs.filter {
+            model.nextPairs = Cryptocurrencies.cryptocurrencyPairs.filter {
                 return (
-                    !($0.searchableName == selectedPairs.last?.searchableName) &&
-                    ($0.quoteSymbol == selectedPairs.last?.mainSymbol ||
-                     ($0.quoteSymbol == startPair?.quoteSymbol && $0.mainSymbol == selectedPairs.last?.mainSymbol)))
+                    !($0.searchableName == model.selectedPairs.last?.searchableName) &&
+                    ($0.quoteSymbol == model.selectedPairs.last?.mainSymbol ||
+                     ($0.quoteSymbol == model.startPair?.quoteSymbol && $0.mainSymbol == model.selectedPairs.last?.mainSymbol)))
             }
         }
     }
     
     func addPair(_ pair: CurrencyPair) {
-        if selectedPairs.isEmpty {
-            startPair = pair
+        if model.selectedPairs.isEmpty {
+            model.startPair = pair
         }
-        selectedPairs.append(pair)
+        model.selectedPairs.append(pair)
         recalculatePairs()
     }
     
     func removePair(_ pair: CurrencyPair) {
-        selectedPairs.remove(at: selectedPairs.firstIndex(of: pair)!)
-        if selectedPairs.isEmpty {
-            startPair = nil
+        model.selectedPairs.remove(at: model.selectedPairs.firstIndex(of: pair)!)
+        if model.selectedPairs.isEmpty {
+            model.startPair = nil
         }
         recalculatePairs()
     }
     
     func validateOpportunity() -> Bool {
-        if selectedPairs.count < 3 || selectedPairs.first?.quoteSymbol != selectedPairs.last?.quoteSymbol{
+        if model.selectedPairs.count < 3 || model.selectedPairs.first?.quoteSymbol != model.selectedPairs.last?.quoteSymbol{
             return false
         }
  
-        for i in 0..<(selectedPairs.count - 2) {
-            if selectedPairs[i].mainSymbol != selectedPairs[i + 1].quoteSymbol {
+        for i in 0..<(model.selectedPairs.count - 2) {
+            if model.selectedPairs[i].mainSymbol != model.selectedPairs[i + 1].quoteSymbol {
                 return false
             }
         }
@@ -92,10 +83,10 @@ class NewCircularArbitrageViewModel: ObservableObject {
     
     func saveOpportunity() -> Bool {
         if validateOpportunity() {
-            DatabaseManager.shared.saveNewCircularOpportunity(exchangeName: selectedExchange, pairs: selectedPairs.map({$0.searchableName}), tradingActive: tradingEnabled)
+            DatabaseManager.shared.saveNewCircularOpportunity(exchangeName: model.selectedExchange, pairs: model.selectedPairs.map({$0.searchableName}), tradingActive: model.tradingEnabled)
             return true
         } else {
-            saveAlertShown.toggle()
+            model.saveAlertShown.toggle()
             return false
         }
     }

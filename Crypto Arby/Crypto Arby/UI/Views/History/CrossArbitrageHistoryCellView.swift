@@ -34,7 +34,7 @@ struct CrossArbitrageHistoryCellView: View {
                 Spacer()
             }
             HStack {
-                Text(StringKeys.exchanges)
+                Text(StringKeys.displayed.exchanges)
                     .font(.headline)
                 Spacer()
                 Text(minExchange.capitalized)
@@ -47,7 +47,7 @@ struct CrossArbitrageHistoryCellView: View {
                     .foregroundColor(.gray)
             }
             HStack{
-                Text(StringKeys.price)
+                Text(StringKeys.displayed.price)
                     .font(.headline)
                 Spacer()
                 Text((String(askPrice)))
@@ -60,7 +60,7 @@ struct CrossArbitrageHistoryCellView: View {
                     .foregroundColor(.gray)
             }
             HStack{
-                Text(StringKeys.time)
+                Text(StringKeys.displayed.time)
                     .font(.headline)
                 Spacer()
                 Text(timestamp)

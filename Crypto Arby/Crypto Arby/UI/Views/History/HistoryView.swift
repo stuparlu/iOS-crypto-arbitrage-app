@@ -13,7 +13,7 @@ struct HistoryView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(viewModel.history) { item in
+                List(viewModel.getHistory()) { item in
                     if String(describing: type(of: item.self)) == String(describing: CrossArbitrageHistory.self) {
                         AnyView(CrossArbitrageHistoryCellView(dataModel: item as! CrossArbitrageHistory))
                     } else if String(describing: type(of: item.self)) == String(describing: CircularArbitrageHistory.self) {
@@ -23,7 +23,7 @@ struct HistoryView: View {
                 .scrollContentBackground(.hidden)
                 .listStyle(PlainListStyle())
             }
-            .navigationTitle(StringKeys.history)
+            .navigationTitle(StringKeys.displayed.history)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -34,7 +34,7 @@ struct HistoryView: View {
         HistoryView()
             .tabItem {
                 Image(systemName: Symbols.opportunity_history_icon)
-                Text(StringKeys.history)
+                Text(StringKeys.displayed.history)
             }
     }
 }
