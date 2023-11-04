@@ -6,103 +6,10 @@
 //
 
 import Foundation
+import Steem
 
-struct HiveDexPriceQuery: Codable {
-    let symbol: String
-}
-
-struct HiveDexPriceParameters: Codable {
-    var contract = "market"
-    let table: String
-    let query: HiveDexPriceQuery
-    
-    init(symbol: String, side: TradeSide) {
-        self.query = HiveDexPriceQuery(symbol: symbol)
-        self.table = side == .buy ? "buyBook":"sellBook"
-    }
-}
-
-struct HiveDexPriceRequest: Codable {
-    var jsonrpc: String = "2.0"
-    var id: Int = 1
-    var method: String = "find"
-    let params: HiveDexPriceParameters
-    
-    init(symbol: String, side: TradeSide) {
-        self.params = HiveDexPriceParameters(symbol: symbol, side: side)
-    }
-}
-
-struct HiveDexPriceResponse: Codable {
-    let jsonrpc: String
-    let id: Int
-    let result: [HiveDexPriceResult]
-}
-
-struct HiveDexPriceResult: Codable {
-    let id: Int
-    let txId: String
-    let timestamp: Int
-    let account: String
-    let symbol: String
-    let quantity: String
-    let price: String
-    let tokensLocked: String
-    let expiration: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case txId
-        case timestamp
-        case account
-        case symbol
-        case quantity
-        case price
-        case tokensLocked
-        case expiration
-    }
-}
-
-struct HiveDexMarketTradeRequest: Codable {
-    var jsonrpc: String = "2.0"
-    var id: Int = 1
-    var contract = "market"
-    
-    let params: HiveDexMarketTradeParameters
-    
-    init(symbol: String, data: OrderData) {
-        self.params = HiveDexMarketTradeParameters(symbol: symbol, data: data)
-    }
-}
-
-struct HiveDexMarketTradeParameters: Codable {
-    var contractName = "market"
-    var contractAction: String
-    let contractPayload : HiveDexMarketTradePayload
-    var account = "@bionicpainter"
-    var privateKey = KeychainManager.shared.retriveConfiguration(forWallet: Exchanges.wallets.hive)
-    
-    init(symbol: String, data: OrderData) {
-        self.contractAction = data.side == .buy ? "buy" : "sell"
-        self.contractPayload = HiveDexMarketTradePayload(symbol: symbol, data: data)
-        
-    }
-}
-
-struct HiveDexMarketTradePayload: Codable {
-    let symbol: String
-    let quantity: String
-    let price: String
-    
-    init(symbol: String, data: OrderData) {
-        self.symbol = symbol
-        self.quantity = String(data.quantity)
-        self.price = String(data.price)
-    }
-}
-
-struct HiveDexRequestHandler {
-    static let exchangeParameters = Exchanges.parameters.hiveDex
+struct HiveDexRequestHandler: RequestHandler {
+    static var exchangeParameters: ExchangeParameters = Exchanges.parameters.hiveDex
     
     static func getBidAskData(for ticker: String) async -> BidAskData? {
         let exchangePairName = Cryptocurrencies.findPair(by: ticker).mainSymbol
@@ -133,44 +40,46 @@ struct HiveDexRequestHandler {
         }
     }
     
-    static func submitTradeOrder(orderData: OrderData) async -> TradeResponse {
+    static func submitTradeOrder(with orderData: OrderData) async -> TradeResponse {
         do {
             let exchangePairName = Cryptocurrencies.findPair(by: orderData.symbol).mainSymbol
-            if let url = URL(string: exchangeParameters.getSymbolUrl) {
-                let body = HiveDexMarketTradeRequest(symbol: exchangePairName, data: orderData)
-                let jsonEncoder = JSONEncoder()
-                jsonEncoder.outputFormatting = .sortedKeys
-                let jsonData = try! jsonEncoder.encode(body)
-                
-                var request = URLRequest(url: url)
-                request.httpMethod = "POST"
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.httpBody = jsonData
-                let (response, _) = try await URLSession.shared.data(for: request)
-                if let dataString = String(data: response, encoding: .utf8) {
-                    print(dataString)
+            let requestBody = HiveDexMarketTradeRequest(symbol: exchangePairName, data: orderData)
+            let jsonEncoder = JSONEncoder()
+            jsonEncoder.outputFormatting = .sortedKeys
+            let jsonData = try jsonEncoder.encode(requestBody)
+            let jsonString = String(data: jsonData, encoding: .utf8)!
+            
+            if let url = URL(string: exchangeParameters.apiEndpoint) {
+                if let transactionData = HiveTransactionBroadcaster.broadCastTransaction(to: url, with: jsonString) {
+                    let id = String(data: transactionData.id, encoding: .utf8)
+                    return TradeResponse(isSuccessful: !transactionData.expired, orderID: id ?? "(none)")
+                } else {
+                    throw "Error submitting transaction"
                 }
-                return makeTradeResponse(for: response)
-            }
-            else {
-                throw "Error submitting order"
+                
+            } else {
+                throw "Error submitting transaction"
             }
         } catch {return TradeResponse.getNullResponse()}
     }
     
-    static func makeTradeResponse(for data: Data) -> TradeResponse {
+    static func getBalance(symbol: String) async -> Double? {
+        let url = URL(string: exchangeParameters.getSymbolUrl)!
+        let requestBody = HiveDexBalanceRequest(account: "bionicpainter")
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.outputFormatting = .sortedKeys
         do {
-            let response = try JSONDecoder().decode(BybitMarketResponseBody.self, from: data)
-            if response.retCode == 0 {
-                return TradeResponse(isSuccessful: true, orderID: response.result.orderId)
-            } else {
-                throw "Error submitting order"
-            }
+            let jsonData = try jsonEncoder.encode(requestBody)
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpBody = jsonData
+            let (response, _) = try await URLSession.shared.data(for: request)
+            return makeBalanceResponse(for: response, symbol: symbol)
         } catch {
-            return TradeResponse.getNullResponse()
+            return nil
         }
     }
-    
     
     static func makeBidAskResponseFor(symbol: String, buyData: Data, sellData: Data) -> BidAskData? {
         do {
@@ -187,6 +96,19 @@ struct HiveDexRequestHandler {
                 }
             } else {
                 throw "Error getting Bid/Ask data."
+            }
+        } catch {
+            return nil
+        }
+    }
+    
+    static func makeBalanceResponse(for data: Data, symbol: String) -> Double? {
+        do {
+            let response = try JSONDecoder().decode(HiveDexBalanceResponse.self, from: data)
+            if response.result.count > 0, let result = response.result.first(where: {$0.symbol == symbol}) {
+                return Double(result.balance)
+            } else {
+                throw "Error submitting order"
             }
         } catch {
             return nil

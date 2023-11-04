@@ -76,6 +76,8 @@
 		A16667432AC1C1510024E760 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667422AC1C1510024E760 /* HistoryView.swift */; };
 		A16667452AC1C2010024E760 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667442AC1C2010024E760 /* HistoryViewModel.swift */; };
 		A16667472AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16667462AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift */; };
+		A167783F2AF4FE7B002709FD /* Steem in Frameworks */ = {isa = PBXBuildFile; productRef = A167783E2AF4FE7B002709FD /* Steem */; };
+		A16778412AF528DC002709FD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16778402AF528DC002709FD /* Data.swift */; };
 		A16D47B82ACEF9FB00F955ED /* PairSelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */; };
 		A17FC1892AF12DFC00827E09 /* BinanceCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FC1882AF12DFC00827E09 /* BinanceCodables.swift */; };
 		A17FC18B2AF1489600827E09 /* BitfinexCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17FC18A2AF1489600827E09 /* BitfinexCodables.swift */; };
@@ -103,6 +105,11 @@
 		A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */; };
 		A1E2D6D72AC82B66001DA32C /* LoginFormViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2D6D62AC82B66001DA32C /* LoginFormViewViewModel.swift */; };
 		A1E329962AD97512009E218C /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E329952AD97512009E218C /* DefaultConfiguration.swift */; };
+		A1E399192AF652370097B6D8 /* HiveTransactionBroadcaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E399182AF652370097B6D8 /* HiveTransactionBroadcaster.swift */; };
+		A1E3991C2AF65DA60097B6D8 /* HiveDexCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E3991B2AF65DA60097B6D8 /* HiveDexCodables.swift */; };
+		A1E3991E2AF65DDB0097B6D8 /* HivePoolsCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E3991D2AF65DDB0097B6D8 /* HivePoolsCodables.swift */; };
+		A1E399202AF65E930097B6D8 /* GenericCodables.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E3991F2AF65E930097B6D8 /* GenericCodables.swift */; };
+		A1E399222AF65FCE0097B6D8 /* WalletConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E399212AF65FCE0097B6D8 /* WalletConfiguration.swift */; };
 		A1F649492AED39980041E55C /* NotificationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F649482AED39980041E55C /* NotificationHandler.swift */; };
 		A1F6494B2AED3A5C0041E55C /* PriceComparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F6494A2AED3A5C0041E55C /* PriceComparator.swift */; };
 		A1FD60392AE291700088B25E /* CryptographyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FD60382AE291700088B25E /* CryptographyHandler.swift */; };
@@ -186,6 +193,7 @@
 		A16667422AC1C1510024E760 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		A16667442AC1C2010024E760 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		A16667462AC1C62C0024E760 /* CrossArbitrageHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossArbitrageHistoryCellView.swift; sourceTree = "<group>"; };
+		A16778402AF528DC002709FD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		A16D47B72ACEF9FB00F955ED /* PairSelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairSelectionList.swift; sourceTree = "<group>"; };
 		A17FC1882AF12DFC00827E09 /* BinanceCodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceCodables.swift; sourceTree = "<group>"; };
 		A17FC18A2AF1489600827E09 /* BitfinexCodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitfinexCodables.swift; sourceTree = "<group>"; };
@@ -215,6 +223,11 @@
 		A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesNavigationModel.swift; sourceTree = "<group>"; };
 		A1E2D6D62AC82B66001DA32C /* LoginFormViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormViewViewModel.swift; sourceTree = "<group>"; };
 		A1E329952AD97512009E218C /* DefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
+		A1E399182AF652370097B6D8 /* HiveTransactionBroadcaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveTransactionBroadcaster.swift; sourceTree = "<group>"; };
+		A1E3991B2AF65DA60097B6D8 /* HiveDexCodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveDexCodables.swift; sourceTree = "<group>"; };
+		A1E3991D2AF65DDB0097B6D8 /* HivePoolsCodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HivePoolsCodables.swift; sourceTree = "<group>"; };
+		A1E3991F2AF65E930097B6D8 /* GenericCodables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCodables.swift; sourceTree = "<group>"; };
+		A1E399212AF65FCE0097B6D8 /* WalletConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletConfiguration.swift; sourceTree = "<group>"; };
 		A1F649482AED39980041E55C /* NotificationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHandler.swift; sourceTree = "<group>"; };
 		A1F6494A2AED3A5C0041E55C /* PriceComparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceComparator.swift; sourceTree = "<group>"; };
 		A1FD60382AE291700088B25E /* CryptographyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptographyHandler.swift; sourceTree = "<group>"; };
@@ -235,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15C2585007762BD16371E69F /* Pods_Crypto_Arby.framework in Frameworks */,
+				A167783F2AF4FE7B002709FD /* Steem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +292,7 @@
 				A1E329952AD97512009E218C /* DefaultConfiguration.swift */,
 				A15EF83A2AEA7CA5007921CA /* TradeSide.swift */,
 				A15968D42AF2AAE10069B311 /* OrderType.swift */,
+				A1E399212AF65FCE0097B6D8 /* WalletConfiguration.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -330,6 +345,9 @@
 				A1268B0D2AEFFF960058B633 /* BybitCodables.swift */,
 				A17FC1882AF12DFC00827E09 /* BinanceCodables.swift */,
 				A17FC18A2AF1489600827E09 /* BitfinexCodables.swift */,
+				A1E3991B2AF65DA60097B6D8 /* HiveDexCodables.swift */,
+				A1E3991D2AF65DDB0097B6D8 /* HivePoolsCodables.swift */,
+				A1E3991F2AF65E930097B6D8 /* GenericCodables.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -496,6 +514,7 @@
 			children = (
 				A161C6B62AE7BC35005C1F09 /* CrossArbitrageExecutor.swift */,
 				A1268AFF2AEE5DDC0058B633 /* CircularArbitrageExecutor.swift */,
+				A1E399182AF652370097B6D8 /* HiveTransactionBroadcaster.swift */,
 			);
 			path = Executors;
 			sourceTree = "<group>";
@@ -505,6 +524,7 @@
 			children = (
 				A1848ABD2AD81E4F0021EA6B /* Double.swift */,
 				A184A2152AE9522E005B3C0C /* String.swift */,
+				A16778402AF528DC002709FD /* Data.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -672,6 +692,9 @@
 			dependencies = (
 			);
 			name = "Crypto Arby";
+			packageProductDependencies = (
+				A167783E2AF4FE7B002709FD /* Steem */,
+			);
 			productName = "Crypto Arby";
 			productReference = A1BD7B6D2A65505E002B3F48 /* Crypto Arby.app */;
 			productType = "com.apple.product-type.application";
@@ -700,6 +723,9 @@
 				Base,
 			);
 			mainGroup = A1BD7B642A65505E002B3F48;
+			packageReferences = (
+				A167783D2AF4FE7B002709FD /* XCRemoteSwiftPackageReference "swift-hive" */,
+			);
 			productRefGroup = A1BD7B6E2A65505E002B3F48 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -771,8 +797,10 @@
 			files = (
 				A15EF8342AEA6AE3007921CA /* BinancePriceResponse.swift in Sources */,
 				A1268B082AEE69C70058B633 /* CircularArbitrageTradeHistory+CoreDataClass.swift in Sources */,
+				A1E3991C2AF65DA60097B6D8 /* HiveDexCodables.swift in Sources */,
 				A1F649492AED39980041E55C /* NotificationHandler.swift in Sources */,
 				A10D642E2A66A86C00FD06DA /* Symbols.swift in Sources */,
+				A16778412AF528DC002709FD /* Data.swift in Sources */,
 				A1268B0B2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift in Sources */,
 				A15EF81B2AEA61BA007921CA /* CircularArbitrageHistory+CoreDataProperties.swift in Sources */,
 				A1268B032AEE65C30058B633 /* TradesView.swift in Sources */,
@@ -780,6 +808,7 @@
 				A17FC1892AF12DFC00827E09 /* BinanceCodables.swift in Sources */,
 				A1268B0E2AEFFF960058B633 /* BybitCodables.swift in Sources */,
 				A15EF8352AEA6AE3007921CA /* BybitPriceResponse.swift in Sources */,
+				A1E399222AF65FCE0097B6D8 /* WalletConfiguration.swift in Sources */,
 				A15EF8102AEA6109007921CA /* LoginManager.swift in Sources */,
 				A1BD7B732A65505E002B3F48 /* MainView.swift in Sources */,
 				A15EF8392AEA7BF5007921CA /* RequestHandler.swift in Sources */,
@@ -811,9 +840,11 @@
 				A1878D1A2AE3EAE5005E62F0 /* BinanceRequestHandler.swift in Sources */,
 				A1C8B4532ACC483F00D6A6E5 /* AccountCardView.swift in Sources */,
 				A148E4692ADEB769002DFCA4 /* ManageExchangesViewModel.swift in Sources */,
+				A1E3991E2AF65DDB0097B6D8 /* HivePoolsCodables.swift in Sources */,
 				A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */,
 				A18938082AB1BBA300DD321F /* CrossOpportunitiesCellView.swift in Sources */,
 				A11BCCC12AEC2FAC00E8EB17 /* TradeHistory+CoreDataProperties.swift in Sources */,
+				A1E399192AF652370097B6D8 /* HiveTransactionBroadcaster.swift in Sources */,
 				A15EF81F2AEA61BA007921CA /* History+CoreDataProperties.swift in Sources */,
 				A1E329962AD97512009E218C /* DefaultConfiguration.swift in Sources */,
 				A128F2E92ACD7AF50000DCE0 /* CircularArbitrageCancelButtonView.swift in Sources */,
@@ -860,6 +891,7 @@
 				A1878D1C2AE3EC97005E62F0 /* BybitRequestHandler.swift in Sources */,
 				A14C1D232ADD534000D0BC68 /* LoadingIndicatorView.swift in Sources */,
 				A15EF80F2AEA6109007921CA /* ThemeManager.swift in Sources */,
+				A1E399202AF65E930097B6D8 /* GenericCodables.swift in Sources */,
 				A15EF80E2AEA6109007921CA /* KeychainManager.swift in Sources */,
 				A11BCCC02AEC2FAC00E8EB17 /* TradeHistory+CoreDataClass.swift in Sources */,
 				A1FF5D6A2A69726D0002E981 /* ErrorStrings.swift in Sources */,
@@ -1083,6 +1115,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A167783D2AF4FE7B002709FD /* XCRemoteSwiftPackageReference "swift-hive" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hiveuprss/swift-hive.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A167783E2AF4FE7B002709FD /* Steem */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A167783D2AF4FE7B002709FD /* XCRemoteSwiftPackageReference "swift-hive" */;
+			productName = Steem;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A15EF80B2AEA6109007921CA /* DataModels.xcdatamodeld */ = {

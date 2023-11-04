@@ -9,6 +9,7 @@ import Foundation
 
 class ManageWalletsViewModel: ObservableObject {
     @Published var showingPopover = false
+    @Published var accountName = ""
     @Published var privateKeyText = ""
     @Published var walletDisabled = false
     var currentWallet = ""
@@ -21,6 +22,7 @@ class ManageWalletsViewModel: ObservableObject {
     }
     
     func clearData() {
+        accountName = ""
         privateKeyText = ""
         currentWallet = ""
         walletDisabled = true
@@ -32,18 +34,21 @@ class ManageWalletsViewModel: ObservableObject {
         }
     }
     func saveWalletData() {
-        if privateKeyText == "" {
+        if privateKeyText == "" || accountName == "" {
             return
         }
-        KeychainManager.shared.save(privateKey: privateKeyText, for: currentWallet)
+        KeychainManager.shared.save(
+            hiveConfiguration: HiveWalletConfiguration(accountName: accountName, activeKey: privateKeyText),
+            for: currentWallet)
         walletDisabled = true
         clearData()
         showingPopover.toggle()
     }
     
     func loadWalletData() {
-        if let key = KeychainManager.shared.retriveConfiguration(forWallet: currentWallet) {
-            privateKeyText = key
+        if let configuration = KeychainManager.shared.retriveHiveConfiguration(forWallet: currentWallet) {
+            accountName = configuration.accountName
+            privateKeyText = configuration.activeKey
             if privateKeyText == "" {
                 walletDisabled = true
             } else {

@@ -35,6 +35,7 @@ struct ManageWalletsView: View {
                     .font(.title)
                 Form {
                     Text(viewModel.currentWallet.capitalized)
+                    TextField(StringKeys.accountName, text: $viewModel.accountName)
                     TextField(StringKeys.privateKey, text: $viewModel.privateKeyText)
                     Button {
                         viewModel.saveWalletData()

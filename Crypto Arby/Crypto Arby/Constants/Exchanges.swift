@@ -97,12 +97,12 @@ struct Exchanges {
         
         static let hiveDex = ExchangeParameters(
             name: names.hiveDex,
-            requestHandler: BitfinexRequestHandler.self,
-            responseType: BitfinexPriceResponse.self,
+            requestHandler: HiveDexRequestHandler.self,
+            responseType: GenericPriceResponse.self,
             getSymbolUrl: "https://api.hive-engine.com/rpc/contracts",
             coinFormat: "\(StringKeys.main_placeholder)",
             symbolFormat: "\(StringKeys.main_placeholder)\(StringKeys.quote_placeholder)",
-            apiEndpoint: "https://api.hive-engine.com",
+            apiEndpoint: "https://api.hive.blog",
             submitOrderPath: "",
             getbalancePath: "",
             walletName:wallets.hive
@@ -110,12 +110,12 @@ struct Exchanges {
         
         static let hivePools = ExchangeParameters(
             name: names.hivePools,
-            requestHandler: BitfinexRequestHandler.self,
-            responseType: BitfinexPriceResponse.self,
+            requestHandler: HivePoolsRequestHandler.self,
+            responseType: GenericPriceResponse.self,
             getSymbolUrl: "https://api.hive-engine.com/rpc/contracts",
             coinFormat: "\(StringKeys.main_placeholder)",
             symbolFormat: "\(StringKeys.main_placeholder):\(StringKeys.quote_placeholder)",
-            apiEndpoint: "https://api.hive-engine.com",
+            apiEndpoint: "https://api.hive.blog",
             submitOrderPath: "",
             getbalancePath: "",
             walletName:wallets.hive

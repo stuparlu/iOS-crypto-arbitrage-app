@@ -65,6 +65,7 @@ struct StringKeys {
     static let apiKey = "API Key"
     static let apiSecret = "API Secret"
     static let privateKey = "Private key"
+    static let accountName = "AccountName"
     static let manageExchange = "Manage Exchange"
     static let manageExchanges = "Manage Exchanges"
     static let manageWallet = "Manage Wallet"

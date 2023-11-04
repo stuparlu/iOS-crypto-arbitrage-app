@@ -17,7 +17,7 @@ class AccountViewViewModel: ObservableObject {
     func send() {
         Task {
             do {
-                let data = await HivePoolsRequestHandler.getBidAskData(for: "POBSWAP.HIVE")
+                let data = await HivePoolsRequestHandler.getBalance(symbol: "SWAP.HIVE")
                 print(data)
             } catch {}
         }
