@@ -12,7 +12,11 @@ struct HiveDexRequestHandler: RequestHandler {
     static var exchangeParameters: ExchangeParameters = Exchanges.parameters.hiveDex
     
     static func getBidAskData(for ticker: String) async -> BidAskData? {
-        let exchangePairName = Cryptocurrencies.findPair(by: ticker).mainSymbol
+        let pair = Cryptocurrencies.findPair(by: ticker)
+        let exchangePairName = pair.mainSymbol
+        if pair.quoteSymbol != "SWAP.HIVE" {
+            return nil
+        }
         let url = URL(string: exchangeParameters.getSymbolUrl)!
         let buyBody = HiveDexPriceRequest(symbol: exchangePairName, side: .buy)
         let sellBody = HiveDexPriceRequest(symbol: exchangePairName, side: .buy)

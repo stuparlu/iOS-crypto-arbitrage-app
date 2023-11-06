@@ -11,6 +11,7 @@ struct CircularOpportunitiesCellView: View {
     let dataBaseItem: CircularArbitrageOpportunity
     let exchangeName: String
     @State var isActive: Bool
+    @State var isTrading: Bool
     let pairs: [String]
     
     var body: some View {
@@ -41,8 +42,21 @@ struct CircularOpportunitiesCellView: View {
                 .buttonStyle(BorderlessButtonStyle())
                 Button(action: {
                     isActive.toggle()
+                    dataBaseItem.isActive = isActive
+                    dataBaseItem.saveContext()
                 }) {
                     Image(systemName: isActive ? Symbols.pause : Symbols.play)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 20, height: 32)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+                Button(action: {
+                    isTrading.toggle()
+                    dataBaseItem.tradingActive = isTrading
+                    dataBaseItem.saveContext()
+                }) {
+                    Image(systemName: isTrading ? Symbols.opportunity_trade_icon : Symbols.x_mark)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20, height: 32)

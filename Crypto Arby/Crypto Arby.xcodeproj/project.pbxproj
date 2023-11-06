@@ -113,6 +113,7 @@
 		A1CC44512AC441C80067046D /* CurrencyTogglerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC44502AC441C80067046D /* CurrencyTogglerView.swift */; };
 		A1CC44532AC4421F0067046D /* CurrencySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC44522AC4421F0067046D /* CurrencySearchView.swift */; };
 		A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC44542AC442470067046D /* ExchangeListView.swift */; };
+		A1D0616A2AF8F08500F67AF6 /* CircularArbitrageTradeHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D061692AF8F08500F67AF6 /* CircularArbitrageTradeHistoryCellView.swift */; };
 		A1D532142ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */; };
 		A1E2D6D72AC82B66001DA32C /* LoginFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E2D6D62AC82B66001DA32C /* LoginFormViewModel.swift */; };
 		A1E329962AD97512009E218C /* DefaultConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E329952AD97512009E218C /* DefaultConfiguration.swift */; };
@@ -241,6 +242,7 @@
 		A1CC44502AC441C80067046D /* CurrencyTogglerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTogglerView.swift; sourceTree = "<group>"; };
 		A1CC44522AC4421F0067046D /* CurrencySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchView.swift; sourceTree = "<group>"; };
 		A1CC44542AC442470067046D /* ExchangeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeListView.swift; sourceTree = "<group>"; };
+		A1D061692AF8F08500F67AF6 /* CircularArbitrageTradeHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArbitrageTradeHistoryCellView.swift; sourceTree = "<group>"; };
 		A1D532132ABF1807005D9AE4 /* OpportunitiesNavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesNavigationModel.swift; sourceTree = "<group>"; };
 		A1E2D6D62AC82B66001DA32C /* LoginFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormViewModel.swift; sourceTree = "<group>"; };
 		A1E329952AD97512009E218C /* DefaultConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultConfiguration.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 			children = (
 				A1268B022AEE65C30058B633 /* TradesView.swift */,
 				A1268B0A2AEE6E2B0058B633 /* CrossArbitrageTradeHistoryCellView.swift */,
+				A1D061692AF8F08500F67AF6 /* CircularArbitrageTradeHistoryCellView.swift */,
 			);
 			path = Trades;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				A1F6494B2AED3A5C0041E55C /* PriceComparator.swift in Sources */,
 				A1268B052AEE68910058B633 /* TradesViewModel.swift in Sources */,
 				A170E76B2AF692B900EAB5DB /* NewCrossArbitrageModel.swift in Sources */,
+				A1D0616A2AF8F08500F67AF6 /* CircularArbitrageTradeHistoryCellView.swift in Sources */,
 				A184A2142AE93B18005B3C0C /* PriceResponse.swift in Sources */,
 				A170E7732AF696E900EAB5DB /* NewCircularArbitrageModel.swift in Sources */,
 				A1CC44552AC442470067046D /* ExchangeListView.swift in Sources */,

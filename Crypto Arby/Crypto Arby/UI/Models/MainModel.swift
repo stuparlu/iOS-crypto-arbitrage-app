@@ -10,5 +10,5 @@ import Foundation
 struct MainModel {
     var selection = 0
     var unreadNotifications : Int = SettingsManager.shared.getUnreadNotifications()
-    var unreadTradeResults : Int = 0
+    var unreadTradeResults : Int = SettingsManager.shared.getUnreadTradeNotifications()
 }

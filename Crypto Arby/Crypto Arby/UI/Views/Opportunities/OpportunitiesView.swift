@@ -19,7 +19,7 @@ struct OpportunitiesView: View {
                             .fontWeight(.bold)
                         List(viewModel.fetchCrossOpportunities()) { item in
                             if let name = item.pairName, let exchanges = item.selectedExchanges {
-                                CrossOpportunitiesCellView(dataBaseItem: item, pairName: name, isActive: item.isActive, exchanges: exchanges)
+                                CrossOpportunitiesCellView(dataBaseItem: item, pairName: name, isActive: item.isActive, isTrading: item.tradingActive, exchanges: exchanges)
                                     .listRowSeparator(.hidden)
                             }
                         }
@@ -32,7 +32,7 @@ struct OpportunitiesView: View {
                             .fontWeight(.bold)
                         List(viewModel.fetchCircularOpportunities()) { item in
                             if let name = item.exchangeName, let pairs = item.selectedPairs {
-                                CircularOpportunitiesCellView(dataBaseItem: item, exchangeName: name, isActive: item.isActive, pairs: pairs)
+                                CircularOpportunitiesCellView(dataBaseItem: item, exchangeName: name, isActive: item.isActive, isTrading: item.tradingActive, pairs: pairs)
                                     .listRowSeparator(.hidden)
                             }
                         }

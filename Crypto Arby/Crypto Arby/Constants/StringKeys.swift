@@ -11,6 +11,8 @@ struct StringKeys {
     struct displayed {
         static let opportunities = "Opportunities"
         static let prices = "Prices"
+        static let qprices = "Prices:"
+        static let pairs = "Pairs: "
         static let history = "History"
         static let trades = "Trades"
         static let account = "Account"
@@ -32,7 +34,7 @@ struct StringKeys {
         static let selectExchanges = "Select exchanges to monitor:"
         static let exchanges = "Exchanges:"
         static let price = "Price:"
-        static let amount = "Price:"
+        static let amount = "Amount:"
         static let path = "Path:"
         static let profit = "Profit:"
         static let time = "Time:"
@@ -51,6 +53,7 @@ struct StringKeys {
         static let clearAllKeys = "Clear all keys"
         static let autoTradePrompt = "Automatic trade execution"
         static let orderID = "Order ID: "
+        static let orderIDs = "Order IDs: "
         static let boughtAt = "Bought at: "
         static let soldAt = "Sold at: "
         static let status = "Status: "
@@ -100,7 +103,9 @@ struct StringKeys {
     struct configuration {
         static let monitoredCurrency = "monitoredCurrency"
         static let newHistoryNotification = "newHistoryNotification"
+        static let newTradeHistoryNotification = "newTradeHistoryNotification"
         static let unreadNotifications = "unreadNotifications"
+        static let unreadTradeNotifications = "unreadNotifications"
         static let percentageThreshold = "percentageThreshold"
     }
 }

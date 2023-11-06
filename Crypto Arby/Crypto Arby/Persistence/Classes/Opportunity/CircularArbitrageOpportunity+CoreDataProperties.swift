@@ -22,6 +22,12 @@ extension CircularArbitrageOpportunity {
     @NSManaged public var isActive: Bool
     @NSManaged public var selectedPairs: [String]?
     @NSManaged public var tradingActive: Bool
+    
+    func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {}
+    }
 }
 
 extension CircularArbitrageOpportunity : Identifiable {}

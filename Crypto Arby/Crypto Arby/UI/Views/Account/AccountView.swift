@@ -41,12 +41,6 @@ struct AccountView: View {
                     Text(StringKeys.displayed.saveConfiguration)
                 }
             }
-            
-            Button {
-                viewModel.send()
-            } label: {
-                Text("Send")
-            }
         }
         .sheet(isPresented: $viewModel.model.showingManageExchanges) {
             ManageExchangesView()

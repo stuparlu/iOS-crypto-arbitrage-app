@@ -43,11 +43,12 @@ struct Exchanges {
         static let hivePools = "hive pools"
         
         static let allNames = [
+            hiveDex,
+            hivePools,
             binance,
             bybit,
-            bitfinex,
-            hiveDex,
-            hivePools
+            bitfinex
+
         ]
         
         static let allNonWallets = [

@@ -153,7 +153,23 @@ class DatabaseManager: ObservableObject {
             try viewContext.save()
         } catch {}
         toggleChanges()
-        NotificationCenter.default.post(name: NSNotification.Name(StringKeys.configuration.newHistoryNotification), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(StringKeys.configuration.newTradeHistoryNotification), object: nil)
+    }
+    
+    func saveCircularTradeHistory(success: Bool, message: String, timestamp: Date, exchange: String, ordersIDs: [String], pairs: [String], prices: [Double] ) {
+        let historyData = CircularArbitrageTradeHistory(context: viewContext)
+        historyData.success = success
+        historyData.message = message
+        historyData.timestamp = Date.now
+        historyData.exchange = exchange
+        historyData.orderIDs = ordersIDs
+        historyData.pairs = pairs
+        historyData.prices = prices
+        do {
+            try viewContext.save()
+        } catch {}
+        toggleChanges()
+        NotificationCenter.default.post(name: NSNotification.Name(StringKeys.configuration.newTradeHistoryNotification), object: nil)
     }
     
     func getAllCrossTradeHistory() -> [CrossArbitrageTradeHistory] {
@@ -178,4 +194,22 @@ class DatabaseManager: ObservableObject {
         }
     }
     
+//    func deleteTest() {
+//        do {
+//            let historyRequest : NSFetchRequest<CircularArbitrageTradeHistory> = NSFetchRequest(entityName: "CircularArbitrageTradeHistory")
+//            var historyElements : [CircularArbitrageTradeHistory] = []
+//            historyElements = try viewContext.fetch(historyRequest)
+//            
+//            for element in historyElements {
+//                if element.message == "test" {
+//                    viewContext.delete(element)
+//                }
+//            }
+//            do {
+//                try viewContext.save()
+//            } catch {}
+//        } catch {
+//            fatalError("Failed to fetch cross opportunities: \(error)")
+//        }
+//    }
 }

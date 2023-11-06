@@ -2,7 +2,7 @@
 //  CircularArbitrageTradeHistory+CoreDataProperties.swift
 //  Crypto Arby
 //
-//  Created by Luka Stupar on 29.10.23..
+//  Created by Luka Stupar on 6.11.23..
 //
 //
 
@@ -17,5 +17,8 @@ extension CircularArbitrageTradeHistory {
     }
 
     @NSManaged public var exchange: String?
+    @NSManaged public var orderIDs: [String]?
+    @NSManaged public var pairs: [String]?
+    @NSManaged public var prices: [Double]?
 
 }

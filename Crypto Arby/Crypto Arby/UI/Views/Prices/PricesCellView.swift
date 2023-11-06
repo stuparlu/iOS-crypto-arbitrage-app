@@ -19,9 +19,11 @@ struct PricesCellView: View {
             Spacer()
             Text(bidPrice)
                 .font(.subheadline)
+                .frame(minWidth: 80, alignment: .trailing)
                 .foregroundColor(.gray)
             Text(askPrice)
                 .font(.subheadline)
+                .frame(minWidth: 80, alignment: .trailing)
                 .foregroundColor(.gray)
         }
         .frame(height: 10)

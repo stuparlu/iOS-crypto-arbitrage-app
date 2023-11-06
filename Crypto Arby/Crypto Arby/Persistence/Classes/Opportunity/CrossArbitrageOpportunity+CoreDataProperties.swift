@@ -21,6 +21,11 @@ extension CrossArbitrageOpportunity {
     @NSManaged public var selectedExchanges: [String]?
     @NSManaged public var tradingActive: Bool
     
+    func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {}
+    }
 }
 
 extension CrossArbitrageOpportunity : Identifiable {}

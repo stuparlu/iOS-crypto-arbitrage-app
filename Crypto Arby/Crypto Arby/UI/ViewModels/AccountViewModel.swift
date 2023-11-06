@@ -13,14 +13,4 @@ class AccountViewModel: ObservableObject {
     func savePercentageThreshold() {
         SettingsManager.shared.setPercentageThreshold(Double(model.percentageThreshold)!)
     }
-    
-    func send() {
-        Task {
-            do {
-                let data = await HivePoolsRequestHandler.getBalance(symbol: "SWAP.HIVE")
-                print(data)
-            } catch {}
-        }
-    }
 }
-

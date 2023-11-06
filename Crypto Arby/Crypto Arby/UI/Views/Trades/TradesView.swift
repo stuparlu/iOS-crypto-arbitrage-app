@@ -15,8 +15,8 @@ struct TradesView: View {
                 List(viewModel.model.trades) { item in
                     if String(describing: type(of: item.self)) == String(describing: CrossArbitrageTradeHistory.self) {
                         AnyView(CrossArbitrageTradeHistoryCellView(dataModel: item as! CrossArbitrageTradeHistory))
-                    } else if String(describing: type(of: item.self)) == String(describing: CircularArbitrageHistory.self) {
-                        AnyView(EmptyView())
+                    } else if String(describing: type(of: item.self)) == String(describing: CircularArbitrageTradeHistory.self) {
+                        AnyView(CircularArbitrageTradeHistoryCellView(dataModel: item as! CircularArbitrageTradeHistory))
                     }
                 }
                 .scrollContentBackground(.hidden)

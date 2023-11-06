@@ -17,6 +17,7 @@ class CircularArbitrageExecutor {
         var pairs: [String] = []
         var prices: [Double] = []
         var tradeOrders: [String] = []
+        let timestamp = Date.now
         for tradeStep in tradeSteps {
             let currentTicker = Cryptocurrencies.findPair(by: tradeStep.symbol)
             if ownedCurrency == currentTicker.quoteSymbol {
@@ -32,6 +33,14 @@ class CircularArbitrageExecutor {
                 if let orderID = orderID {
                     tradeOrders.append(orderID)
                 } else {
+                    DatabaseManager.shared.saveCircularTradeHistory(
+                        success: false,
+                        message: "Trade exectuion failed.",
+                        timestamp: timestamp,
+                        exchange: exchange,
+                        ordersIDs: tradeOrders,
+                        pairs: tradeSteps.map({$0.symbol}),
+                        prices: prices)
                     return false
                 }
             } else {
@@ -47,10 +56,26 @@ class CircularArbitrageExecutor {
                 if let orderID = orderID {
                     tradeOrders.append(orderID)
                 } else {
+                    DatabaseManager.shared.saveCircularTradeHistory(
+                        success: false,
+                        message: "Trade exectuion failed.",
+                        timestamp: timestamp,
+                        exchange: exchange,
+                        ordersIDs: tradeOrders,
+                        pairs: tradeSteps.map({$0.symbol}),
+                        prices: prices)
                     return false
                 }
             }
         }
+        DatabaseManager.shared.saveCircularTradeHistory(
+            success: true,
+            message: "Trades executed.",
+            timestamp: timestamp,
+            exchange: exchange,
+            ordersIDs: tradeOrders,
+            pairs: tradeSteps.map({$0.symbol}),
+            prices: prices)
         return true
     }
     

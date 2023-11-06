@@ -34,7 +34,6 @@ struct CrossArbitrageTradeHistoryCellView: View {
         self.status = dataModel.success ? StringKeys.displayed.success : StringKeys.displayed.failed
         self.message = dataModel.message ?? ""
         self.timestamp = DateHandler.dateToString(dataModel.timestamp)
-        
     }
     
     var body: some View {
@@ -46,34 +45,84 @@ struct CrossArbitrageTradeHistoryCellView: View {
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 Spacer()
             }
-            Text("\(StringKeys.displayed.status)\(status)")
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text("\(StringKeys.displayed.description)\(message)")
-                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack {
+                Text(StringKeys.displayed.status)
+                    .font(.headline)
+                Spacer()
+                Text(status)
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+            HStack {
+                Text(StringKeys.displayed.description)
+                    .frame(alignment: .top)
+                    .font(.headline)
+                Spacer()
+                Text(message)
+                    .foregroundColor(.gray)
+            }
             Divider()
             VStack {
                 HStack {
-                    Text("\(StringKeys.displayed.boughtAt)\(askExchange)")
+                    Text(StringKeys.displayed.boughtAt)
+                        .font(.headline)
+                    Text(askExchange)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                     Spacer()
-                    Text("\(StringKeys.displayed.soldAt)\(bidExchange)")
+                    Text(StringKeys.displayed.soldAt)
+                        .font(.headline)
+                    Text(bidExchange)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
                 HStack {
-                    Text("\(StringKeys.displayed.amount) \(bidAmount)")
+                    Text(StringKeys.displayed.amount)
+                        .font(.headline)
+                    Text(String(bidAmount.rounded(toPlaces: 5)))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                     Spacer()
-                    Text("\(StringKeys.displayed.amount) \(askAmount)")
+                    Text(StringKeys.displayed.amount)
+                        .font(.headline)
+                    Text(String(askAmount.rounded(toPlaces: 5)))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
                 HStack {
-                    Text("\(StringKeys.displayed.price) \(askPrice)")
+                    Text(StringKeys.displayed.price)
+                        .font(.headline)
+                    Text(String(askPrice))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                     Spacer()
-                    Text("\(StringKeys.displayed.price) \(bidPrice)")
+                    Text(StringKeys.displayed.price)
+                        .font(.headline)
+                    Text(String(bidPrice))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
                 HStack {
-                    Text("\(StringKeys.displayed.orderID)\(askOrderID)")
+                    Text(StringKeys.displayed.orderID)
+                        .font(.headline)
+                    Text(askOrderID)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                     Spacer()
-                    Text("\(StringKeys.displayed.orderID)\(bidOrderID)")
+                    Text(StringKeys.displayed.orderID)
+                        .font(.headline)
+                    Text(bidOrderID)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
-                Text("\(StringKeys.displayed.time) \(timestamp)")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack {
+                    Text(StringKeys.displayed.time)
+                        .font(.headline)
+                    Text(timestamp)
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                    Spacer()
+                }
             }
         }
     }

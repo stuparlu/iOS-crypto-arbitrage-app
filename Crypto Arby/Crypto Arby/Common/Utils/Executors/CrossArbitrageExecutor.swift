@@ -33,7 +33,7 @@ class CrossArbitrageExecutor {
         } else {
             DatabaseManager.shared.saveCrossTradeHistory(
                 success: false,
-                message: "Trade execution failed. Autotrading has been stopped for this opportunity.",
+                message: "Trade execution failed.",
                 amount: tradeAmount,
                 lowestAsk: ask,
                 highestBid: bid,

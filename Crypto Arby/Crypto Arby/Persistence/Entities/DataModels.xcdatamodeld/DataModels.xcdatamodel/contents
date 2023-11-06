@@ -14,7 +14,7 @@
     </entity>
     <entity name="CircularArbitrageTradeHistory" representedClassName="CircularArbitrageTradeHistory" parentEntity="TradeHistory" syncable="YES">
         <attribute name="exchange" attributeType="String"/>
-        <attribute name="orderIDs" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="orderIDs" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="pairs" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="prices" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[Double]"/>
     </entity>
