@@ -17,23 +17,25 @@ struct AccountView: View {
             Section(header: Text(StringKeys.displayed.account)) {
                 loginManager.isLoggedIn ? AnyView(AccountCardView()) : AnyView(LoginButton())
                 Button {
-                    viewModel.model.showingManageExchanges.toggle()
+                    viewModel.toggleShowingExchanges()
                 } label: {
                     Text(StringKeys.displayed.manageExchanges)
                 }
                 Button {
-                    viewModel.model.showingManageWallets.toggle()
+                    viewModel.toggleShowingWallets()
                 } label: {
                     Text(StringKeys.displayed.manageWallets)
                 }
             }
             Section(header: Text(StringKeys.displayed.viewConfiguration)) {
                 Text(StringKeys.displayed.percentageThreshold)
+                    .foregroundStyle(ThemeManager.accentColor)
                     .lineLimit(1)
                 TextField(
                     StringKeys.placeholders.emptyString,
-                    text: $viewModel.model.percentageThreshold
+                    text: viewModel.percentageThreshold
                 )
+                .foregroundStyle(ThemeManager.accentColor)
                 .keyboardType(.decimalPad)
                 Button {
                     viewModel.savePercentageThreshold()
@@ -42,10 +44,10 @@ struct AccountView: View {
                 }
             }
         }
-        .sheet(isPresented: $viewModel.model.showingManageExchanges) {
+        .sheet(isPresented: viewModel.showingManageExchanges) {
             ManageExchangesView()
         }
-        .sheet(isPresented: $viewModel.model.showingManageWallets) {
+        .sheet(isPresented: viewModel.showingManageWallets) {
             ManageWalletsView()
         }
     }
