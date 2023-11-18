@@ -28,6 +28,30 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "YES"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A14CDC3F2B08C0FB00EC0B61"
+               BuildableName = "Crypto ArbyTests.xctest"
+               BlueprintName = "Crypto ArbyTests"
+               ReferencedContainer = "container:Crypto Arby.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A14CDC4F2B08C5FF00EC0B61"
+               BuildableName = "Crypto Arby Tests.xctest"
+               BlueprintName = "Crypto Arby Tests"
+               ReferencedContainer = "container:Crypto Arby.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

@@ -46,6 +46,8 @@
 		A148E4692ADEB769002DFCA4 /* ManageExchangesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A148E4682ADEB769002DFCA4 /* ManageExchangesViewModel.swift */; };
 		A14C1D232ADD534000D0BC68 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14C1D222ADD534000D0BC68 /* LoadingIndicatorView.swift */; };
 		A14C1D252ADD561800D0BC68 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14C1D242ADD561800D0BC68 /* MainViewModel.swift */; };
+		A14CDC532B08C5FF00EC0B61 /* Crypto_Arby_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CDC522B08C5FF00EC0B61 /* Crypto_Arby_Tests.swift */; };
+		A14CDC5A2B08CAB300EC0B61 /* KeychainManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14CDC592B08CAB300EC0B61 /* KeychainManagerTest.swift */; };
 		A15968CF2AF28A3B0069B311 /* HiveDexRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15968CE2AF28A3B0069B311 /* HiveDexRequestHandler.swift */; };
 		A15968D12AF2AA640069B311 /* PriceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15968D02AF2AA640069B311 /* PriceData.swift */; };
 		A15968D32AF2AAAF0069B311 /* OrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15968D22AF2AAAF0069B311 /* OrderData.swift */; };
@@ -133,6 +135,16 @@
 		A1FFF2B32AC57D68007CAF91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1FFF2B22AC57D68007CAF91 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A14CDC542B08C5FF00EC0B61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1BD7B652A65505E002B3F48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1BD7B6C2A65505E002B3F48;
+			remoteInfo = "Crypto Arby";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4485E75D3733F7993D0F2CD4 /* Pods-Crypto Arby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Crypto Arby.release.xcconfig"; path = "Target Support Files/Pods-Crypto Arby/Pods-Crypto Arby.release.xcconfig"; sourceTree = "<group>"; };
 		A107A16D2AB9CD2E00640F5B /* Crypto Arby.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Crypto Arby.entitlements"; sourceTree = "<group>"; };
@@ -174,6 +186,9 @@
 		A148E4682ADEB769002DFCA4 /* ManageExchangesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageExchangesViewModel.swift; sourceTree = "<group>"; };
 		A14C1D222ADD534000D0BC68 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		A14C1D242ADD561800D0BC68 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		A14CDC502B08C5FF00EC0B61 /* Crypto Arby Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Crypto Arby Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A14CDC522B08C5FF00EC0B61 /* Crypto_Arby_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto_Arby_Tests.swift; sourceTree = "<group>"; };
+		A14CDC592B08CAB300EC0B61 /* KeychainManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManagerTest.swift; sourceTree = "<group>"; };
 		A15968CE2AF28A3B0069B311 /* HiveDexRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiveDexRequestHandler.swift; sourceTree = "<group>"; };
 		A15968D02AF2AA640069B311 /* PriceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceData.swift; sourceTree = "<group>"; };
 		A15968D22AF2AAAF0069B311 /* OrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderData.swift; sourceTree = "<group>"; };
@@ -265,6 +280,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A14CDC4D2B08C5FF00EC0B61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1BD7B6A2A65505E002B3F48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,6 +489,15 @@
 			path = Management;
 			sourceTree = "<group>";
 		};
+		A14CDC512B08C5FF00EC0B61 /* Crypto Arby Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A14CDC522B08C5FF00EC0B61 /* Crypto_Arby_Tests.swift */,
+				A14CDC592B08CAB300EC0B61 /* KeychainManagerTest.swift */,
+			);
+			path = "Crypto Arby Tests";
+			sourceTree = "<group>";
+		};
 		A15EF7FF2AEA6109007921CA /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +650,7 @@
 			isa = PBXGroup;
 			children = (
 				A1BD7B6F2A65505E002B3F48 /* Crypto Arby */,
+				A14CDC512B08C5FF00EC0B61 /* Crypto Arby Tests */,
 				A1BD7B6E2A65505E002B3F48 /* Products */,
 				5E6F30DCFCCA5A9B4DF53090 /* Pods */,
 				79DC94E37BD2CA08CD67846F /* Frameworks */,
@@ -629,6 +661,7 @@
 			isa = PBXGroup;
 			children = (
 				A1BD7B6D2A65505E002B3F48 /* Crypto Arby.app */,
+				A14CDC502B08C5FF00EC0B61 /* Crypto Arby Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -710,6 +743,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A14CDC4F2B08C5FF00EC0B61 /* Crypto Arby Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A14CDC562B08C60000EC0B61 /* Build configuration list for PBXNativeTarget "Crypto Arby Tests" */;
+			buildPhases = (
+				A14CDC4C2B08C5FF00EC0B61 /* Sources */,
+				A14CDC4D2B08C5FF00EC0B61 /* Frameworks */,
+				A14CDC4E2B08C5FF00EC0B61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A14CDC552B08C5FF00EC0B61 /* PBXTargetDependency */,
+			);
+			name = "Crypto Arby Tests";
+			productName = "Crypto Arby Tests";
+			productReference = A14CDC502B08C5FF00EC0B61 /* Crypto Arby Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A1BD7B6C2A65505E002B3F48 /* Crypto Arby */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1BD7B7B2A655061002B3F48 /* Build configuration list for PBXNativeTarget "Crypto Arby" */;
@@ -739,9 +790,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					A14CDC4F2B08C5FF00EC0B61 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = A1BD7B6C2A65505E002B3F48;
+					};
 					A1BD7B6C2A65505E002B3F48 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -764,11 +819,19 @@
 			projectRoot = "";
 			targets = (
 				A1BD7B6C2A65505E002B3F48 /* Crypto Arby */,
+				A14CDC4F2B08C5FF00EC0B61 /* Crypto Arby Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A14CDC4E2B08C5FF00EC0B61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1BD7B6B2A65505E002B3F48 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -824,6 +887,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A14CDC4C2B08C5FF00EC0B61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A14CDC532B08C5FF00EC0B61 /* Crypto_Arby_Tests.swift in Sources */,
+				A14CDC5A2B08CAB300EC0B61 /* KeychainManagerTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A1BD7B692A65505E002B3F48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -952,7 +1024,62 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A14CDC552B08C5FF00EC0B61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1BD7B6C2A65505E002B3F48 /* Crypto Arby */;
+			targetProxy = A14CDC542B08C5FF00EC0B61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		A14CDC572B08C60000EC0B61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AA3RMFX7UX;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lukastupar.Crypto-Arby-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crypto Arby.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Crypto Arby";
+			};
+			name = Debug;
+		};
+		A14CDC582B08C60000EC0B61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AA3RMFX7UX;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lukastupar.Crypto-Arby-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Crypto Arby.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Crypto Arby";
+			};
+			name = Release;
+		};
 		A1BD7B792A655061002B3F48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1140,6 +1267,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A14CDC562B08C60000EC0B61 /* Build configuration list for PBXNativeTarget "Crypto Arby Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A14CDC572B08C60000EC0B61 /* Debug */,
+				A14CDC582B08C60000EC0B61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A1BD7B682A65505E002B3F48 /* Build configuration list for PBXProject "Crypto Arby" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
