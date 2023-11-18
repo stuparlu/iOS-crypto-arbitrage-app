@@ -7,8 +7,8 @@
 
 import Foundation
 
-class AccountModel: ObservableObject {
-    @Published var percentageThreshold = String(SettingsManager.shared.getPercentageThreshold())
-    @Published var showingManageExchanges = false
-    @Published var showingManageWallets = false
+struct AccountModel {
+    var percentageThreshold = String(SettingsManager.shared.getPercentageThreshold())
+    var showingManageExchanges = false
+    var showingManageWallets = false
 }
